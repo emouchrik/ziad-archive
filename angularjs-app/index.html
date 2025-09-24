@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="src/assets/styles.css">
+</head>
+<body>
+  <div class="container" ng-controller="MainController as vm">
+    <h1>{{vm.title}}</h1>
+
+    <hello name="vm.userName"></hello>
+
+    <h2>Items</h2>
+    <ul>
+      <li ng-repeat="item in vm.items">{{item}}</li>
+    </ul>
+  </div>
+
+  <!-- AngularJS from CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <!-- App scripts -->
+  <script src="src/app/app.module.js"></script>
+  <script src="src/app/services/data.service.js"></script>
+  <script src="src/app/controllers/MainController.js"></script>
+  <script src="src/app/components/hello/hello.component.js"></script>
+</body>
+</html>
