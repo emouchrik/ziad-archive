@@ -1,0 +1,28 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let c of concerts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ c.title }}</mat-panel-title>
+      <mat-panel-description>{{ c.date }}</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let ch of c.chapters">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ ch.title }}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-list>
+          <mat-list-item *ngFor="let s of ch.songs">
+            <button mat-icon-button (click)="playSong(s)" aria-label="Play song">
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+            <div class="song-info">
+              <div class="song-title">{{ s.title }}</div>
+              <div class="song-duration">{{ s.duration }}</div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-expansion-panel>
+</mat-accordion>

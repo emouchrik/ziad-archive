@@ -1,0 +1,4 @@
+/* small layout tweaks */
+mat-expansion-panel { margin-bottom: 0.5rem; }
+mat-list-item { align-items: center; }
+button[mat-icon-button] { margin-right: 0.5rem; }
