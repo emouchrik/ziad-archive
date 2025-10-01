@@ -10,7 +10,7 @@ export class ConcertService {
     return [
       {
         title: 'Saida Concert',
-        date: 'Unknown',
+        date: 'October 27, 2018',
         chapters: [
           {
             title: 'chapter 1',
@@ -57,28 +57,68 @@ export class ConcertService {
           }
         ]
       },
+
+      // New: Arnoun Concert
       {
-        title: 'Live at The Forum',
-        date: '2022-05-14',
+        title: 'Arnoun Concert',
+        date: 'September 7, 2018',
         chapters: [
-          { title: 'Set 1', songs: [
-            { title: 'Opening Song', duration: '4:12' },
-            { title: 'Second Tune', duration: '5:03' }
-          ]},
-          { title: 'Set 2', songs: [
-            { title: 'Slow Ballad', duration: '6:22' },
-            { title: 'Encore', duration: '3:45' }
-          ]}
-        ]
-      },
-      {
-        title: 'Acoustic Evening',
-        date: '2021-11-02',
-        chapters: [
-          { title: 'Acoustic Set', songs: [
-            { title: 'Quiet Intro', duration: '2:34' },
-            { title: 'Story Song', duration: '4:50' }
-          ]}
+          {
+            title: 'chapter 1',
+            songs: [
+              { title: 'مقدمة', duration: '00:00', url: 'https://vimeo.com/331233262#t=0m0s' },
+              { title: 'بعتلك', duration: '09:37', url: 'https://vimeo.com/331233262#t=9m37s' },
+              { title: 'أمنلي بيت', duration: '14:08', url: 'https://vimeo.com/331233262#t=14m8s' },
+              { title: 'يعزونا', duration: '18:08', url: 'https://vimeo.com/331233262#t=18m8s' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            songs: [
+              { title: 'الأمل', duration: '01:56', url: 'https://vimeo.com/331234476#t=1m56s' },
+              { title: 'صفحة جديدة', duration: '03:43', url: 'https://vimeo.com/331234476#t=3m43s' },
+              { title: 'سهّرنا يا بو الأحباب', duration: '07:19', url: 'https://vimeo.com/331234476#t=7m19s' },
+              { title: 'يا سيف على الأعداء طايل', duration: '09:23', url: 'https://vimeo.com/331234476#t=9m23s' },
+              { title: 'مش بس تلفنلي', duration: '13:34', url: 'https://vimeo.com/331234476#t=13m34s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            songs: [
+              { title: 'عهدير البوسطة', duration: '00:00', url: 'https://vimeo.com/331235667#t=0m0s' },
+              { title: 'بيذكر بالخريف', duration: '06:09', url: 'https://vimeo.com/331235667#t=6m9s' },
+              { title: 'عاتابا', duration: '10:59', url: 'https://vimeo.com/331235667#t=10m59s' },
+              { title: 'يا بنت المعاون', duration: '20:04', url: 'https://vimeo.com/331235667#t=20m4s' }
+            ]
+          },
+          {
+            title: 'chapter 4',
+            songs: [
+              { title: 'Film Ameriki Tawil', duration: '00:00', url: 'https://vimeo.com/331237088#t=0m0s' },
+              { title: 'Layk', duration: '06:24', url: 'https://vimeo.com/331237088#t=6m24s' },
+              { title: 'Asaada Allah Masa2akum', duration: '11:58', url: 'https://vimeo.com/331237088#t=11m58s' },
+              { title: 'Salimli 3ale', duration: '16:30', url: 'https://vimeo.com/331237088#t=16m30s' }
+            ]
+          },
+          {
+            title: 'chapter 5',
+            songs: [
+              { title: 'Talfayn Ayache', duration: '00:45', url: 'https://vimeo.com/331238275#t=0m45s' },
+              { title: 'Bema Enno', duration: '04:50', url: 'https://vimeo.com/331238275#t=4m50s' },
+              { title: 'Agua De Beber', duration: '08:51', url: 'https://vimeo.com/331238275#t=8m51s' },
+              { title: 'Un Verre Chez Nous', duration: '11:55', url: 'https://vimeo.com/331238275#t=11m55s' },
+              { title: 'Mays El Rim', duration: '15:41', url: 'https://vimeo.com/331238275#t=15m41s' }
+            ]
+          },
+          {
+            title: 'chapter 6',
+            songs: [
+              { title: 'المقاومة الوطنية', duration: '01:10', url: 'https://vimeo.com/331239381#t=1m10s' },
+              { title: 'شو هالايام', duration: '04:27', url: 'https://vimeo.com/331239381#t=4m27s' },
+              { title: 'صمدو و غلبو', duration: '08:59', url: 'https://vimeo.com/331239381#t=8m59s' },
+              { title: 'Amreeka Meen', duration: '17:34', url: 'https://vimeo.com/331239381#t=17m34s' }
+            ]
+          }
         ]
       }
     ];

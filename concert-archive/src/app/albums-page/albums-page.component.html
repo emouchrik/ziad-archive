@@ -1,0 +1,21 @@
+<div class="albums-page">
+  <h1 class="page-title">Albums</h1>
+
+  <div class="albums-grid">
+    <article class="album-card" *ngFor="let a of albums">
+      <div class="cover-wrapper" (click)="openAlbum(a)" role="button" tabindex="0" aria-label="Open {{ a.title }}">
+        <img [src]="a.coverUrl" [alt]="a.title" class="cover" />
+        <div class="cover-overlay">
+          <button mat-icon-button class="overlay-play" aria-label="Open album">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="title" [attr.title]="a.title">{{ a.title }}</div>
+        <div class="sub">{{ a.artist || '' }} · {{ a.year || '' }}</div>
+      </div>
+    </article>
+  </div>
+</div>
