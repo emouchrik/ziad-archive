@@ -1,0 +1,17 @@
+/* minimal styles so the loader has something to return */
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.discography-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.discography-item {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}

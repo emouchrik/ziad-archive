@@ -1,16 +1,17 @@
 <!-- Navigation: quick link to Albums page -->
 <div class="page-actions" style="margin-bottom:12px;">
   <button mat-stroked-button color="primary" routerLink="/albums" aria-label="Go to albums">Albums</button>
+  <button mat-stroked-button color="accent" routerLink="/discography" aria-label="Go to discography" style="margin-left:8px;">Discography</button>
 </div>
 
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let c of concerts">
+  <mat-expansion-panel *ngFor="let c of concerts" [expanded]="expandedByDefault">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ c.title }}</mat-panel-title>
       <mat-panel-description>{{ c.date }}</mat-panel-description>
     </mat-expansion-panel-header>
 
-    <mat-accordion>
+    <mat-accordion multi>
       <mat-expansion-panel *ngFor="let ch of c.chapters">
         <mat-expansion-panel-header>
           <mat-panel-title>{{ ch.title }}</mat-panel-title>

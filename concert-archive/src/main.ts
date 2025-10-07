@@ -1,10 +1,7 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-// Using standalone bootstrap for simplicity; AppComponent is a standalone component in this scaffold.
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter([])
-  ]
-}).catch(err => console.error(err));
+// Bootstrap the NgModule so AppRoutingModule and declared components are loaded.
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));

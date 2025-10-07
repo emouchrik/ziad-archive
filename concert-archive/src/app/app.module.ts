@@ -7,11 +7,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './home-page/home-page.component'; // standalone -> import
+import { AlbumsPageComponent } from './albums-page/albums-page.component'; // non-standalone -> declare
+import { DiscographyPageComponent } from './discography-page/discography-page.component'; // non-standalone -> declare
+import { AppRoutingModule } from './app-routing.module';
 import { ConcertService } from './services/concert.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    AlbumsPageComponent,
+    DiscographyPageComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -19,7 +26,8 @@ import { ConcertService } from './services/concert.service';
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    HomePageComponent
+    HomePageComponent,
+    AppRoutingModule
   ],
   providers: [ConcertService],
   bootstrap: [AppComponent]

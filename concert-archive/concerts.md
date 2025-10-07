@@ -1,4 +1,6 @@
 
+convert this list into the syntax in this url : https://support.squarespace.com/hc/en-us/articles/206543587-Markdown-cheat-sheet?platform=v6&websiteId=68dee33931f3d241414ef5df
+
 Saida Concert 
 chapter 1 - https://vimeo.com/328235786
 	03:46 samadou w ghalabou
@@ -63,4 +65,10 @@ chapter 6 - https://vimeo.com/331239381
     08:59 صمدو و غلبو
     17:34 Amreeka Meen
 
+Hrajel Concert 
+
+chapter 1: https://vimeo.com/333986913
+	00:00 Dabke (only played once in 1982)
+	07:39 Baatilak 
+	
 

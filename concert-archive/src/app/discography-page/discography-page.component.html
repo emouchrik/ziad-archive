@@ -1,0 +1,13 @@
+<div class="discography-page">
+  <h1>Discography</h1>
+
+  <div class="albums-grid">
+    <div class="album-card" *ngFor="let a of discography" (click)="openAlbum(a)">
+      <img *ngIf="a.coverUrl" [src]="a.coverUrl" alt="{{ a.title }} cover" />
+      <div class="album-info">
+        <div class="album-title">{{ a.title }}</div>
+        <div class="album-meta">{{ a.artist }} • {{ a.year }}</div>
+      </div>
+    </div>
+  </div>
+</div>
