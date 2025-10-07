@@ -1,7 +1,13 @@
 /* small layout tweaks */
 mat-expansion-panel { margin-bottom: 0.5rem; }
-mat-list-item { align-items: center; }
+mat-list-item { align-items: center; padding-top: 2px; padding-bottom: 2px; }
 button[mat-icon-button] { margin-right: 0.5rem; }
+
+:host {
+  display: block;
+  background: #ffffff; /* page white background */
+  color: #111827;
+}
 
 .song-info {
   display: flex;
@@ -50,6 +56,76 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   z-index: 2000;
   display: flex;
   flex-direction: column;
+}
+
+/* HERO */
+.home-hero {
+  background: transparent; /* keep hero subtle on white page */
+  color: inherit;
+  padding: 12px 0 6px;
+}
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-meta {
+  flex: 1 1 auto;
+}
+.hero-sub {
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+.hero-title {
+  font-size: 44px;
+  margin: 0 0 6px;
+  line-height: 1.02;
+  font-weight: 700;
+}
+.hero-date { font-size: 14px; color: rgba(0,0,0,0.6); margin-bottom: 12px; }
+.hero-actions { display:flex; gap:12px; justify-content:center; }
+.hero-cover { display:none; }
+.cover-placeholder { display:none; }
+
+/* CONCERT LIST */
+.concert-list {
+  /* left-aligned list leaving room for right sidebar player */
+  margin: 28px 24px;
+  padding: 0 12px;
+  width: 100%;
+  max-width: calc(100% - 420px);
+}
+.concert-card { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 20px; overflow: visible; padding: 0; }
+.concert-card + .concert-card { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 18px; margin-top: 18px; }
+.concert-table { display: flex; gap: 24px; align-items: flex-start; padding: 12px 8px; overflow-x: auto; }
+.concert-column { flex: 0 0 360px; min-width: 300px; max-width: 420px; background: transparent; }
+.concert-column .concert-header { padding: 16px 12px; }
+.concert-header { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 12px; border-bottom: none; text-align:center; gap:8px; }
+.concert-title { font-weight:800; font-size:36px; line-height:1.02; width:100%; }
+.concert-date { color: rgba(0,0,0,0.6); font-size:16px; margin-top:4px; }
+.concert-chapters { padding: 4px 0; }
+.track-row { display:flex; align-items:center; gap:8px; padding: 4px 6px; }
+.track-index { color: #ff5a5f; width: 28px; text-align:center; }
+.track-actions { margin-left: auto; }
+
+/* ensure song info stacks nicely */
+.song-info { display:flex; flex-direction:row; gap:12px; align-items:center; min-width:0; }
+.song-link { padding:0; font-size:medium; font-weight:600; text-transform:none; }
+.song-duration { color: rgba(0,0,0,0.5); font-size:12px; }
+
+@media (max-width: 960px) {
+  .hero-inner { flex-direction:column; align-items:center; }
+  .concert-list { max-width: 100%; margin: 18px 12px; }
+  .concert-header { padding: 16px 12px; }
+  .concert-title { font-size: 40px; }
+  .concert-date { font-size: 14px; }
 }
 
 .player-header {
@@ -219,8 +295,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   display: block;
 }
 
-/* ensure expanded overlay styles remain */
-.player-backdrop { /* already defined earlier - kept for expanded view */ }
+/* ensure expanded overlay styles remain (defined earlier) */
 
 /* responsive: smaller dock on very small screens */
 @media (max-width: 420px) {
@@ -236,4 +311,87 @@ button[mat-icon-button] { margin-right: 0.5rem; }
     border-radius: 0;
     padding-bottom: env(safe-area-inset-bottom);
   }
+}
+
+.chapter-block { margin-bottom: 6px; }
+/* Chapter / song list styles for non-collapsible layout (compact) */
+.concert-chapters { padding: 4px 6px 4px; }
+.chapter-title { font-weight:600; margin-bottom:6px; color: #222; }
+.track-row { padding: 4px 0; }
+
+/* Right-side sticky sidebar player styles */
+.player-sidebar {
+  position: sticky; /* will stick inside nearest scroll container */
+  top: 20px; /* offset from top when sticking */
+  right: 0;
+  /* place the sidebar visually on the right side of the content area */
+  margin-left: 24px;
+  width: 380px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+  overflow: hidden;
+  z-index: 3500;
+  display: flex;
+  flex-direction: column;
+  transition: width 200ms ease, height 160ms ease, transform 160ms ease;
+}
+
+/* When collapsed, show compact bar look */
+.player-sidebar.collapsed { width: 300px; height: auto; }
+.player-sidebar .player-header { padding: 10px 12px; background: #fafafa; }
+
+.player-sidebar .player-body { background: #000; height: 360px; display: flex; align-items: stretch; }
+.player-sidebar .player-body iframe { width: 100%; height: 100%; }
+
+.player-sidebar .player-compact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+/* lower-left resize corner */
+.resize-corner {
+  position: absolute;
+  left: -12px; /* sit slightly outside to be easy to grab */
+  bottom: -12px;
+  width: 24px;
+  height: 24px;
+  cursor: nwse-resize; /* diagonal resize cue */
+  z-index: 4000;
+}
+
+.resize-corner::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(0,0,0,0.14);
+  border-bottom: 2px solid rgba(0,0,0,0.14);
+  transform: rotate(45deg);
+}
+
+.player-sidebar .compact-left {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-sidebar .compact-actions { display:flex; gap:6px; align-items:center; }
+
+/* Make the sidebar fixed on large viewports so it stays visible while scrolling */
+@media (min-width: 960px) {
+  .concert-list { max-width: calc(100% - 420px); }
+  .player-sidebar { position: fixed; top: 84px; right: 20px; }
+}
+
+/* On small screens, fall back to bottom dock (mobile friendly) */
+@media (max-width: 959px) {
+  .player-sidebar { position: fixed; right: 12px; bottom: 12px; width: 320px; height: auto; border-radius: 10px; }
+  .player-sidebar .player-body { height: 180px; }
 }

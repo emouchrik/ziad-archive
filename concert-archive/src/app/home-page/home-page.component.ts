@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +17,19 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class HomePageComponent {
   concerts: Concert[];
+
+  // player sizing (px)
+  playerWidth = 380;
+  playerHeight = 360;
+  private cornerResizing = false;
+  private cornerStartX = 0;
+  private cornerStartY = 0;
+  private startWidth = 0;
+  private startHeight = 0;
+  private readonly minPlayerWidth = 260;
+  private readonly minPlayerHeight = 160;
+  private readonly maxPlayerWidth = 1200;
+  private readonly maxPlayerHeight = 1000;
 
   // single player state
   currentSong: Song | null = null;
@@ -58,6 +71,37 @@ export class HomePageComponent {
     this.isCollapsed = !this.isCollapsed;
   }
 
+  // corner resize handlers
+  startCornerResize(evt: MouseEvent) {
+    evt.preventDefault();
+    this.cornerResizing = true;
+    this.cornerStartX = evt.clientX;
+    this.cornerStartY = evt.clientY;
+    this.startWidth = this.playerWidth;
+    this.startHeight = this.playerHeight;
+    document.addEventListener('mousemove', this.onCornerMove);
+    document.addEventListener('mouseup', this.stopCornerResize);
+  }
+
+  private onCornerMove = (e: MouseEvent) => {
+    if (!this.cornerResizing) return;
+    const dx = this.cornerStartX - e.clientX; // dragging left increases width
+    const dy = e.clientY - this.cornerStartY; // dragging down increases height
+    let newWidth = this.startWidth + dx;
+    let newHeight = this.startHeight + dy;
+    newWidth = Math.max(this.minPlayerWidth, Math.min(this.maxPlayerWidth, newWidth));
+    newHeight = Math.max(this.minPlayerHeight, Math.min(this.maxPlayerHeight, newHeight));
+    this.playerWidth = newWidth;
+    this.playerHeight = newHeight;
+  };
+
+  private stopCornerResize = (_e?: MouseEvent) => {
+    if (!this.cornerResizing) return;
+    this.cornerResizing = false;
+    document.removeEventListener('mousemove', this.onCornerMove);
+    document.removeEventListener('mouseup', this.stopCornerResize);
+  };
+
   // small helper to show concise titles
   shortTitle(title: string, max = 42): string {
     if (!title) return '';
@@ -72,5 +116,10 @@ export class HomePageComponent {
     const id = match[1];
     const hash = match[2] || '';
     return `https://player.vimeo.com/video/${id}?autoplay=1${hash}`;
+  }
+
+  ngOnDestroy(): void {
+    // ensure we remove any listeners
+    this.stopCornerResize();
   }
 }

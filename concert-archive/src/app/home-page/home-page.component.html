@@ -1,101 +1,76 @@
-<!-- Navigation: quick link to Albums page -->
-<div class="page-actions" style="margin-bottom:12px;">
-  <button mat-stroked-button color="primary" routerLink="/albums" aria-label="Go to albums">Albums</button>
-  <button mat-stroked-button color="accent" routerLink="/discography" aria-label="Go to discography" style="margin-left:8px;">Discography</button>
-</div>
-
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let c of concerts" [expanded]="expandedByDefault">
-    <mat-expansion-panel-header>
-      <mat-panel-title>{{ c.title }}</mat-panel-title>
-      <mat-panel-description>{{ c.date }}</mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-accordion multi>
-      <mat-expansion-panel *ngFor="let ch of c.chapters">
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ ch.title }}</mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <mat-list>
-          <mat-list-item *ngFor="let s of ch.songs">
-            
-            <!-- song info: clickable concise title + duration -->
-            <div class="song-info">
-              <!-- clickable title (shows full title on hover) -->
-              <button
-                mat-button
-                class="song-link"
-                (click)="openPlayer(s)"
-                [attr.title]="s.title"
-                aria-label="Play {{ s.title }}">
-                {{ shortTitle(s.title) }}
-              </button>
-
-              <div class="song-duration">{{ s.duration }}</div>
-            </div>
-          </mat-list-item>
-        </mat-list>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-expansion-panel>
-</mat-accordion>
-
-<!-- Full-size player overlay (expanded) -->
-<div class="player-backdrop" *ngIf="currentSong && !isCollapsed" (click)="closePlayer()">
-  <div class="player-container" (click)="$event.stopPropagation()">
-    <div class="player-header">
-      <div class="player-title">{{ currentSong?.title }}</div>
-      <div class="player-controls">
-        <button mat-icon-button (click)="collapsePlayer()" aria-label="Collapse player">
-          <mat-icon>minimize</mat-icon>
-        </button>
-        <button mat-icon-button (click)="closePlayer()" aria-label="Close player">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
+<!-- Hero: uses the first concert title/date as a featured album header -->
+<div class="home-hero">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <div class="hero-sub">Live Concert Archive</div>
+      <h1 class="hero-title">{{ 'Concerts' }}</h1>
+      <div class="hero-date">{{ (concerts[0]?.date) || '' }}</div>
     </div>
-
-    <div class="player-body">
-      <iframe
-        *ngIf="currentEmbedUrl"
-        [src]="currentEmbedUrl"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-
-      <div *ngIf="!currentEmbedUrl" class="no-embed">
-        Video cannot be embedded.
-        <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
-      </div>
+    <div class="hero-cover" aria-hidden="true">
+      <!-- decorative area, could be replaced with a real cover image later -->
+      <div class="cover-placeholder">🎶</div>
     </div>
   </div>
 </div>
 
-<!-- Docked player (bottom-right compact) -->
-<div class="player-dock" *ngIf="currentSong && isCollapsed" (click)="$event.stopPropagation()">
-  <div class="dock-content">
-    <div class="dock-left">
-      <div class="dock-title" [attr.title]="currentSong?.title">{{ shortTitle(currentSong?.title || '', 32) }}</div>
-      <div class="dock-controls">
-        <button mat-icon-button (click)="expandPlayer()" aria-label="Expand player">
-          <mat-icon>open_in_full</mat-icon>
-        </button>
-        <button mat-icon-button (click)="closePlayer()" aria-label="Close player">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
+<!-- Concert list: each concert as a card containing chapters and songs -->
+<!-- Concerts presented as columns (one column per concert) -->
+<div class="concert-table" role="table">
+  <div class="concert-column" *ngFor="let c of concerts; let ci = index" role="column">
+    <div class="concert-header">
+      <div class="concert-title">{{ c.title }}</div>
+      <div class="concert-date">{{ c.date }}</div>
     </div>
 
-    <div class="dock-video">
-      <iframe
-        *ngIf="currentEmbedUrl"
-        [src]="currentEmbedUrl"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="concert-body">
+      <ng-container *ngFor="let ch of c.chapters">
+        <div class="chapter-block">
+          <div class="chapter-title">{{ ch.title }}</div>
+          <mat-list>
+            <mat-list-item *ngFor="let s of ch.songs" class="track-row">
+              <div class="song-info">
+                <button mat-button class="song-link" (click)="openPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
+                <div class="song-duration">{{ s.duration }}</div>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </ng-container>
     </div>
   </div>
+</div>
+
+<!-- Right-side sticky sidebar player -->
+<div class="player-sidebar" *ngIf="currentSong" (click)="$event.stopPropagation()" [class.collapsed]="isCollapsed" [style.width.px]="playerWidth" [style.height.px]="isCollapsed ? 'auto' : playerHeight">
+  <div class="player-header">
+    
+  </div>
+
+  <!-- expanded body -->
+  <div class="player-body" *ngIf="!isCollapsed">
+    <iframe
+      *ngIf="currentEmbedUrl"
+      [src]="currentEmbedUrl"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+
+    <div *ngIf="!currentEmbedUrl" class="no-embed">
+      Video cannot be embedded.
+      <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
+    </div>
+  </div>
+
+  <!-- compact collapsed bar -->
+  <div class="player-compact" *ngIf="isCollapsed">
+    <div class="compact-left" [attr.title]="currentSong?.title">{{ shortTitle(currentSong?.title || '', 36) }}</div>
+    <div class="compact-actions">
+      <button mat-icon-button (click)="expandPlayer()" aria-label="Expand player"><mat-icon>open_in_full</mat-icon></button>
+      <button mat-icon-button (click)="closePlayer()" aria-label="Close player"><mat-icon>close</mat-icon></button>
+    </div>
+  </div>
+
+  <!-- lower-left resize corner (drag to resize both width & height) -->
+  <div class="resize-corner" title="Drag to resize" (mousedown)="startCornerResize($event)"></div>
 </div>
