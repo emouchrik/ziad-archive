@@ -60,9 +60,10 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 
 /* HERO */
 .home-hero {
-  background: transparent; /* keep hero subtle on white page */
-  color: inherit;
-  padding: 12px 0 6px;
+  background: transparent; /* image sits behind via absolute positioning */
+  color: white;
+  position: relative; /* for absolutely positioned cover */
+  padding: 0 0 12px; /* bottom padding to separate from next section */
 }
 .hero-inner {
   display: flex;
@@ -72,6 +73,9 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
+  position: relative; /* sit above the cover image */
+  z-index: 2;
+  padding-top: 88px; /* push content down so it's visually inside the image */
 }
 .hero-meta {
   flex: 1 1 auto;
@@ -94,6 +98,38 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 .hero-cover { display:none; }
 .cover-placeholder { display:none; }
 
+/* full-width cover image that sits below the hero header */
+.hero-cover-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 260px;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-cover-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* subtle dark overlay for readability of hero text */
+.hero-cover-full::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .hero-cover-full { height: 200px; }
+  .hero-inner { padding-top: 48px; }
+}
+
 /* CONCERT LIST */
 .concert-list {
   /* left-aligned list leaving room for right sidebar player */
@@ -104,8 +140,21 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 }
 .concert-card { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 20px; overflow: visible; padding: 0; }
 .concert-card + .concert-card { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 18px; margin-top: 18px; }
-.concert-table { display: flex; gap: 24px; align-items: flex-start; padding: 12px 8px; overflow-x: auto; }
-.concert-column { flex: 0 0 360px; min-width: 300px; max-width: 420px; background: transparent; }
+.concert-table {
+  display: flex;
+  flex-wrap: wrap; /* allow columns to wrap into additional rows instead of creating horizontal scroll */
+  gap: 24px; /* gap handles both row and column spacing */
+  align-items: flex-start;
+  padding: 102px 8px;
+  overflow-x: visible; /* ensure no forced horizontal scrolling */
+}
+.concert-column {
+  /* allow columns to grow/shrink and wrap; basis gives a preferred width */
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 420px;
+  background: transparent;
+}
 .concert-column .concert-header { padding: 16px 12px; }
 .concert-header { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:20px 12px; border-bottom: none; text-align:left; gap:8px; }
 .concert-title { font-weight:800; font-size:22px; line-height:1.02; width:100%; }
@@ -141,6 +190,29 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   .concert-header { padding: 16px 12px; }
   .concert-title { font-size: 40px; }
   .concert-date { font-size: 14px; }
+}
+
+/* When screen is narrower, keep the sidebar from forcing horizontal scrolling by
+   dropping it below the concert columns and giving it full width */
+@media (max-width: 980px) {
+  .player-sidebar {
+    position: static;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 18px;
+    border-radius: 8px;
+  }
+  .concert-table { gap: 16px; }
+}
+
+/* On very small screens, make each concert column full-width so rows stack vertically */
+@media (max-width: 700px) {
+  .concert-column {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .hero-title { font-size: 32px; }
 }
 
 .player-header {
@@ -238,7 +310,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 /* fallback UI */
 .no-embed {
   padding: 16px;
-  color: rgba(0,0,0,0.85);
+  color: rgba(247, 243, 243, 0.85);
   background: #fff;
 }
 
@@ -335,24 +407,64 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 .track-row { padding: 4px 0; }
 
 /* Right-side sticky sidebar player styles */
-.player-sidebar {
-  position: sticky; /* will stick inside nearest scroll container */
-  top: 20px; /* offset from top when sticking */
-  right: 0;
-  /* place the sidebar visually on the right side of the content area */
-  margin-left: 24px;
-  width: 380px;
+
+/* Previous sticky sidebar replaced by a movable, fixed player container */
+.movable-player {
+  position: fixed;
+  top: 20px;
+  right: 16px;
+  z-index: 3500;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
   overflow: hidden;
-  z-index: 3500;
   display: flex;
   flex-direction: column;
-  transition: width 200ms ease, height 160ms ease, transform 160ms ease;
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1), opacity 160ms ease, height 220ms ease, width 160ms ease;
+  will-change: transform, width, height;
 }
 
-/* When collapsed, show compact bar look */
+.movable-player.collapsed { height: auto; width: 360px; }
+
+.movable-player .player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  cursor: grab; /* indicates draggable area */
+  user-select: none;
+}
+.movable-player .player-header:active { cursor: grabbing; }
+
+.movable-player .player-title { font-weight: 600; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.movable-player .player-actions { display:flex; gap:8px; align-items:center; }
+
+.movable-player .player-body { background: #000; transition: opacity 200ms ease; }
+.movable-player.collapsed .player-body { opacity: 0; height: 0; padding: 0; overflow: hidden; }
+.movable-player .player-body iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.movable-player .player-compact { display:flex; align-items:center; justify-content:space-between; padding: 10px 12px; gap:8px; }
+
+/* corner resize handles (TL, TR, BL, BR) */
+.resize-handle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 4px;
+  z-index: 4100;
+  display: block;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.resize-handle::after { content: ''; display:block; width:10px; height:10px; margin:4px; border-right:2px solid rgba(0,0,0,0.18); border-bottom:2px solid rgba(0,0,0,0.18); transform: rotate(45deg); }
+.resize-handle.top-left { left: -9px; top: -9px; cursor: nwse-resize; }
+.resize-handle.top-right { right: -9px; top: -9px; cursor: nesw-resize; }
+.resize-handle.bottom-left { left: -9px; bottom: -9px; cursor: nesw-resize; }
+.resize-handle.bottom-right { right: -9px; bottom: -9px; cursor: nwse-resize; }
+
+/* smaller sidebar compatibility rules */
 .player-sidebar.collapsed { width: 300px; height: auto; }
 .player-sidebar .player-header { padding: 10px 12px; background: #fafafa; }
 
@@ -367,28 +479,11 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   gap: 8px;
 }
 
-/* lower-left resize corner */
-.resize-corner {
-  position: absolute;
-  left: -12px; /* sit slightly outside to be easy to grab */
-  bottom: -12px;
-  width: 24px;
-  height: 24px;
-  cursor: nwse-resize; /* diagonal resize cue */
-  z-index: 4000;
-}
+/* subtle handle hover */
+.resize-handle:hover { background: rgba(0,0,0,0.12); transform: scale(1.06); }
 
-.resize-corner::after {
-  content: '';
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid rgba(0,0,0,0.14);
-  border-bottom: 2px solid rgba(0,0,0,0.14);
-  transform: rotate(45deg);
-}
+/* smoother transitions when resizing */
+.movable-player { transition: width 180ms cubic-bezier(.2,.8,.2,1), height 180ms cubic-bezier(.2,.8,.2,1), transform 160ms ease; }
 
 .player-sidebar .compact-left {
   font-weight: 600;

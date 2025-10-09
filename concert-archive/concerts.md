@@ -66,9 +66,160 @@ chapter 6 - https://vimeo.com/331239381
     17:34 Amreeka Meen
 
 Hrajel Concert 
-
+	Description:
+	Mwaffak Zahabi - Cello
+	Rachid Hilal - Violin 
+	Adnan Safar
+	Furat Hanana
+	Rafaat bou hamdan - bouzou2
+	Omran 3adra - Anoun
+	3adel Minkara - Guitar
+	Elias el M3allem - Saxophone
+	Trumpet - Slava Bila & Nizar Omra
+	Trombone - Alex Chapez
+	Percussion - Ayman Zibdawi
+	drum - DANY SHUKRI 
+	libnan aoun- accordio
+	khaled omran - bass
+	3oud & singing - hazem chahine
+	singers & chorus:
+	rabig zaher, noha zarrouf, rosy yaziji, na3ima yazbeck, hala masri, Marie-therese basil, Barjis saliba, Patrick Alpha, Salim Lahham, Gharadosk ALTANYAN	
+	ACTORS: tareq tamim and rima kaddisi
+	sound engineers: wissam jarrah, ramzi zaydan, fadu awad, eddy jazra and ali mshawreb
+	conductor: hani siblini 
+	piano & keyboard: ziad rahbani
 chapter 1: https://vimeo.com/333986913
 	00:00 Dabke (only played once in 1982)
 	07:39 Baatilak 
-	
+	11:27 Baadak Habibi
+	15:48 يعزونا (nice piano introduction)
+
+chapter 2: https://vimeo.com/333988325
+	00:00 Tareq Tamim
+	03:01 Al Amal
+	05:32 Al 7ali Ti3bani ya Layla
+	09:50 Saf7a Gdida (Hazem Chahine)
+	13:30 يا سيف على الأعداء طايل 
+	17:41 Mish bass Talfinli / Sa Dance se Samba
+
+chapter 3: https://vimeo.com/333989563
+	00:00 Rima Kaddisi 
+	01:45 El Bosta
+	08:00 Bizakkarak (piano intro)
+	13:00 Ateba 
+	22:39 bint el m3awen
+chapter 4: https://vimeo.com/333991588
+	00:00 Film Ameriki Tawil
+	04:20 Layk ya habibi layk
+	07:45 Tareq Tamim
+	09:24 Assaada Allah Masa2akum
+	13:25 Sallimli 3ale 
+	19:05 Ismaa ya Rida
+chapter 5: https://vimeo.com/333993432
+	00:00 Rima Kaddisi
+	01:41 Talfan Ayache
+	05:44 Bema Enno 
+	09:45 Para pada
+	13:26 Un Verre Chez Nous
+	17:08 Rima Kaddisi & Tareq Tamim
+	19:14 Mays El Reem
+chapter 6: https://vimeo.com/333985443
+	00:00 3ayshi wa7da balak 
+	04:27 LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)
+	07:25 Shou Hal Iyyam
+	13:00 Credits
+	17:05 Amrika Meen - Lyrics readout
+	18:58 Amrika Meen
+
+St Elie Concert: May 2013
+	singers: Ghada Ghanem
+	Manal Semaan
+	Samy Clark
+	Antelias & Jal el Dib Choral
+chapter 1: https://youtu.be/vDiNbjCeVkI?si=F61gF2GjYFi0cySx
+	06:06 Beiteddine Intro (2001)
+	10:02 Kiriyalayson
+	14:28 Al Majd Lak
+chapter 2: https://youtu.be/hL-RdhSW4Vg?si=aSeXo9ajP4Z681P5
+	00:00 Al Majd Lak
+	04:28 Jisr Al Qamar
+	07:46 Allah Kbeer
+	12:10 Nahnu El Sahiroun 
+chapter 3: https://youtu.be/0ga5HsLfpVI?si=CBHjWMzsL3gNMaDe
+	00:00 Nahnu El Sahiroun 
+	02:30 The Kite - Cerf Volant
+	04:30 Al 3alam Ja2i3 - Samy Clark
+	08:10 Sayyidi - Samy Clark
+chapter 4: https://youtu.be/COrIgFDPjd8?si=nNDR_JeYLqV74B2K
+	00:42 Dakhilik Ya 2immi
+	03:43 Ya Mhayret el 3alali
+	08:25 1987 Overture
+	10:24 Touba Lil Sa3een
+
+
+Provas & Singles Videos
+
+Drink Remastered: https://vimeo.com/338008441
+
+Shi Fashel Remastered; https://vimeo.com/337989424
+
+Film Ameriki Tawil - One Flew Over The Cuckoo's Nest: https://vimeo.com/333747708
+
+Junkyard Mays El Rim Favorie: https://vimeo.com/332202467
+
+Snatch Prova: https://vimeo.com/323532598
+
+Ray Band Snatch: https://vimeo.com/323532306
+
+Penalty Prova: https://vimeo.com/323532225
+
+Bed in Studio: https://vimeo.com/323532004
+
+Grand Prix Prova: https://vimeo.com/323532151
+
+SoundTrack - The kite ("Le cerf Volant") - 2003: https://vimeo.com/319973574
+
+Biaf - 2013 - https://vimeo.com/318871882
+
+Joe Sample - Tune Rough Mix - 24/07/2018 https://vimeo.com/318852796
+
+Hudu' Nisbi - 1985 https://vimeo.com/316599957
+
+
+Publicity Concert 1:
+Publicity - 15-2-2015 part-1: https://vimeo.com/318059774
+Publicity - 15-2-2015 part-2: https://vimeo.com/318060272
+Publicity - 15-2-2015 part-3: https://vimeo.com/318314314 
+Publicity - 15-2-2015 part-4: https://vimeo.com/318060582
+
+Publicity Concert 2:
+Publicity - 16-2-2015 part-1: https://vimeo.com/318065137
+Publicity - 16-2-2015 part-2: https://vimeo.com/318064791
+Publicity - 16-2-2015 part-3: https://vimeo.com/318064596
+
+Zinc Concert 1:
+Zinc - 1 march 2015 - part 1: https://vimeo.com/319978775
+Zinc - 1 march 2015 - part 2: https://vimeo.com/319978482
+
+Blue Note April 9, 2015
+Blue Note - 9/4/2015 https://vimeo.com/320573330
+
+Blue Note May 18, 2015
+Blue Note _ 18-5-2015: https://vimeo.com/325763780
+
+Teatro Concert:
+Teatro - Dec 2002 - part-1: https://vimeo.com/327370274
+Teatro - Dec 2002 - part-2: https://vimeo.com/327372507
+
+Junkyard Concert:
+Junkyard - 20 Apr 2015 - part 1: https://vimeo.com/332201616
+Junkyard - 20 Apr 2015 - part 2: https://vimeo.com/332202608
+Junkyard - 20 Apr 2015 - part 3: https://vimeo.com/332203272
+
+Russian Cultural Center:
+Russian Cultural Center 2015 - Part 1: https://vimeo.com/335712846
+Russian Cultural Center 2015 - Part 2: https://vimeo.com/335713821
+Russian Cultural Center 2015 - Part 3: https://vimeo.com/335714826
+Russian Cultural Center 2015 - Part 4: https://vimeo.com/335715444
+Russian Cultural Center 2015 - Part 5: https://vimeo.com/335715936
 

@@ -123,98 +123,6 @@ export class ConcertService {
         ]
       }
       ,
-      // Hrajel Concert — personnel/credits (informational only)
-      // Mwaffak Zahabi - Cello
-      // Rachid Hilal - Violin
-      // Adnan Safar
-      // Furat Hanana
-      // Rafaat bou hamdan - bouzou2
-      // Omran 3adra - Anoun
-      // 3adel Minkara - Guitar
-      // Elias el M3allem - Saxophone
-      // Trumpet - Slava Bila & Nizar Omra
-      // Trombone - Alex Chapez
-      // Percussion - Ayman Zibdawi
-      // drum - DANY SHUKRI
-      // libnan aoun- accordio
-      // khaled omran - bass
-      // 3oud & singing - hazem chahine
-      // singers & chorus: rabig zaher, noha zarrouf, rosy yaziji, na3ima yazbeck, hala masri, Marie-therese basil, Barjis saliba, Patrick Alpha, Salim Lahham, Gharadosk ALTANYAN
-      // ACTORS: tareq tamim and rima kaddisi
-      // sound engineers: wissam jarrah, ramzi zaydan, fadu awad, eddy jazra and ali mshawreb
-      // conductor: hani siblini
-      // piano & keyboard: ziad rahbani
-      {
-        title: 'Hrajel Concert',
-        date: 'September 12, 2018',
-        chapters: [
-          {
-            title: 'chapter 1',
-            songs: [
-              { title: 'Dabke (only played once in 1982)', duration: '00:00', url: 'https://vimeo.com/333986913#t=0m0s' },
-              { title: 'Baatilak', duration: '07:39', url: 'https://vimeo.com/333986913#t=7m39s' },
-              { title: 'Baadak Habibi', duration: '11:27', url: 'https://vimeo.com/333986913#t=11m27s' },
-              { title: 'يعزونا (nice piano introduction)', duration: '15:48', url: 'https://vimeo.com/333986913#t=15m48s' }
-            ]
-          },
-          {
-            title: 'chapter 2',
-            songs: [
-              { title: 'Tareq Tamim', duration: '00:00', url: 'https://vimeo.com/333988325#t=0m0s' },
-              { title: 'Al Amal', duration: '03:01', url: 'https://vimeo.com/333988325#t=3m1s' },
-              { title: 'Al 7ali Ti3bani ya Layla', duration: '05:32', url: 'https://vimeo.com/333988325#t=5m32s' },
-              { title: 'Saf7a Gdida (Hazem Chahine)', duration: '09:50', url: 'https://vimeo.com/333988325#t=9m50s' },
-              { title: 'يا سيف على الأعداء طايل', duration: '13:30', url: 'https://vimeo.com/333988325#t=13m30s' },
-              { title: 'Mish bass Talfinli / Sa Dance se Samba', duration: '17:41', url: 'https://vimeo.com/333988325#t=17m41s' }
-            ]
-          },
-          {
-            title: 'chapter 3',
-            songs: [
-              { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333989563#t=0m0s' },
-              { title: 'El Bosta', duration: '01:45', url: 'https://vimeo.com/333989563#t=1m45s' },
-              { title: 'Bizakkarak (piano intro)', duration: '08:00', url: 'https://vimeo.com/333989563#t=8m0s' },
-              { title: 'Ateba', duration: '13:00', url: 'https://vimeo.com/333989563#t=13m0s' },
-              { title: 'bint el m3awen', duration: '22:39', url: 'https://vimeo.com/333989563#t=22m39s' }
-            ]
-          },
-          {
-            title: 'chapter 4',
-            songs: [
-              { title: 'Film Ameriki Tawil', duration: '00:00', url: 'https://vimeo.com/333991588#t=0m0s' },
-              { title: 'Layk ya habibi layk', duration: '04:20', url: 'https://vimeo.com/333991588#t=4m20s' },
-              { title: 'Tareq Tamim', duration: '07:45', url: 'https://vimeo.com/333991588#t=7m45s' },
-              { title: 'Assaada Allah Masa2akum', duration: '09:24', url: 'https://vimeo.com/333991588#t=9m24s' },
-              { title: 'Sallimli 3ale', duration: '13:25', url: 'https://vimeo.com/333991588#t=13m25s' },
-              { title: 'Ismaa ya Rida', duration: '19:05', url: 'https://vimeo.com/333991588#t=19m5s' }
-            ]
-          },
-          {
-            title: 'chapter 5',
-            songs: [
-              { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333993432#t=0m0s' },
-              { title: 'Talfan Ayache', duration: '01:41', url: 'https://vimeo.com/333993432#t=1m41s' },
-              { title: 'Bema Enno', duration: '05:44', url: 'https://vimeo.com/333993432#t=5m44s' },
-              { title: 'Para pada', duration: '09:45', url: 'https://vimeo.com/333993432#t=9m45s' },
-              { title: 'Un Verre Chez Nous', duration: '13:26', url: 'https://vimeo.com/333993432#t=13m26s' },
-              { title: 'Rima Kaddisi & Tareq Tamim', duration: '17:08', url: 'https://vimeo.com/333993432#t=17m8s' },
-              { title: 'Mays El Reem', duration: '19:14', url: 'https://vimeo.com/333993432#t=19m14s' }
-            ]
-          },
-          {
-            title: 'chapter 6',
-            songs: [
-              { title: '3ayshi wa7da balak', duration: '00:00', url: 'https://vimeo.com/333985443#t=0m0s' },
-              { title: 'LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)', duration: '04:27', url: 'https://vimeo.com/333985443#t=4m27s' },
-              { title: 'Shou Hal Iyyam', duration: '07:25', url: 'https://vimeo.com/333985443#t=7m25s' },
-              { title: 'Credits', duration: '13:00', url: 'https://vimeo.com/333985443#t=13m0s' },
-              { title: 'Amrika Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s' },
-              { title: 'Amrika Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
-            ]
-          }
-        ]
-      }
-      ,
       // St Elie Concert (added from concerts.md)
       // singers: Ghada Ghanem, Manal Semaan, Samy Clark, Antelias & Jal el Dib Choral
       {
@@ -373,6 +281,99 @@ export class ConcertService {
             { title: 'Russian Cultural Center 2015 - Part 4', url: 'https://vimeo.com/335715444' },
             { title: 'Russian Cultural Center 2015 - Part 5', url: 'https://vimeo.com/335715936' }
           ] }
+        ]
+      }
+      ,
+      // Hrajel Concert — personnel/credits (informational only)
+      // Mwaffak Zahabi - Cello
+      // Rachid Hilal - Violin
+      // Adnan Safar
+      // Furat Hanana
+      // Rafaat bou hamdan - bouzou2
+      // Omran 3adra - Anoun
+      // 3adel Minkara - Guitar
+      // Elias el M3allem - Saxophone
+      // Trumpet - Slava Bila & Nizar Omra
+      // Trombone - Alex Chapez
+      // Percussion - Ayman Zibdawi
+      // drum - DANY SHUKRI
+      // libnan aoun- accordio
+      // khaled omran - bass
+      // 3oud & singing - hazem chahine
+      // singers & chorus: rabig zaher, noha zarrouf, rosy yaziji, na3ima yazbeck, hala masri, Marie-therese basil, Barjis saliba, Patrick Alpha, Salim Lahham, Gharadosk ALTANYAN
+      // ACTORS: tareq tamim and rima kaddisi
+      // sound engineers: wissam jarrah, ramzi zaydan, fadu awad, eddy jazra and ali mshawreb
+      // conductor: hani siblini
+      // piano & keyboard: ziad rahbani
+      {
+        title: 'Hrajel Concert',
+        date: 'September 12, 2018',
+        description: '',
+        chapters: [
+          {
+            title: 'chapter 1',
+            songs: [
+              { title: 'Dabke (only played once in 1982)', duration: '00:00', url: 'https://vimeo.com/333986913#t=0m0s' },
+              { title: 'Baatilak', duration: '07:39', url: 'https://vimeo.com/333986913#t=7m39s' },
+              { title: 'Baadak Habibi', duration: '11:27', url: 'https://vimeo.com/333986913#t=11m27s' },
+              { title: 'يعزونا (nice piano introduction)', duration: '15:48', url: 'https://vimeo.com/333986913#t=15m48s' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            songs: [
+              { title: 'Tareq Tamim', duration: '00:00', url: 'https://vimeo.com/333988325#t=0m0s' },
+              { title: 'Al Amal', duration: '03:01', url: 'https://vimeo.com/333988325#t=3m1s' },
+              { title: 'Al 7ali Ti3bani ya Layla', duration: '05:32', url: 'https://vimeo.com/333988325#t=5m32s' },
+              { title: 'Saf7a Gdida (Hazem Chahine)', duration: '09:50', url: 'https://vimeo.com/333988325#t=9m50s' },
+              { title: 'يا سيف على الأعداء طايل', duration: '13:30', url: 'https://vimeo.com/333988325#t=13m30s' },
+              { title: 'Mish bass Talfinli / Sa Dance se Samba', duration: '17:41', url: 'https://vimeo.com/333988325#t=17m41s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            songs: [
+              { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333989563#t=0m0s' },
+              { title: 'El Bosta', duration: '01:45', url: 'https://vimeo.com/333989563#t=1m45s' },
+              { title: 'Bizakkarak (piano intro)', duration: '08:00', url: 'https://vimeo.com/333989563#t=8m0s' },
+              { title: 'Ateba', duration: '13:00', url: 'https://vimeo.com/333989563#t=13m0s' },
+              { title: 'bint el m3awen', duration: '22:39', url: 'https://vimeo.com/333989563#t=22m39s' }
+            ]
+          },
+          {
+            title: 'chapter 4',
+            songs: [
+              { title: 'Film Ameriki Tawil', duration: '00:00', url: 'https://vimeo.com/333991588#t=0m0s' },
+              { title: 'Layk ya habibi layk', duration: '04:20', url: 'https://vimeo.com/333991588#t=4m20s' },
+              { title: 'Tareq Tamim', duration: '07:45', url: 'https://vimeo.com/333991588#t=7m45s' },
+              { title: 'Assaada Allah Masa2akum', duration: '09:24', url: 'https://vimeo.com/333991588#t=9m24s' },
+              { title: 'Sallimli 3ale', duration: '13:25', url: 'https://vimeo.com/333991588#t=13m25s' },
+              { title: 'Ismaa ya Rida', duration: '19:05', url: 'https://vimeo.com/333991588#t=19m5s' }
+            ]
+          },
+          {
+            title: 'chapter 5',
+            songs: [
+              { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333993432#t=0m0s' },
+              { title: 'Talfan Ayache', duration: '01:41', url: 'https://vimeo.com/333993432#t=1m41s' },
+              { title: 'Bema Enno', duration: '05:44', url: 'https://vimeo.com/333993432#t=5m44s' },
+              { title: 'Para pada', duration: '09:45', url: 'https://vimeo.com/333993432#t=9m45s' },
+              { title: 'Un Verre Chez Nous', duration: '13:26', url: 'https://vimeo.com/333993432#t=13m26s' },
+              { title: 'Rima Kaddisi & Tareq Tamim', duration: '17:08', url: 'https://vimeo.com/333993432#t=17m8s' },
+              { title: 'Mays El Reem', duration: '19:14', url: 'https://vimeo.com/333993432#t=19m14s' }
+            ]
+          },
+          {
+            title: 'chapter 6',
+            songs: [
+              { title: '3ayshi wa7da balak', duration: '00:00', url: 'https://vimeo.com/333985443#t=0m0s' },
+              { title: 'LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)', duration: '04:27', url: 'https://vimeo.com/333985443#t=4m27s' },
+              { title: 'Shou Hal Iyyam', duration: '07:25', url: 'https://vimeo.com/333985443#t=7m25s' },
+              { title: 'Credits', duration: '13:00', url: 'https://vimeo.com/333985443#t=13m0s' },
+              { title: 'Amrika Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s' },
+              { title: 'Amrika Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
+            ]
+          }
         ]
       }
     ];

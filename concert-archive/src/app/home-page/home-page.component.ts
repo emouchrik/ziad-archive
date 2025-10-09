@@ -26,6 +26,7 @@ export class HomePageComponent {
   private cornerStartY = 0;
   private startWidth = 0;
   private startHeight = 0;
+  private cornerMode: 'tl' | 'tr' | 'bl' | 'br' = 'br';
   private readonly minPlayerWidth = 260;
   private readonly minPlayerHeight = 160;
   private readonly maxPlayerWidth = 1200;
@@ -37,6 +38,15 @@ export class HomePageComponent {
 
   // collapsed dock state (when true the player appears as a small bottom-right dock)
   isCollapsed = false;
+  // movable player state
+  playerLeft: number | null = null; // if null, use right instead
+  playerTop = 20;
+  playerRight = 16; // default right offset when not moved
+  private dragging = false;
+  private dragStartX = 0;
+  private dragStartY = 0;
+  private dragStartLeft = 0;
+  private dragStartTop = 0;
 
   constructor(private concertService: ConcertService, private sanitizer: DomSanitizer) {
     this.concerts = this.concertService.getConcerts();
@@ -64,6 +74,7 @@ export class HomePageComponent {
   }
 
   expandPlayer() {
+    // smooth expand: ensure the element remains present and animate via CSS
     this.isCollapsed = false;
   }
 
@@ -72,34 +83,107 @@ export class HomePageComponent {
   }
 
   // corner resize handlers
-  startCornerResize(evt: MouseEvent) {
+  startCornerResize(evt: MouseEvent, mode: 'tl' | 'tr' | 'bl' | 'br') {
+    this.startCornerResizeGeneric(evt.clientX, evt.clientY, mode);
     evt.preventDefault();
+  }
+
+  startCornerResizeTouch(evt: TouchEvent, mode: 'tl' | 'tr' | 'bl' | 'br') {
+    if (!evt.touches || evt.touches.length === 0) return;
+    const t = evt.touches[0];
+    this.startCornerResizeGeneric(t.clientX, t.clientY, mode);
+    evt.preventDefault();
+  }
+
+  private startCornerResizeGeneric(clientX: number, clientY: number, mode: 'tl' | 'tr' | 'bl' | 'br') {
     this.cornerResizing = true;
-    this.cornerStartX = evt.clientX;
-    this.cornerStartY = evt.clientY;
+    this.cornerStartX = clientX;
+    this.cornerStartY = clientY;
     this.startWidth = this.playerWidth;
     this.startHeight = this.playerHeight;
+    this.cornerMode = mode;
+    // record current left/top for adjustments when resizing from left/top corners
+    this.dragStartLeft = this.playerLeft === null ? window.innerWidth - this.playerWidth - (this.playerRight || 0) : this.playerLeft;
+    this.dragStartTop = this.playerTop || 0;
     document.addEventListener('mousemove', this.onCornerMove);
-    document.addEventListener('mouseup', this.stopCornerResize);
+  document.addEventListener('mouseup', this.stopCornerResize);
+  // also listen for pointerup and pointercancel (better cross-platform) and window blur
+  document.addEventListener('pointerup', this.stopCornerResize, true);
+  document.addEventListener('pointercancel', this.stopCornerResize, true);
+  window.addEventListener('blur', this.stopCornerResize);
+    document.addEventListener('touchmove', this.onCornerTouchMove, { passive: false });
+    document.addEventListener('touchend', this.stopCornerResize);
   }
 
   private onCornerMove = (e: MouseEvent) => {
     if (!this.cornerResizing) return;
-    const dx = this.cornerStartX - e.clientX; // dragging left increases width
-    const dy = e.clientY - this.cornerStartY; // dragging down increases height
-    let newWidth = this.startWidth + dx;
-    let newHeight = this.startHeight + dy;
-    newWidth = Math.max(this.minPlayerWidth, Math.min(this.maxPlayerWidth, newWidth));
-    newHeight = Math.max(this.minPlayerHeight, Math.min(this.maxPlayerHeight, newHeight));
+    this.handleResize(e.clientX, e.clientY);
+  };
+
+  private onCornerTouchMove = (e: TouchEvent) => {
+    if (!this.cornerResizing || !e.touches || e.touches.length === 0) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    this.handleResize(t.clientX, t.clientY);
+  };
+
+  private handleResize(clientX: number, clientY: number) {
+    const dx = clientX - this.cornerStartX;
+    const dy = clientY - this.cornerStartY;
+    let newWidth = this.startWidth;
+    let newHeight = this.startHeight;
+    let newLeft = this.dragStartLeft;
+    let newTop = this.dragStartTop;
+
+    switch (this.cornerMode) {
+      case 'br':
+        newWidth = this.startWidth + dx;
+        newHeight = this.startHeight + dy;
+        break;
+      case 'bl':
+        newWidth = this.startWidth - dx;
+        newHeight = this.startHeight + dy;
+        newLeft = this.dragStartLeft + dx; // shift left edge
+        break;
+      case 'tr':
+        newWidth = this.startWidth + dx;
+        newHeight = this.startHeight - dy;
+        newTop = this.dragStartTop + dy; // shift top edge
+        break;
+      case 'tl':
+        newWidth = this.startWidth - dx;
+        newHeight = this.startHeight - dy;
+        newLeft = this.dragStartLeft + dx;
+        newTop = this.dragStartTop + dy;
+        break;
+    }
+
+    // clamp sizes
+    newWidth = Math.max(this.minPlayerWidth, Math.min(this.maxPlayerWidth, Math.round(newWidth)));
+    newHeight = Math.max(this.minPlayerHeight, Math.min(this.maxPlayerHeight, Math.round(newHeight)));
+
+    // clamp positions so the player remains visible
+    newLeft = Math.max(8, Math.min(window.innerWidth - newWidth - 8, Math.round(newLeft)));
+    newTop = Math.max(8, Math.min(window.innerHeight - 80 - newHeight, Math.round(newTop)));
+
     this.playerWidth = newWidth;
     this.playerHeight = newHeight;
-  };
+    this.playerLeft = newLeft;
+    this.playerTop = newTop;
+    // clear playerRight to prioritize left-based positioning
+    this.playerRight = 0;
+  }
 
   private stopCornerResize = (_e?: MouseEvent) => {
     if (!this.cornerResizing) return;
     this.cornerResizing = false;
     document.removeEventListener('mousemove', this.onCornerMove);
     document.removeEventListener('mouseup', this.stopCornerResize);
+    document.removeEventListener('pointerup', this.stopCornerResize, true);
+    document.removeEventListener('pointercancel', this.stopCornerResize, true);
+    window.removeEventListener('blur', this.stopCornerResize);
+    document.removeEventListener('touchmove', this.onCornerTouchMove as EventListener);
+    document.removeEventListener('touchend', this.stopCornerResize);
   };
 
   // small helper to show concise titles
@@ -187,7 +271,90 @@ export class HomePageComponent {
   ngOnDestroy(): void {
     // ensure we remove any listeners
     this.stopCornerResize();
+    this.stopDrag();
   }
+
+  // Drag-to-move handlers (for header dragging)
+  startDrag(evt: MouseEvent) {
+    // only start drag for left click
+    if (evt.button !== 0) return;
+    evt.preventDefault();
+    this.dragging = true;
+    this.dragStartX = evt.clientX;
+    this.dragStartY = evt.clientY;
+    // initialize left/top from current state; if left is null, compute from right
+    if (this.playerLeft === null) {
+      this.dragStartLeft = window.innerWidth - this.playerWidth - (this.playerRight || 0);
+    } else {
+      this.dragStartLeft = this.playerLeft;
+    }
+    this.dragStartTop = this.playerTop || 0;
+    document.addEventListener('mousemove', this.onDragMove);
+    document.addEventListener('mouseup', this.stopDrag);
+    document.addEventListener('pointerup', this.stopDrag, true);
+    document.addEventListener('pointercancel', this.stopDrag, true);
+    window.addEventListener('blur', this.stopDrag);
+  }
+
+  startDragTouch(evt: TouchEvent) {
+    if (!evt.touches || evt.touches.length === 0) return;
+    const t = evt.touches[0];
+    this.dragging = true;
+    this.dragStartX = t.clientX;
+    this.dragStartY = t.clientY;
+    if (this.playerLeft === null) {
+      this.dragStartLeft = window.innerWidth - this.playerWidth - (this.playerRight || 0);
+    } else {
+      this.dragStartLeft = this.playerLeft;
+    }
+    this.dragStartTop = this.playerTop || 0;
+    document.addEventListener('touchmove', this.onDragTouchMove, { passive: false });
+    document.addEventListener('touchend', this.stopDrag);
+    document.addEventListener('pointerup', this.stopDrag, true);
+    document.addEventListener('pointercancel', this.stopDrag, true);
+    window.addEventListener('blur', this.stopDrag);
+  }
+
+  private onDragMove = (e: MouseEvent) => {
+    if (!this.dragging) return;
+    const dx = e.clientX - this.dragStartX;
+    const dy = e.clientY - this.dragStartY;
+    let newLeft = this.dragStartLeft + dx;
+    let newTop = this.dragStartTop + dy;
+    // constrain to viewport
+    newLeft = Math.max(8, Math.min(window.innerWidth - this.playerWidth - 8, newLeft));
+    newTop = Math.max(8, Math.min(window.innerHeight - 80, newTop));
+    this.playerLeft = Math.round(newLeft);
+    this.playerTop = Math.round(newTop);
+  };
+
+  private onDragTouchMove = (e: TouchEvent) => {
+    if (!this.dragging || !e.touches || e.touches.length === 0) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    const dx = t.clientX - this.dragStartX;
+    const dy = t.clientY - this.dragStartY;
+    let newLeft = this.dragStartLeft + dx;
+    let newTop = this.dragStartTop + dy;
+    newLeft = Math.max(8, Math.min(window.innerWidth - this.playerWidth - 8, newLeft));
+    newTop = Math.max(8, Math.min(window.innerHeight - 80, newTop));
+    this.playerLeft = Math.round(newLeft);
+    this.playerTop = Math.round(newTop);
+  };
+
+  private stopDrag = (_e?: Event) => {
+    if (!this.dragging) return;
+    this.dragging = false;
+    // when finished dragging, clear right offset so left/top take precedence
+    this.playerRight = 0;
+    document.removeEventListener('mousemove', this.onDragMove);
+    document.removeEventListener('mouseup', this.stopDrag);
+    document.removeEventListener('pointerup', this.stopDrag, true);
+    document.removeEventListener('pointercancel', this.stopDrag, true);
+    window.removeEventListener('blur', this.stopDrag);
+    document.removeEventListener('touchmove', this.onDragTouchMove as EventListener);
+    document.removeEventListener('touchend', this.stopDrag);
+  };
 
   // return a flat array of songs for a concert (concatenate chapters)
   getAllSongs(concert: Concert) {

@@ -2,14 +2,17 @@
 <div class="home-hero">
   <div class="hero-inner">
     <div class="hero-meta">
-      <div class="hero-sub">Live Concert Archive</div>
-      <h1 class="hero-title">{{ 'Concerts' }}</h1>
-      <div class="hero-date">{{ (concerts[0]?.date) || '' }}</div>
+      <div class="hero-sub">Concert & Singles Archive</div>
+      <h1 class="hero-title">{{ 'Ziad on Vimeo' }}</h1>
     </div>
     <div class="hero-cover" aria-hidden="true">
       <!-- decorative area, could be replaced with a real cover image later -->
       <div class="cover-placeholder">🎶</div>
     </div>
+  </div>
+  <!-- full-width cover image under the header -->
+  <div class="hero-cover-full" role="img" aria-label="Korg portrait">
+    <img src="/assets/korg-portrait.png" alt="Korg portrait" />
   </div>
 </div>
 
@@ -43,37 +46,41 @@
   </div>
 </div>
 
-<!-- Right-side sticky sidebar player -->
-<div class="player-sidebar" *ngIf="currentSong" (click)="$event.stopPropagation()" [class.collapsed]="isCollapsed" [style.width.px]="playerWidth" [style.height.px]="isCollapsed ? 'auto' : playerHeight">
-  <div class="player-header">
-    
+<!-- Movable player (fixed) -->
+<div *ngIf="currentSong" class="movable-player" (click)="$event.stopPropagation()"
+     [class.collapsed]="isCollapsed"
+     [style.width.px]="playerWidth"
+  [style.height.px]="isCollapsed ? null : playerHeight"
+  [style.left.px]="playerLeft !== null ? playerLeft : null"
+  [style.top.px]="playerTop"
+     [style.right.px]="playerLeft === null ? playerRight : null">
+
+  <div class="player-header" (mousedown)="startDrag($event)" (touchstart)="startDragTouch($event)">
+    <div class="player-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
+    <div class="player-actions">
+      <button mat-icon-button (click)="toggleCollapse(); $event.stopPropagation()" aria-label="Toggle"><mat-icon>{{ isCollapsed ? 'open_in_full' : 'fullscreen_exit' }}</mat-icon></button>
+      <button mat-icon-button (click)="closePlayer(); $event.stopPropagation()" aria-label="Close"><mat-icon>close</mat-icon></button>
+    </div>
   </div>
 
-  <!-- expanded body -->
-  <div class="player-body" *ngIf="!isCollapsed">
-    <iframe
-      *ngIf="currentEmbedUrl"
-      [src]="currentEmbedUrl"
-      frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-
-    <div *ngIf="!currentEmbedUrl" class="no-embed">
-      Video cannot be embedded.
+  <div class="player-body" [attr.aria-hidden]="isCollapsed">
+    <iframe *ngIf="currentEmbedUrl" [src]="currentEmbedUrl" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <div *ngIf="!currentEmbedUrl" class="no-embed">Video cannot be embedded.
       <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
     </div>
   </div>
 
-  <!-- compact collapsed bar -->
   <div class="player-compact" *ngIf="isCollapsed">
     <div class="compact-left" [attr.title]="currentSong?.title">{{ shortTitle(currentSong?.title || '', 36) }}</div>
     <div class="compact-actions">
-      <button mat-icon-button (click)="expandPlayer()" aria-label="Expand player"><mat-icon>open_in_full</mat-icon></button>
-      <button mat-icon-button (click)="closePlayer()" aria-label="Close player"><mat-icon>close</mat-icon></button>
+      <button mat-icon-button (click)="expandPlayer(); $event.stopPropagation()" aria-label="Expand player"><mat-icon>open_in_full</mat-icon></button>
+      <button mat-icon-button (click)="closePlayer(); $event.stopPropagation()" aria-label="Close player"><mat-icon>close</mat-icon></button>
     </div>
   </div>
 
-  <!-- lower-left resize corner (drag to resize both width & height) -->
-  <div class="resize-corner" title="Drag to resize" (mousedown)="startCornerResize($event)"></div>
+  <!-- corner resize handles -->
+  <div class="resize-handle top-left" title="Resize" (mousedown)="startCornerResize($event,'tl')" (touchstart)="startCornerResizeTouch($event,'tl')"></div>
+  <div class="resize-handle top-right" title="Resize" (mousedown)="startCornerResize($event,'tr')" (touchstart)="startCornerResizeTouch($event,'tr')"></div>
+  <div class="resize-handle bottom-left" title="Resize" (mousedown)="startCornerResize($event,'bl')" (touchstart)="startCornerResizeTouch($event,'bl')"></div>
+  <div class="resize-handle bottom-right" title="Resize" (mousedown)="startCornerResize($event,'br')" (touchstart)="startCornerResizeTouch($event,'br')"></div>
 </div>
