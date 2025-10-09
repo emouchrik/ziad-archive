@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-export interface Song { title: string; duration?: string; url?: string }
+export interface Song { title: string; duration?: string; url?: string; description?: string }
 export interface Chapter { title: string; songs: Song[] }
-export interface Concert { title: string; date: string; chapters: Chapter[] }
+export interface Concert { title: string; date: string; chapters: Chapter[]; description?: string }
 
 @Injectable({ providedIn: 'root' })
 export class ConcertService {
@@ -11,6 +11,7 @@ export class ConcertService {
       {
         title: 'Saida Concert',
         date: 'October 27, 2018',
+        description: 'A beautiful concert in Saida',
         chapters: [
           {
             title: 'chapter 1',
@@ -145,7 +146,7 @@ export class ConcertService {
       // piano & keyboard: ziad rahbani
       {
         title: 'Hrajel Concert',
-        date: 'Unknown',
+        date: 'September 12, 2018',
         chapters: [
           {
             title: 'chapter 1',
@@ -211,6 +212,167 @@ export class ConcertService {
               { title: 'Amrika Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
             ]
           }
+        ]
+      }
+      ,
+      // St Elie Concert (added from concerts.md)
+      // singers: Ghada Ghanem, Manal Semaan, Samy Clark, Antelias & Jal el Dib Choral
+      {
+        title: 'St Elie Concert',
+        date: 'May 2013',
+        chapters: [
+          {
+            title: 'chapter 1',
+            songs: [
+              { title: 'Beiteddine Intro (2001)', duration: '06:06', url: 'https://youtu.be/vDiNbjCeVkI#t=6m6s' },
+              { title: 'Kiriyalayson', duration: '10:02', url: 'https://youtu.be/vDiNbjCeVkI#t=10m2s' },
+              { title: 'Al Majd Lak', duration: '14:28', url: 'https://youtu.be/vDiNbjCeVkI#t=14m28s' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            songs: [
+              { title: 'Al Majd Lak', duration: '00:00', url: 'https://youtu.be/hL-RdhSW4Vg#t=0m0s' },
+              { title: 'Jisr Al Qamar', duration: '04:28', url: 'https://youtu.be/hL-RdhSW4Vg#t=4m28s' },
+              { title: 'Allah Kbeer', duration: '07:46', url: 'https://youtu.be/hL-RdhSW4Vg#t=7m46s' },
+              { title: 'Nahnu El Sahiroun', duration: '12:10', url: 'https://youtu.be/hL-RdhSW4Vg#t=12m10s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            songs: [
+              { title: 'Nahnu El Sahiroun', duration: '00:00', url: 'https://youtu.be/0ga5HsLfpVI#t=0m0s' },
+              { title: 'The Kite - Cerf Volant', duration: '02:30', url: 'https://youtu.be/0ga5HsLfpVI#t=2m30s' },
+              { title: 'Al 3alam Ja2i3 - Samy Clark', duration: '04:30', url: 'https://youtu.be/0ga5HsLfpVI#t=4m30s' },
+              { title: 'Sayyidi - Samy Clark', duration: '08:10', url: 'https://youtu.be/0ga5HsLfpVI#t=8m10s' }
+            ]
+          },
+          {
+            title: 'chapter 4',
+            songs: [
+              { title: 'Dakhilik Ya 2immi', duration: '00:42', url: 'https://youtu.be/COrIgFDPjd8#t=0m42s' },
+              { title: 'Ya Mhayret el 3alali', duration: '03:43', url: 'https://youtu.be/COrIgFDPjd8#t=3m43s' },
+              { title: '1987 Overture', duration: '08:25', url: 'https://youtu.be/COrIgFDPjd8#t=8m25s' },
+              { title: 'Touba Lil Sa3een', duration: '10:24', url: 'https://youtu.be/COrIgFDPjd8#t=10m24s' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Provas & Singles Videos',
+        date: 'Unknown',
+        description: 'Collection of remastered proofs and single video clips',
+        chapters: [
+          {
+            title: 'videos',
+            songs: [
+              { title: 'Drink (Remastered)', url: 'https://vimeo.com/338008441' },
+              { title: 'Shi Fashel (Remastered)', url: 'https://vimeo.com/337989424' },
+              { title: 'Film Ameriki Tawil - One Flew Over The Cuckoo\'s Nest', url: 'https://vimeo.com/333747708' },
+              { title: 'Junkyard Mays El Rim Favorite', url: 'https://vimeo.com/332202467' },
+              { title: 'Snatch Prova', url: 'https://vimeo.com/323532598' },
+              { title: 'Ray Band Snatch', url: 'https://vimeo.com/323532306' },
+              { title: 'Penalty Prova', url: 'https://vimeo.com/323532225' },
+              { title: 'Bed in Studio', url: 'https://vimeo.com/323532004' },
+              { title: 'Grand Prix Prova', url: 'https://vimeo.com/323532151' },
+              { title: 'SoundTrack - The Kite (Le cerf Volant) - 2003', url: 'https://vimeo.com/319973574' },
+              { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882' },
+              { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796' },
+              { title: 'Hudu\' Nisbi - 1985', url: 'https://vimeo.com/316599957' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Publicity Concert 1',
+        date: 'February 15, 2015',
+        chapters: [
+          {
+            title: 'parts',
+            songs: [
+              { title: 'Publicity - 15-2-2015 part-1', url: 'https://vimeo.com/318059774' },
+              { title: 'Publicity - 15-2-2015 part-2', url: 'https://vimeo.com/318060272' },
+              { title: 'Publicity - 15-2-2015 part-3', url: 'https://vimeo.com/318314314' },
+              { title: 'Publicity - 15-2-2015 part-4', url: 'https://vimeo.com/318060582' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Publicity Concert 2',
+        date: 'February 16, 2015',
+        chapters: [
+          {
+            title: 'parts',
+            songs: [
+              { title: 'Publicity - 16-2-2015 part-1', url: 'https://vimeo.com/318065137' },
+              { title: 'Publicity - 16-2-2015 part-2', url: 'https://vimeo.com/318064791' },
+              { title: 'Publicity - 16-2-2015 part-3', url: 'https://vimeo.com/318064596' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Zinc Concert 1',
+        date: 'March 1, 2015',
+        chapters: [
+          {
+            title: 'parts',
+            songs: [
+              { title: 'Zinc - 1 March 2015 - part 1', url: 'https://vimeo.com/319978775' },
+              { title: 'Zinc - 1 March 2015 - part 2', url: 'https://vimeo.com/319978482' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Blue Note (Apr 9, 2015)',
+        date: 'April 9, 2015',
+        chapters: [
+          { title: 'video', songs: [ { title: 'Blue Note - 9/4/2015', url: 'https://vimeo.com/320573330' } ] }
+        ]
+      }
+      ,
+      {
+        title: 'Blue Note (May 18, 2015)',
+        date: 'May 18, 2015',
+        chapters: [
+          { title: 'video', songs: [ { title: 'Blue Note - 18/5/2015', url: 'https://vimeo.com/325763780' } ] }
+        ]
+      }
+      ,
+      {
+        title: 'Teatro Concert',
+        date: 'December 2002',
+        chapters: [
+          { title: 'parts', songs: [ { title: 'Teatro - Dec 2002 - part-1', url: 'https://vimeo.com/327370274' }, { title: 'Teatro - Dec 2002 - part-2', url: 'https://vimeo.com/327372507' } ] }
+        ]
+      }
+      ,
+      {
+        title: 'Junkyard Concert (20 Apr 2015)',
+        date: 'April 20, 2015',
+        chapters: [
+          { title: 'parts', songs: [ { title: 'Junkyard - part 1', url: 'https://vimeo.com/332201616' }, { title: 'Junkyard - part 2', url: 'https://vimeo.com/332202608' }, { title: 'Junkyard - part 3', url: 'https://vimeo.com/332203272' } ] }
+        ]
+      }
+      ,
+      {
+        title: 'Russian Cultural Center 2015',
+        date: '2015',
+        chapters: [
+          { title: 'parts', songs: [
+            { title: 'Russian Cultural Center 2015 - Part 1', url: 'https://vimeo.com/335712846' },
+            { title: 'Russian Cultural Center 2015 - Part 2', url: 'https://vimeo.com/335713821' },
+            { title: 'Russian Cultural Center 2015 - Part 3', url: 'https://vimeo.com/335714826' },
+            { title: 'Russian Cultural Center 2015 - Part 4', url: 'https://vimeo.com/335715444' },
+            { title: 'Russian Cultural Center 2015 - Part 5', url: 'https://vimeo.com/335715936' }
+          ] }
         ]
       }
     ];

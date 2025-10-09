@@ -20,22 +20,25 @@
     <div class="concert-header">
       <div class="concert-title">{{ c.title }}</div>
       <div class="concert-date">{{ c.date }}</div>
+      <div class="concert-desc" *ngIf="c.description">{{ c.description }}</div>
     </div>
 
     <div class="concert-body">
-      <ng-container *ngFor="let ch of c.chapters">
-        <div class="chapter-block">
-          <div class="chapter-title">{{ ch.title }}</div>
-          <mat-list>
-            <mat-list-item *ngFor="let s of ch.songs" class="track-row">
-              <div class="song-info">
-                <button mat-button class="song-link" (click)="openPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
-                <div class="song-duration">{{ s.duration }}</div>
-              </div>
-            </mat-list-item>
-          </mat-list>
-        </div>
-      </ng-container>
+      <!-- Flatten chapters: show a single numbered list of songs per concert -->
+      <mat-list>
+        <mat-list-item *ngFor="let s of getAllSongs(c); let si = index" class="track-row">
+          <div class="track-content">
+            <div class="track-index">{{ si + 1 }}</div>
+            <div class="song-info">
+                <div class="song-main">
+                  <button mat-button class="song-link" (click)="openPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
+                  <div class="song-duration">{{ s.duration }}</div>
+                </div>
+                <div class="song-desc" *ngIf="s.description">{{ s.description }}</div>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
     </div>
   </div>
 </div>

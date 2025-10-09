@@ -49,7 +49,7 @@ export class HomePageComponent {
       this.currentEmbedUrl = null;
       return;
     }
-    const embed = this.getVimeoEmbedUrl(song.url);
+    const embed = this.getEmbedUrl(song.url);
     this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
   }
 
@@ -108,18 +108,95 @@ export class HomePageComponent {
     return title.length > max ? title.slice(0, max - 3) + '...' : title;
   }
 
-  private getVimeoEmbedUrl(url: string): string {
-    const match = url.match(/vimeo\.com\/(\d+)(#t=.*)?/);
-    if (!match) {
-      return url;
+  // Generic embed URL builder: supports Vimeo and YouTube (with start time parsing)
+  private getEmbedUrl(url: string): string {
+    if (!url) return url;
+
+    // Vimeo (numeric id)
+    const vmatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vmatch) {
+      const id = vmatch[1];
+      // preserve any #t=... fragment if present
+      const hashMatch = url.match(/#t=(.*)$/);
+      const hash = hashMatch ? `#t=${hashMatch[1]}` : '';
+      return `https://player.vimeo.com/video/${id}?autoplay=1${hash}`;
     }
-    const id = match[1];
-    const hash = match[2] || '';
-    return `https://player.vimeo.com/video/${id}?autoplay=1${hash}`;
+
+    // YouTube (watch?v=, youtu.be/, embed/)
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+      let id = '';
+      // Try common patterns
+      const re1 = url.match(/(?:v=|\/embed\/|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+      if (re1) id = re1[1];
+
+      // fallback: try to parse search param v
+      try {
+        const u = new URL(url);
+        if (!id) id = u.searchParams.get('v') || '';
+        // prefer hash or query t/start params for start time
+        let start = 0;
+        const tParam = u.searchParams.get('t') || u.searchParams.get('start') || '';
+        if (tParam) start = this.parseTimeToSeconds(tParam);
+        const hash = u.hash ? u.hash.replace(/^#/, '') : '';
+        if (!start && hash) {
+          // hash can be like t=1m30s or 1m30s
+          const hm = hash.match(/t=(.*)/);
+          start = this.parseTimeToSeconds(hm ? hm[1] : hash);
+        }
+
+        if (!id && u.hostname.includes('youtu.be')) {
+          // path begins with /{id}
+          id = u.pathname.replace(/^\//, '');
+        }
+
+        if (id) {
+          const startQuery = start ? `?start=${start}&autoplay=1` : '?autoplay=1';
+          return `https://www.youtube.com/embed/${id}${startQuery}`;
+        }
+      } catch (e) {
+        // ignore URL parse errors and fallthrough
+      }
+    }
+
+    // no special handling, return original URL
+    return url;
+  }
+
+  private parseTimeToSeconds(input: string): number {
+    if (!input) return 0;
+    input = input.trim();
+    // plain seconds
+    if (/^\d+$/.test(input)) return parseInt(input, 10);
+    // formats like 1m30s, 2h3m4s
+    let total = 0;
+    const h = input.match(/(\d+)h/);
+    const m = input.match(/(\d+)m/);
+    const s = input.match(/(\d+)s/);
+    if (h) total += parseInt(h[1], 10) * 3600;
+    if (m) total += parseInt(m[1], 10) * 60;
+    if (s) total += parseInt(s[1], 10);
+    // fallback for mm:ss or hh:mm:ss
+    if (total === 0 && input.includes(':')) {
+      const parts = input.split(':').map(p => parseInt(p, 10) || 0);
+      if (parts.length === 2) total = parts[0] * 60 + parts[1];
+      else if (parts.length === 3) total = parts[0] * 3600 + parts[1] * 60 + parts[2];
+    }
+    return total;
   }
 
   ngOnDestroy(): void {
     // ensure we remove any listeners
     this.stopCornerResize();
+  }
+
+  // return a flat array of songs for a concert (concatenate chapters)
+  getAllSongs(concert: Concert) {
+    if (!concert || !concert.chapters) return [];
+    return concert.chapters.reduce((acc: Song[], ch) => {
+      if (ch && Array.isArray(ch.songs)) {
+        return acc.concat(ch.songs as Song[]);
+      }
+      return acc;
+    }, [] as Song[]);
   }
 }
