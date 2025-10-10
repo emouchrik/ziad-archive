@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
 
 export interface Song { title: string; duration?: string; url?: string; description?: string }
-export interface Chapter { title: string; songs: Song[] }
-export interface Concert { title: string; date: string; chapters: Chapter[]; description?: string }
+export interface Chapter { title: string; songs: Song[]; url?: string }
+export interface Concert {
+  title: string;
+  date: string;
+  chapters: Chapter[];
+  description?: string;
+  credits?: {
+    musicians?: string[];
+    singers?: string[];
+    speakers?: string[];
+  };
+}
 
 @Injectable({ providedIn: 'root' })
 export class ConcertService {
@@ -105,15 +115,93 @@ export class ConcertService {
       ,
       {
         title: 'Russian Cultural Center 2015',
-        date: 'January 1, 2015',
+        date: '2015',
+        description: 'Live at the Russian Cultural Center — varied program with guest speakers and many guest musicians.',
+        credits: {
+          musicians: [
+            'Sax - Elias M3allem',
+            'Drums - April Centrone',
+            'Percussions - Ayman Zibdawi',
+            "Buzu2 - Raafat bou hamdan",
+            'Keyboard - Darine Shhade',
+            'Guitar - Adel Minkara',
+            'Ousama Khatib - Bass',
+            'Hany Siblini - keyboard',
+            'Piano and keyboard - ziad rahbani'
+          ],
+          singers: [
+            'Hala Masri',
+            'Zeinab Zeinnedine',
+            'Rabih Zaher',
+            'Ramzi Khoury',
+            'Barjhis Saliba',
+            'Salim Lahham',
+            'Ghada Ghanem'
+          ],
+          speakers: [
+            'Rabih Zaher',
+            'Lina Khoury',
+            'Radwan Hamze',
+            'Tareq Tamim',
+            'Layal Daou'
+          ]
+        },
         chapters: [
-          { title: 'parts', songs: [
-            { title: 'Russian Cultural Center 2015 - Part 1', url: 'https://vimeo.com/335712846' },
-            { title: 'Russian Cultural Center 2015 - Part 2', url: 'https://vimeo.com/335713821' },
-            { title: 'Russian Cultural Center 2015 - Part 3', url: 'https://vimeo.com/335714826' },
-            { title: 'Russian Cultural Center 2015 - Part 4', url: 'https://vimeo.com/335715444' },
-            { title: 'Russian Cultural Center 2015 - Part 5', url: 'https://vimeo.com/335715936' }
-          ] }
+          {
+            title: 'chapter 1',
+            url: 'https://vimeo.com/335712846',
+            songs: [
+              { title: 'Intro', duration: '00:00', url: 'https://vimeo.com/335712846#t=0m0s' },
+              { title: 'Al Amal', duration: '04:32', url: 'https://vimeo.com/335712846#t=4m32s' },
+              { title: 'Word by Sabah Ayyoub', duration: '07:10', url: 'https://vimeo.com/335712846#t=7m10s' },
+              { title: 'Sobhi el Jeez', duration: '12:06', url: 'https://vimeo.com/335712846#t=12m6s' },
+              { title: 'Al 3ors (The Wedding)', duration: '15:10', url: 'https://vimeo.com/335712846#t=15m7s', description: 'nice bouzo2 entrance' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            url: 'https://vimeo.com/335713821',
+            songs: [
+              { title: 'Word by Lina Khoury (Hal Shi)', duration: '00:00', url: 'https://vimeo.com/335713821#t=0m0s' },
+              { title: 'Ba3atillak Ya Habeeb el Rou7', duration: '03:06', url: 'https://vimeo.com/335713821#t=3m6s' },
+              { title: 'Joe Sample Tune (with April Centrone on the Daff)', duration: '07:52', url: 'https://vimeo.com/335713821#t=7m52s' },
+              { title: 'Word by Layal Daou and Radwan Hamze', duration: '14:30', url: 'https://vimeo.com/335713821#t=14m30s' },
+              { title: 'Talfan Ayache', duration: '16:38', url: 'https://vimeo.com/335713821#t=16m38s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            url: 'https://vimeo.com/335714826',
+            songs: [
+              { title: 'Word by Tareq Tamim', duration: '00:00', url: 'https://vimeo.com/335714826#t=0m0s' },
+              { title: 'Samadou Ghalabo', duration: '05:11', url: 'https://vimeo.com/335714826#t=5m11s' },
+              { title: 'Asaada Allah Masaakum', duration: '10:23', url: 'https://vimeo.com/335714826#t=10m23s' },
+              { title: 'Word by Lina Khoury', duration: '14:30', url: 'https://vimeo.com/335714826#t=14m30s' },
+              { title: 'Sabah w Masa (Ghada Ghanem)', duration: '15:38', url: 'https://vimeo.com/335714826#t=15m38s' }
+            ]
+          },
+          {
+            title: 'chapter 4',
+            url: 'https://vimeo.com/335715444',
+            songs: [
+              { title: 'Word by Radwan Hamze', duration: '00:00', url: 'https://vimeo.com/335715444#t=0m0s' },
+              { title: 'Ya Nour Aaynaya', duration: '02:00', url: 'https://vimeo.com/335715444#t=2m0s' },
+              { title: 'Ziad about El 7ali ti3bani ya layla', duration: '06:52', url: 'https://vimeo.com/335715444#t=6m52s' },
+              { title: 'El 7ali ti3bani ya layla', duration: '09:35', url: 'https://vimeo.com/335715444#t=9m35s' },
+              { title: 'Word by Layal Daou (Wijhit el iste3mel)', duration: '14:00', url: 'https://vimeo.com/335715444#t=14m0s' }
+            ]
+          },
+          {
+            title: 'chapter 5',
+            url: 'https://vimeo.com/335715936',
+            songs: [
+              { title: 'Bizakker Bil Kharif', duration: '00:00', url: 'https://vimeo.com/335715936#t=0m0s' },
+              { title: 'Word by Radwan Hamze and Tareq Tamim', duration: '05:38', url: 'https://vimeo.com/335715936#t=5m38s' },
+              { title: '3ateba!', duration: '07:38', url: 'https://vimeo.com/335715936#t=7m38s' },
+              { title: 'Ya Bint el m3awen', duration: '15:41', url: 'https://vimeo.com/335715936#t=15m41s' },
+              { title: 'Credits', duration: '18:15', url: 'https://vimeo.com/335715936#t=18m15s' }
+            ]
+          }
         ]
       }
       ,

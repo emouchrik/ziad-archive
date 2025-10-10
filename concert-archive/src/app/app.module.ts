@@ -11,7 +11,6 @@ import { HomePageComponent } from './home-page/home-page.component'; // standalo
 import { AlbumsPageComponent } from './albums-page/albums-page.component'; // non-standalone -> declare
 import { DiscographyPageComponent } from './discography-page/discography-page.component'; // non-standalone -> declare
 import { AppRoutingModule } from './app-routing.module';
-import { ConcertService } from './services/concert.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { ConcertService } from './services/concert.service';
     HomePageComponent,
     AppRoutingModule
   ],
-  providers: [ConcertService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

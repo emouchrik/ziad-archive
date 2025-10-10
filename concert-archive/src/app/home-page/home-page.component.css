@@ -75,7 +75,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   text-align: center;
   position: relative; /* sit above the cover image */
   z-index: 2;
-  padding-top: 88px; /* push content down so it's visually inside the image */
+  padding-top: 48px; /* reduced so hero doesn't push the concerts far down */
 }
 .hero-meta {
   flex: 1 1 auto;
@@ -105,7 +105,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   left: 0;
   right: 0;
   width: 100vw;
-  height: 260px;
+  height: 200px; /* slightly reduced height */
   overflow: hidden;
   z-index: 0;
 }
@@ -125,6 +125,12 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   pointer-events: none;
 }
 
+.hero-subtitle {
+  font-size: 18px;
+  color: rgba(252, 250, 250, 0.85);
+  line-height: 1.4;
+}
+
 @media (max-width: 600px) {
   .hero-cover-full { height: 200px; }
   .hero-inner { padding-top: 48px; }
@@ -132,31 +138,38 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 
 /* CONCERT LIST */
 .concert-list {
-  /* left-aligned list leaving room for right sidebar player */
-  margin: 28px 24px;
-  padding: 0 12px;
+  /* newspaper-style multi-column list: items flow vertically then across columns */
+  margin: 18px 18px;
+  padding: 0;
   width: 100%;
-  max-width: calc(100% - 420px);
+  max-width: calc(100% - 420px); /* leave room for right-side player on wide viewports */
 }
-.concert-card { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 20px; overflow: visible; padding: 0; }
-.concert-card + .concert-card { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 18px; margin-top: 18px; }
+.concert-card { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 0; overflow: visible; padding: 0; }
+.concert-card + .concert-card { border-top: none; }
 .concert-table {
-  display: flex;
-  flex-wrap: wrap; /* allow columns to wrap into additional rows instead of creating horizontal scroll */
-  gap: 24px; /* gap handles both row and column spacing */
-  align-items: flex-start;
-  padding: 102px 8px;
-  overflow-x: visible; /* ensure no forced horizontal scrolling */
+  display: block;
+  column-width: 320px;          /* slightly narrower columns to fit more columns on wide viewports */
+  column-gap: 20px;            /* horizontal gutter between columns */
+  column-fill: auto;           /* fill columns top-to-bottom */
+  padding: 12px 8px;           /* tighter padding to remove large vertical whitespace */
+  overflow-x: visible;
 }
 .concert-column {
-  /* allow columns to grow/shrink and wrap; basis gives a preferred width */
-  flex: 1 1 320px;
-  min-width: 260px;
-  max-width: 420px;
+  display: inline-block;
+  width: 100%;
   background: transparent;
+  margin: 0;                   /* remove extra vertical margin between stacked items */
+  padding: 10px 8px;          /* compact internal spacing */
+  box-sizing: border-box;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  border-bottom: 1px solid rgba(0,0,0,0.06); /* subtle divider between concerts */
 }
-.concert-column .concert-header { padding: 16px 12px; }
-.concert-header { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:20px 12px; border-bottom: none; text-align:left; gap:8px; }
+.concert-column:first-child { border-top: none; }
+.concert-column:last-child { border-bottom: none; }
+.concert-column .concert-header { padding: 8px 8px; }
+.concert-header { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:12px 8px; border-bottom: none; text-align:left; gap:6px; }
 .concert-title { font-weight:800; font-size:22px; line-height:1.02; width:100%; }
 .concert-desc { color: rgba(0,0,0,0.65); font-size: 13px; margin-top: 6px; max-width: 100%; }
 .concert-date { color: rgba(0,0,0,0.6); font-size:16px; margin-top:4px; }
