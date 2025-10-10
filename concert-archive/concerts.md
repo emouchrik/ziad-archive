@@ -197,29 +197,89 @@ Publicity - 16-2-2015 part-1: https://vimeo.com/318065137
 Publicity - 16-2-2015 part-2: https://vimeo.com/318064791
 Publicity - 16-2-2015 part-3: https://vimeo.com/318064596
 
-Zinc Concert 1:
-Zinc - 1 march 2015 - part 1: https://vimeo.com/319978775
-Zinc - 1 march 2015 - part 2: https://vimeo.com/319978482
+Zinc Concert: (description: 'Packed with improvs on the keyboard and wind instruments')
+chapter 1: https://vimeo.com/319978775
+	00:00 Come Into My Life (Ziad Rifffffs)
+	04:49 My Little Suede Shoes (Charlie Parker)	
+chapter 2: https://vimeo.com/319978482
+	00:00 Un Verre chez Nous (description: Ziad Says Nawaaal! Ya Nawaaaal; Two ladies (FIXME))
+	03:30 On Broadway
 
 Blue Note April 9, 2015
-Blue Note - 9/4/2015 https://vimeo.com/320573330
+Blue Note Laura - 9/4/2015 https://vimeo.com/320573330
+	00:00 Grande Amore
+	FIXME La maison sous les arbres
+
 
 Blue Note May 18, 2015
 Blue Note _ 18-5-2015: https://vimeo.com/325763780
 
-Teatro Concert:
-Teatro - Dec 2002 - part-1: https://vimeo.com/327370274
-Teatro - Dec 2002 - part-2: https://vimeo.com/327372507
+Teatro Concert Dec 2022:
+chapter 1: https://vimeo.com/327370274
+	00: Lullaby Birdland (George Shearing)
+	04:50 Mish bass talfinli
+	08:20 Ma tfill + Manha De Carnaval
+	13:28 Gingele Yele ... Gingele Yela 
+	15:50 Mexicano (incredible piano solo)
+	21:45 Mas que Nada (Jorge Ben)
+chapter 2: https://vimeo.com/327372507
+	00:00 Autumn Leaves (Joseph Kosma)
+	05:00 De la Lune FIXME
+	07:26 Now is the Time (Charlie Parker)
+	15:50 Yardbird Suite (Charlie Parker)
+
 
 Junkyard Concert:
 Junkyard - 20 Apr 2015 - part 1: https://vimeo.com/332201616
 Junkyard - 20 Apr 2015 - part 2: https://vimeo.com/332202608
 Junkyard - 20 Apr 2015 - part 3: https://vimeo.com/332203272
 
-Russian Cultural Center:
-Russian Cultural Center 2015 - Part 1: https://vimeo.com/335712846
-Russian Cultural Center 2015 - Part 2: https://vimeo.com/335713821
-Russian Cultural Center 2015 - Part 3: https://vimeo.com/335714826
-Russian Cultural Center 2015 - Part 4: https://vimeo.com/335715444
-Russian Cultural Center 2015 - Part 5: https://vimeo.com/335715936
-
+Russian Cultural Center: 2015 
+credits: 
+	musicians:
+	. Sax - Elias M3allem
+	. Drums - April Centrone
+	. Percussions - Ayman Zibdawi
+	. Buzu2 - Raafat bou hamdan 
+	. Keyboard - Darine Shhade
+	. Guitar - Adel Minkara
+	. Ousama Khatib- Base
+	. Hany SIblini - keyboard 
+	. Piano and keyboard - ziad rahbani
+	singers; hala masri, zeinab zeinnedine, rabih zaher, ramzi khoury, barjhis saliba, salim lahham, ghada ghanem
+	speaker
+	Rabih Zaher 
+	Lina Khoury
+	Radwan Hamze 
+	Tareq Tamim 
+	Layal Daou
+chapter 1: https://vimeo.com/335712846
+	00:00 intro by 
+	04:32 Al Amal
+	07:10 Word by Sabah Ayyoub
+	12:06 Sobhi el Jeez
+	15:07 Al 3ors (The Wedding) - (description: nice bouzo2 entrance)
+chapter 2: https://vimeo.com/335713821
+	00:00 Word by Lina Khoury (Hal Shi)
+	03:06 Ba3atillak Ya Habeeb el Rou7
+	07:52 Joe Sample Tune (with April Centrone on the Daff)
+	14:30 Word by Layal Daw and Radwan Hamze
+	16:38 Talfan Ayache
+chapter 3: https://vimeo.com/335714826
+	00:00 Word by Tareq Tamim
+	05:11 Samadou Ghalabo
+	10:23 Asaada Allah Masaakum
+	14:30 Word by Lina Khoury
+	15:38 Sabah w Masa (Ghada Ghanem)
+chapter 4: https://vimeo.com/335715444
+	00:00 Word by Radwan Hamze
+	02:00 Ya Nour Aaynaya
+	06:52 (Ziad about El 7ali ti3bani ya layla)
+	09:35 El &ali ti3bani ya layla
+	14:00 Word by Layal Daou (Wijhit el iste3mel)
+chapter 5: https://vimeo.com/335715936
+	00:00 Bizakker Bil Kharif
+	05:38 Word by Radwan Hamze and Tareq Tamim
+	07:38 3ateba! 
+	15:41 Ya Bint el m3awen
+	18:15 credits
