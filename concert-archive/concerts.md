@@ -205,14 +205,17 @@ chapter 2: https://vimeo.com/319978482
 	00:00 Un Verre chez Nous (description: Ziad Says Nawaaal! Ya Nawaaaal; Two ladies (FIXME))
 	03:30 On Broadway
 
-Blue Note April 9, 2015
-Blue Note Laura - 9/4/2015 https://vimeo.com/320573330
+Blue Note with Laura April 9, 2015
+chapter 1: https://vimeo.com/320573330
 	00:00 Grande Amore
-	FIXME La maison sous les arbres
+	05:00 La maison sous les arbres
 
 
-Blue Note May 18, 2015
-Blue Note _ 18-5-2015: https://vimeo.com/325763780
+Blue Note with Bouchra Hachem May 18, 2015 
+	chapter 1: https://vimeo.com/325763780
+	00:00 Piaff Song FIXME Hymne A L'Amour
+	05:33 Whatever Lola Wants
+	10:00 
 
 Teatro Concert Dec 2022:
 chapter 1: https://vimeo.com/327370274
@@ -229,10 +232,22 @@ chapter 2: https://vimeo.com/327372507
 	15:50 Yardbird Suite (Charlie Parker)
 
 
-Junkyard Concert:
-Junkyard - 20 Apr 2015 - part 1: https://vimeo.com/332201616
-Junkyard - 20 Apr 2015 - part 2: https://vimeo.com/332202608
-Junkyard - 20 Apr 2015 - part 3: https://vimeo.com/332203272
+Junkyard w. Lara Rain - (April 20, 2015)
+description: great show
+chapter 1: https://vimeo.com/332201616
+	00:00 tuning
+	01:05 ?????
+	04:58 ???!! Lullaby Birdland?
+	08:47 And I love you so 
+	11:05 Fly me to the moon
+	12:35 Ma bitfid**
+	16:10 Mish Bass Talfinli/Se Dande Se Samba
+chapter 2: https://vimeo.com/332202608
+	00:00 Favella la jovi
+	03:00 The look of love (Burt Bakara, Bakara wa7de!)
+	
+chapter 3: https://vimeo.com/332203272
+	00:00
 
 Russian Cultural Center: 2015 
 credits: 

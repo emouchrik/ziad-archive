@@ -4,7 +4,7 @@
     <div class="hero-meta">
       <div class="hero-sub">Concert & Singles Archive</div>
       <h1 class="hero-title">{{ 'Ziad on Vimeo' }}</h1>
-      <p class="hero-subtitle">In 2019, Ziad Rahbani published 50 high-fidelity concert videos to Vimeo, featuring live performances, rehearsals, and singles. This page lets you browse setlists and easily access each musical piece.</p>
+      <!-- <p class="hero-subtitle">In 2019, Ziad Rahbani published 50 high-fidelity concert videos to Vimeo, featuring live performances, rehearsals, and singles. This page lets you browse setlists and easily access each musical piece.</p> -->
     </div>
     <div class="hero-cover" aria-hidden="true">
       <!-- decorative area, could be replaced with a real cover image later -->
@@ -35,7 +35,7 @@
             <div class="track-index">{{ si + 1 }}</div>
             <div class="song-info">
                 <div class="song-main">
-                  <button mat-button class="song-link" (click)="openPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
+                  <button mat-button class="song-link" (click)="openDockPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
                   <div class="song-duration">{{ s.duration }}</div>
                 </div>
                 <div class="song-desc" *ngIf="s.description">{{ s.description }}</div>
@@ -47,8 +47,8 @@
   </div>
 </div>
 
-<!-- Movable player (fixed) -->
-<div *ngIf="currentSong" class="movable-player" (click)="$event.stopPropagation()"
+<!-- Movable video popup (shown only when user explicitly opens the video) -->
+<div *ngIf="showVideoPopup && currentSong" class="movable-player" (click)="$event.stopPropagation()"
      [class.collapsed]="isCollapsed"
      [style.width.px]="playerWidth"
   [style.height.px]="isCollapsed ? null : playerHeight"
@@ -60,7 +60,7 @@
     <div class="player-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
     <div class="player-actions">
       <button mat-icon-button (click)="toggleCollapse(); $event.stopPropagation()" aria-label="Toggle"><mat-icon>{{ isCollapsed ? 'open_in_full' : 'fullscreen_exit' }}</mat-icon></button>
-      <button mat-icon-button (click)="closePlayer(); $event.stopPropagation()" aria-label="Close"><mat-icon>close</mat-icon></button>
+      <button mat-icon-button title="Close" (click)="closeVideoPopup(); $event.stopPropagation()" aria-label="Close"><img src="/assets/close.png" alt="Close" /></button>
     </div>
   </div>
 
@@ -75,7 +75,7 @@
     <div class="compact-left" [attr.title]="currentSong?.title">{{ shortTitle(currentSong?.title || '', 36) }}</div>
     <div class="compact-actions">
       <button mat-icon-button (click)="expandPlayer(); $event.stopPropagation()" aria-label="Expand player"><mat-icon>open_in_full</mat-icon></button>
-      <button mat-icon-button (click)="closePlayer(); $event.stopPropagation()" aria-label="Close player"><mat-icon>close</mat-icon></button>
+      <button mat-icon-button title="Close" (click)="closeVideoPopup(); $event.stopPropagation()" aria-label="Close player"><img src="/assets/close.png" alt="Close" /></button>
     </div>
   </div>
 
@@ -84,4 +84,28 @@
   <div class="resize-handle top-right" title="Resize" (mousedown)="startCornerResize($event,'tr')" (touchstart)="startCornerResizeTouch($event,'tr')"></div>
   <div class="resize-handle bottom-left" title="Resize" (mousedown)="startCornerResize($event,'bl')" (touchstart)="startCornerResizeTouch($event,'bl')"></div>
   <div class="resize-handle bottom-right" title="Resize" (mousedown)="startCornerResize($event,'br')" (touchstart)="startCornerResizeTouch($event,'br')"></div>
+</div>
+
+<!-- Audio-only dock (bottom-right desktop, bottom on mobile) -->
+<div class="player-dock" *ngIf="currentSong">
+  <div class="dock-content">
+    <div class="dock-left">
+      <div class="dock-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
+      <div class="dock-controls">
+        <button mat-icon-button title="{{ dockPlaying ? 'Pause' : 'Play' }}" (click)="toggleDockPlay()" aria-label="Play/Pause">
+          <img src="/assets/{{ dockPlaying ? 'pause.png' : 'play-button.png' }}" alt="{{ dockPlaying ? 'Pause' : 'Play' }}" />
+        </button>
+        <button mat-icon-button title="Open video" (click)="openVideoFromDock()" aria-label="Open video">
+          <img src="/assets/video-camera.png" alt="Open video" />
+        </button>
+        <button mat-icon-button title="Close" (click)="closeDock()" aria-label="Close dock">
+          <img src="/assets/close.png" alt="Close" />
+        </button>
+      </div>
+    </div>
+    <div class="dock-video">
+      <iframe *ngIf="dockEmbedUrl" [src]="dockEmbedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div *ngIf="!dockEmbedUrl" style="width:160px;height:90px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;">No preview</div>
+    </div>
+  </div>
 </div>

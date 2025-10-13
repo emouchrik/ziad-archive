@@ -259,19 +259,68 @@ export class ConcertService {
       }
       ,
       {
-        title: 'Blue Note',
+        title: 'Blue Note with Laura',
         date: 'April 9, 2015',
         chapters: [
-          { title: 'video', songs: [ { title: 'Blue Note - 9/4/2015', url: 'https://vimeo.com/320573330' } ] },
-          { title: 'video', songs: [ { title: 'Blue Note - 18/5/2015', url: 'https://vimeo.com/325763780' } ] }
+          {
+            title: 'chapter 1',
+            url: 'https://vimeo.com/320573330',
+            songs: [
+              { title: 'Grande Amore', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s' },
+              { title: 'La maison sous les arbres', duration: '05:00', url: 'https://vimeo.com/320573330#t=5m0s' }
+            ]
+          }
         ]
       }
       ,
       {
-        title: 'Blue Note',
+        title: 'Junkyard w. Lara Rain',
+        date: 'April 20, 2015',
+        description: 'great show',
+        chapters: [
+          {
+            title: 'chapter 1',
+            url: 'https://vimeo.com/332201616',
+            songs: [
+              { title: 'tuning', duration: '00:00', url: 'https://vimeo.com/332201616#t=0m0s' },
+              { title: '?????', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
+              { title: '???!! Lullaby Birdland?', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s' },
+              { title: 'And I love you so', duration: '08:47', url: 'https://vimeo.com/332201616#t=8m47s' },
+              { title: 'Fly me to the moon', duration: '11:05', url: 'https://vimeo.com/332201616#t=11m5s' },
+              { title: 'Ma bitfid**', duration: '12:35', url: 'https://vimeo.com/332201616#t=12m35s' },
+              { title: 'Mish Bass Talfinli/Se Dande Se Samba', duration: '16:10', url: 'https://vimeo.com/332201616#t=16m10s' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            url: 'https://vimeo.com/332202608',
+            songs: [
+              { title: 'start', duration: '00:00', url: 'https://vimeo.com/332202608#t=0m0s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            url: 'https://vimeo.com/332203272',
+            songs: [
+              { title: 'start', duration: '00:00', url: 'https://vimeo.com/332203272#t=0m0s' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Blue Note with Bouchra Hachem',
         date: 'May 18, 2015',
         chapters: [
-          { title: 'video', songs: [ { title: 'Blue Note - 18/5/2015', url: 'https://vimeo.com/325763780' } ] }
+          {
+            title: 'chapter 1',
+            url: 'https://vimeo.com/325763780',
+            songs: [
+              { title: "Piaff Song — Hymne A L'Amour (FIXME)", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s' },
+              { title: 'Whatever Lola Wants', duration: '05:33', url: 'https://vimeo.com/325763780#t=5m33s' },
+              { title: '(unknown)', duration: '10:00', url: 'https://vimeo.com/325763780#t=10m0s' }
+            ]
+          }
         ]
       }
       ,

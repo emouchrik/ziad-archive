@@ -105,7 +105,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   left: 0;
   right: 0;
   width: 100vw;
-  height: 200px; /* slightly reduced height */
+  height: 150px; /* slightly reduced height */
   overflow: hidden;
   z-index: 0;
 }
@@ -147,28 +147,30 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 .concert-card { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 0; overflow: visible; padding: 0; }
 .concert-card + .concert-card { border-top: none; }
 .concert-table {
+  /* Use CSS multi-column layout so concerts stack vertically then flow into columns
+     column-width determines the preferred column size; the browser will fit as many
+     columns as available. This produces the 'newspaper' vertical stacking. */
   display: block;
-  column-width: 320px;          /* slightly narrower columns to fit more columns on wide viewports */
-  column-gap: 20px;            /* horizontal gutter between columns */
-  column-fill: auto;           /* fill columns top-to-bottom */
-  padding: 12px 8px;           /* tighter padding to remove large vertical whitespace */
-  overflow-x: visible;
+  column-width: 340px;
+  column-gap: 24px;
+  padding: 24px 8px;
+  overflow-x: visible; /* ensure no forced horizontal scrolling */
 }
 .concert-column {
+  /* Each concert becomes an inline-block so it participates in the multi-column flow */
   display: inline-block;
   width: 100%;
   background: transparent;
-  margin: 0;                   /* remove extra vertical margin between stacked items */
-  padding: 10px 8px;          /* compact internal spacing */
+  margin: 0 0 6px; /* small gap between stacked items */
+  padding: 12px 8px; /* internal spacing inside each concert block */
   box-sizing: border-box;
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
-  border-bottom: 1px solid rgba(0,0,0,0.06); /* subtle divider between concerts */
+  border-top: 1px solid rgba(0,0,0,0.06); /* thin divider, not a large white gap */
 }
 .concert-column:first-child { border-top: none; }
-.concert-column:last-child { border-bottom: none; }
-.concert-column .concert-header { padding: 8px 8px; }
+.concert-column .concert-header { padding: 10px 8px; }
 .concert-header { display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:12px 8px; border-bottom: none; text-align:left; gap:6px; }
 .concert-title { font-weight:800; font-size:22px; line-height:1.02; width:100%; }
 .concert-desc { color: rgba(0,0,0,0.65); font-size: 13px; margin-top: 6px; max-width: 100%; }
@@ -187,7 +189,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 }
 
 .track-index {
-  flex: 0 0 28px;
+  flex: 0 0 2px;
 }
 
 /* ensure song info stacks nicely */
@@ -378,6 +380,21 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   align-items: center;
 }
 
+/* neat circular icon buttons using asset images */
+.dock-controls button[mat-icon-button] {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.04);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.dock-controls button[mat-icon-button]:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); background: rgba(0,0,0,0.06); }
+.dock-controls button[mat-icon-button] img { width: 20px; height: 20px; object-fit: contain; display:block; }
+
 /* small embedded video area */
 .dock-video {
   flex: 1 1 auto;
@@ -453,6 +470,21 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 
 .movable-player .player-title { font-weight: 600; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .movable-player .player-actions { display:flex; gap:8px; align-items:center; }
+
+/* Style image buttons in player header/compact to match dock's circular icons */
+.movable-player .player-actions button[mat-icon-button], .movable-player .player-compact .compact-actions button[mat-icon-button] {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.04);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.movable-player .player-actions button[mat-icon-button]:hover, .movable-player .player-compact .compact-actions button[mat-icon-button]:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+.movable-player .player-actions button[mat-icon-button] img, .movable-player .player-compact .compact-actions button[mat-icon-button] img { width: 18px; height: 18px; object-fit: contain; display:block; }
 
 .movable-player .player-body { background: #000; transition: opacity 200ms ease; }
 .movable-player.collapsed .player-body { opacity: 0; height: 0; padding: 0; overflow: hidden; }

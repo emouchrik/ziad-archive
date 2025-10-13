@@ -19,11 +19,28 @@
             "styles": ["src/styles.css"],
             "scripts": []
           }
+          ,
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "concert-archive:build"
+          }
+          ,
+          "configurations": {
+            "production": {
+              "browserTarget": "concert-archive:build:production"
+            }
           }
         }
       }

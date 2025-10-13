@@ -36,6 +36,11 @@ export class HomePageComponent {
   currentSong: Song | null = null;
   currentEmbedUrl: SafeResourceUrl | null = null;
 
+  // Audio-only dock state
+  dockEmbedUrl: SafeResourceUrl | null = null;
+  dockPlaying = false;
+  showVideoPopup = false; // only open video popup when user requests it
+
   // collapsed dock state (when true the player appears as a small bottom-right dock)
   isCollapsed = false;
   // movable player state
@@ -272,6 +277,60 @@ export class HomePageComponent {
     // ensure we remove any listeners
     this.stopCornerResize();
     this.stopDrag();
+    this.stopDock();
+  }
+
+  // open dock (audio-first) when clicking a song
+  openDockPlayer(song: { title: string; url?: string }) {
+    this.currentSong = song as Song;
+    this.showVideoPopup = false;
+    if (!song.url) {
+      this.dockEmbedUrl = null;
+      this.dockPlaying = false;
+      return;
+    }
+    const embed = this.getEmbedUrl(song.url);
+    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.dockPlaying = true;
+  }
+
+  toggleDockPlay() {
+    // simple toggle by removing/adding iframe src
+    if (this.dockPlaying) {
+      this.dockEmbedUrl = null;
+      this.dockPlaying = false;
+    } else if (this.currentSong && this.currentSong.url) {
+      const embed = this.getEmbedUrl(this.currentSong.url);
+      this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+      this.dockPlaying = true;
+    }
+  }
+
+  closeDock() {
+    this.dockEmbedUrl = null;
+    this.dockPlaying = false;
+    this.currentSong = null;
+    this.showVideoPopup = false;
+  }
+
+  stopDock() {
+    this.dockEmbedUrl = null;
+    this.dockPlaying = false;
+  }
+
+  // open the large video popup from the dock
+  openVideoFromDock() {
+    if (!this.currentSong) return;
+    // stop dock to avoid double audio
+    this.stopDock();
+    this.showVideoPopup = true;
+    if (!this.currentSong.url) {
+      this.currentEmbedUrl = null;
+      return;
+    }
+    const embed = this.getEmbedUrl(this.currentSong.url);
+    this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.isCollapsed = false;
   }
 
   // Drag-to-move handlers (for header dragging)
