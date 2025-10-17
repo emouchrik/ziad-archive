@@ -58,8 +58,11 @@ export class HomePageComponent {
   }
 
   openPlayer(song: { title: string; url?: string }) {
+    // Stop dock audio when opening the full video popup
+    this.stopDock();
     this.currentSong = song as Song;
     this.isCollapsed = false; // open expanded by default
+    this.showVideoPopup = true;
     if (!song.url) {
       this.currentEmbedUrl = null;
       return;
@@ -282,8 +285,42 @@ export class HomePageComponent {
 
   // open dock (audio-first) when clicking a song
   openDockPlayer(song: { title: string; url?: string }) {
+    // Minimize any full popup and show dock audio
     this.currentSong = song as Song;
     this.showVideoPopup = false;
+    this.currentEmbedUrl = null;
+    if (!song.url) {
+      this.dockEmbedUrl = null;
+      this.dockPlaying = false;
+      return;
+    }
+    const embed = this.getEmbedUrl(song.url);
+    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.dockPlaying = true;
+  }
+
+  // Universal song click handler: update whichever player is currently visible
+  playSong(song: { title: string; url?: string }) {
+    this.currentSong = song as Song;
+    // if the video popup is open, update it
+    if (this.showVideoPopup) {
+      // ensure dock is stopped
+      this.stopDock();
+      if (!song.url) {
+        this.currentEmbedUrl = null;
+        return;
+      }
+      const embed = this.getEmbedUrl(song.url);
+      this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+      this.isCollapsed = false;
+      return;
+    }
+
+    // otherwise update the dock (start or replace playback)
+    this.currentEmbedUrl = null;
+    this.showVideoPopup = false;
+    // destroy any existing dock player and then set new embed
+    this.stopDock();
     if (!song.url) {
       this.dockEmbedUrl = null;
       this.dockPlaying = false;
@@ -331,6 +368,25 @@ export class HomePageComponent {
     const embed = this.getEmbedUrl(this.currentSong.url);
     this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
     this.isCollapsed = false;
+  }
+
+  // minimize the full popup back to the dock (audio-only)
+  minimizeToDock() {
+    if (!this.currentSong) return;
+    const url = this.currentSong.url;
+    this.showVideoPopup = false;
+    this.currentEmbedUrl = null;
+    if (!url) return;
+    const embed = this.getEmbedUrl(url);
+    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.dockPlaying = true;
+  }
+
+  // close the video popup and ensure dock is stopped
+  closeVideoPopup() {
+    this.showVideoPopup = false;
+    this.currentEmbedUrl = null;
+    this.stopDock();
   }
 
   // Drag-to-move handlers (for header dragging)

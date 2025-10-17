@@ -35,7 +35,7 @@
             <div class="track-index">{{ si + 1 }}</div>
             <div class="song-info">
                 <div class="song-main">
-                  <button mat-button class="song-link" (click)="openDockPlayer(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
+                  <button mat-button class="song-link" (click)="playSong(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
                   <div class="song-duration">{{ s.duration }}</div>
                 </div>
                 <div class="song-desc" *ngIf="s.description">{{ s.description }}</div>
@@ -59,13 +59,13 @@
   <div class="player-header" (mousedown)="startDrag($event)" (touchstart)="startDragTouch($event)">
     <div class="player-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
     <div class="player-actions">
-      <button mat-icon-button (click)="toggleCollapse(); $event.stopPropagation()" aria-label="Toggle"><mat-icon>{{ isCollapsed ? 'open_in_full' : 'fullscreen_exit' }}</mat-icon></button>
+      <button mat-icon-button title="Minimize to dock" (click)="minimizeToDock(); $event.stopPropagation()" aria-label="Minimize"><mat-icon>minimize</mat-icon></button>
       <button mat-icon-button title="Close" (click)="closeVideoPopup(); $event.stopPropagation()" aria-label="Close"><img src="/assets/close.png" alt="Close" /></button>
     </div>
   </div>
 
   <div class="player-body" [attr.aria-hidden]="isCollapsed">
-    <iframe *ngIf="currentEmbedUrl" [src]="currentEmbedUrl" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <iframe *ngIf="currentEmbedUrl" [src]="currentEmbedUrl" frameborder="0" allow="autoplay; picture-in-picture"></iframe>
     <div *ngIf="!currentEmbedUrl" class="no-embed">Video cannot be embedded.
       <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
     </div>
@@ -95,7 +95,7 @@
         <button mat-icon-button title="{{ dockPlaying ? 'Pause' : 'Play' }}" (click)="toggleDockPlay()" aria-label="Play/Pause">
           <img src="/assets/{{ dockPlaying ? 'pause.png' : 'play-button.png' }}" alt="{{ dockPlaying ? 'Pause' : 'Play' }}" />
         </button>
-        <button mat-icon-button title="Open video" (click)="openVideoFromDock()" aria-label="Open video">
+        <button mat-icon-button title="Open video" (click)="openVideoFromDock(); $event.stopPropagation()" aria-label="Open video">
           <img src="/assets/video-camera.png" alt="Open video" />
         </button>
         <button mat-icon-button title="Close" (click)="closeDock()" aria-label="Close dock">
@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="dock-video">
-      <iframe *ngIf="dockEmbedUrl" [src]="dockEmbedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe *ngIf="dockEmbedUrl" [src]="dockEmbedUrl" frameborder="0" allow="autoplay; encrypted-media"></iframe>
       <div *ngIf="!dockEmbedUrl" style="width:160px;height:90px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;">No preview</div>
     </div>
   </div>
