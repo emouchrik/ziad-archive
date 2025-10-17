@@ -1,0 +1,15 @@
+concert-archive/.angular*
+concert-archive/.idea
+concert-archive/.vscode
+concert-archive/node_modules
+concert-archive/dist
+concert-archive/tmp
+concert-archive/out-tsc
+concert-archive/src/environments/environment*.ts
+concert-archive/.angular/cache/16.2.16/angular-webpack/f02c812ca29dc0f68d5eb8b90cf9da46e4ccdd26/0.pack
+concert-archive/.angular/cache/16.2.16/angular-webpack/f02c812ca29dc0f68d5eb8b90cf9da46e4ccdd26/1.pack
+concert-archive/.angular/cache/16.2.16/angular-webpack/f02c812ca29dc0f68d5eb8b90cf9da46e4ccdd26/2.pack
+concert-archive/.angular/cache/16.2.16/angular-webpack/f02c812ca29dc0f68d5eb8b90cf9da46e4ccdd26/3.pack
+concert-archive/.firebaserc
+concert-archive/.firebase/hosting.cHVibGlj.cache
+concert-archive/src/app/home-page/home-page.component.ts

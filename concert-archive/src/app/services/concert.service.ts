@@ -51,21 +51,46 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'Lullaby Birdland (George Shearing)', duration: '00:00', url: 'https://vimeo.com/327370274#t=0m0s' },
-              { title: 'Mish bass talfinli', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
-              { title: 'Ma tfill + Manha De Carnaval', duration: '08:20', url: 'https://vimeo.com/327370274#t=8m20s' },
+              { title: 'Lullaby Birdland', duration: '00:00', url: 'https://vimeo.com/327370274#t=0m0s', description: 'George Shearing (composer)' },
+              { title: 'Mish Bass Talfinli', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
+              { title: 'Ma Tfill + Manha De Carnaval', duration: '08:20', url: 'https://vimeo.com/327370274#t=8m20s' },
               { title: 'Gingele Yele ... Gingele Yela', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
-              { title: 'Mexicano (incredible piano solo)', duration: '15:50', url: 'https://vimeo.com/327370274#t=15m50s' },
-              { title: 'Mas que Nada (Jorge Ben)', duration: '21:45', url: 'https://vimeo.com/327370274#t=21m45s' }
+              { title: 'Mexicano', duration: '15:50', url: 'https://vimeo.com/327370274#t=15m50s', description: 'incredible piano solo' },
+              { title: 'Mas Que Nada', duration: '21:45', url: 'https://vimeo.com/327370274#t=21m45s', description: 'Jorge Ben (composer)' }
             ]
           },
           {
             title: 'chapter 2',
             songs: [
-              { title: 'Autumn Leaves (Joseph Kosma)', duration: '00:00', url: 'https://vimeo.com/327372507#t=0m0s' },
-              { title: 'De la Lune (FIXME)', duration: '05:00', url: 'https://vimeo.com/327372507#t=5m0s' },
-              { title: 'Now is the Time (Charlie Parker)', duration: '07:26', url: 'https://vimeo.com/327372507#t=7m26s' },
-              { title: 'Yardbird Suite (Charlie Parker)', duration: '15:50', url: 'https://vimeo.com/327372507#t=15m50s' }
+              { title: 'Autumn Leaves', duration: '00:00', url: 'https://vimeo.com/327372507#t=0m0s', description: 'Joseph Kosma (composer)' },
+              { title: 'De la Lune', duration: '05:00', url: 'https://vimeo.com/327372507#t=5m0s', description: 'FIXME: verify title' },
+              { title: 'Now Is the Time', duration: '07:26', url: 'https://vimeo.com/327372507#t=7m26s', description: 'Charlie Parker (composer)' },
+              { title: 'Yardbird Suite', duration: '15:50', url: 'https://vimeo.com/327372507#t=15m50s', description: 'Charlie Parker (composer)' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Da Capo',
+        date: 'Jan 2003',
+        description: 'Concert par Ziad rahbani à Abu Dhabi Concert by Ziad Rahbani at Abu Dhabi حفلة لزياد رحباني في أبو ظبي',
+        chapters: [
+          {
+            title: 'set',
+            songs: [
+              { title: 'الأمل 2 - 1994', url: 'https://youtu.be/e5xM3vmrk9o?si=ovDmMtKgzGQwsnw-' },
+              { title: 'ضحكة ال75000 - 1988', url: 'https://youtu.be/acEb-o9gYRQ?si=Klg7nNMU2a75c-aE' },
+              { title: 'Yaomiat 2004 يوميات', url: 'https://youtu.be/7AOnPHNqkbM?si=FNXgthT76Se1CacS' },
+              { title: '1984 هدوء نسبي', url: 'https://youtu.be/Ws8EhHN7nRQ?si=fTEvt1pZDI61S7sW' },
+              { title: 'بصراحة', url: 'https://youtu.be/9-nk9_7jBoM?si=w6O8bw-yqHE0clCt' },
+              { title: 'شو عدا ما بدا', url: 'https://youtu.be/gSr_4IUr36M?si=PQ2Gi1hBAo39vvu3' },
+              { title: 'صبحي الجيز', url: 'https://youtu.be/c3wwq94epEs?si=igHOxc-Kevd9F7Aw' },
+              { title: 'يا ليلي', url: 'https://youtu.be/GKnkIK-xzSQ?si=yO_RYPrbeb1y_0vn' },
+              { title: 'وقمح', url: 'https://youtu.be/BGsD1eZ-PVQ?si=DcVf7q-M9mGAlHMS' },
+              { title: 'بالنسبة لبكرا شو', url: 'https://youtu.be/9LLpgkurLBs?si=3nqTOslaY2zSGmv-' },
+              { title: 'وصلو ع بيتو', url: 'https://youtu.be/zMLKcSkx2Gc?si=dWyEpgFGS7PvpM7G' },
+              { title: 'final + ديار بكر', url: 'https://youtu.be/cinJNLF4o6o?si=I_r6TdGBf7-eE2rN' }
             ]
           }
         ]
@@ -78,7 +103,7 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'Beiteddine Intro (2001)', duration: '06:06', url: 'https://youtu.be/vDiNbjCeVkI#t=6m6s' },
+              { title: 'Beiteddine Intro', duration: '06:06', url: 'https://youtu.be/vDiNbjCeVkI#t=6m6s', description: '2001' },
               { title: 'Kiriyalayson', duration: '10:02', url: 'https://youtu.be/vDiNbjCeVkI#t=10m2s' },
               { title: 'Al Majd Lak', duration: '14:28', url: 'https://youtu.be/vDiNbjCeVkI#t=14m28s' }
             ]
@@ -97,8 +122,8 @@ export class ConcertService {
             songs: [
               { title: 'Nahnu El Sahiroun', duration: '00:00', url: 'https://youtu.be/0ga5HsLfpVI#t=0m0s' },
               { title: 'The Kite - Cerf Volant', duration: '02:30', url: 'https://youtu.be/0ga5HsLfpVI#t=2m30s' },
-              { title: 'Al 3alam Ja2i3 - Samy Clark', duration: '04:30', url: 'https://youtu.be/0ga5HsLfpVI#t=4m30s' },
-              { title: 'Sayyidi - Samy Clark', duration: '08:10', url: 'https://youtu.be/0ga5HsLfpVI#t=8m10s' }
+              { title: 'Al 3alam Ja2i3', duration: '04:30', url: 'https://youtu.be/0ga5HsLfpVI#t=4m30s', description: 'Samy Clark' },
+              { title: 'Sayyidi', duration: '08:10', url: 'https://youtu.be/0ga5HsLfpVI#t=8m10s', description: 'Samy Clark' }
             ]
           },
           {
@@ -244,14 +269,14 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'Come Into My Life (Ziad Rifffffs)', duration: '00:00', url: 'https://vimeo.com/319978775#t=0m0s' },
-              { title: 'My Little Suede Shoes (Charlie Parker)', duration: '04:49', url: 'https://vimeo.com/319978775#t=4m49s' }
+              { title: 'Come Into My Life', duration: '00:00', url: 'https://vimeo.com/319978775#t=0m0s', description: 'Ziad Riffs' },
+              { title: 'My Little Suede Shoes', duration: '04:49', url: 'https://vimeo.com/319978775#t=4m49s', description: 'Charlie Parker (composer)' }
             ]
           },
           {
             title: 'chapter 2',
             songs: [
-              { title: 'Un Verre chez Nous', duration: '00:00', url: 'https://vimeo.com/319978482#t=0m0s', description: 'Ziad Says Nawaaal! Ya Nawaaaal; Two ladies (FIXME)' },
+              { title: 'Un Verre Chez Nous', duration: '00:00', url: 'https://vimeo.com/319978482#t=0m0s', description: 'Ziad Says Nawaaal! Ya Nawaaaal; Two ladies (FIXME)' },
               { title: 'On Broadway', duration: '03:30', url: 'https://vimeo.com/319978482#t=3m30s' }
             ]
           }
@@ -276,33 +301,40 @@ export class ConcertService {
       {
         title: 'Junkyard w. Lara Rain',
         date: 'April 20, 2015',
-        description: 'great show',
+        description: 'Great Improvizations by Ziad and the Musicians. Lara Rain - Vocals, Ziad Rahbani - Piano & Keyboards. Trumpet: Martin Loyato, Guitar: Adel Minkara, Drums: Dany Gib, Percussions: Ayman Zibdawi, Bass: Khaled Omran, Sound: Wissam Jarrah, Recording: Mohamad Khattam',
         chapters: [
           {
             title: 'chapter 1',
             url: 'https://vimeo.com/332201616',
             songs: [
-              { title: 'tuning', duration: '00:00', url: 'https://vimeo.com/332201616#t=0m0s' },
-              { title: '?????', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
-              { title: '???!! Lullaby Birdland?', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s' },
-              { title: 'And I love you so', duration: '08:47', url: 'https://vimeo.com/332201616#t=8m47s' },
-              { title: 'Fly me to the moon', duration: '11:05', url: 'https://vimeo.com/332201616#t=11m5s' },
-              { title: 'Ma bitfid**', duration: '12:35', url: 'https://vimeo.com/332201616#t=12m35s' },
-              { title: 'Mish Bass Talfinli/Se Dande Se Samba', duration: '16:10', url: 'https://vimeo.com/332201616#t=16m10s' }
+              { title: 'Fixme', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
+              { title: 'Lullaby Birdland', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s', description: 'probable Lullaby Birdland (verify)' },
+              { title: 'And I Love You So', duration: '08:47', url: 'https://vimeo.com/332201616#t=8m47s' },
+              { title: 'Fly Me to the Moon', duration: '11:05', url: 'https://vimeo.com/332201616#t=11m5s' },
+              { title: 'Ma Bitfid', duration: '12:35', url: 'https://vimeo.com/332201616#t=12m35s' },
+              { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '16:10', url: 'https://vimeo.com/332201616#t=16m10s' }
             ]
           },
           {
             title: 'chapter 2',
             url: 'https://vimeo.com/332202608',
             songs: [
-              { title: 'start', duration: '00:00', url: 'https://vimeo.com/332202608#t=0m0s' }
+              { title: 'Favela', description: 'Antonio Carlos Jobim (composer)', duration: '00:00', url: 'https://vimeo.com/332202608#t=0m0s' },
+              { title: 'The Look of Love', duration: '03:20', url: 'https://vimeo.com/332202608#t=3m20s', description: 'Burt Bacharach (composer)' },
+              { title: 'Come Into My Life', duration: '06:30', url: 'https://vimeo.com/332202608#t=6m30s', description: 'Joyce Sims (original artist)' },
+              { title: 'Spiral', description: 'Crusaders. Three great piano solos by Ziad Riff',
+                duration: '12:13', url: 'https://vimeo.com/332202608#t=7m10s' }
             ]
           },
           {
             title: 'chapter 3',
             url: 'https://vimeo.com/332203272',
             songs: [
-              { title: 'start', duration: '00:00', url: 'https://vimeo.com/332203272#t=0m0s' }
+              { title: '?1', duration: '00:00', url: 'https://vimeo.com/332203272#t=0m0s' },
+              { title: '?2', duration: '01:45', url: 'https://vimeo.com/332203272#t=1m45s' },
+              { title: 'Feeling Good', description: 'Nina Simone (popularized). amazing keyboard solo', duration: '04:35', url: 'https://vimeo.com/332203272#t=4m35s' },
+              { title: 'Credits with ?1', duration: '07:00', url: 'https://vimeo.com/332203272#t=7m0s' },
+              { title: 'Mays El Rim', duration: '15:00', url: 'https://vimeo.com/332203272#t=13m0s' }
             ]
           }
         ]
@@ -316,8 +348,8 @@ export class ConcertService {
             title: 'chapter 1',
             url: 'https://vimeo.com/325763780',
             songs: [
-              { title: "Piaff Song — Hymne A L'Amour (FIXME)", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s' },
-              { title: 'Whatever Lola Wants', duration: '05:33', url: 'https://vimeo.com/325763780#t=5m33s' },
+              { title: "Piaf Song — Hymne A L'Amour", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
+              { title: 'Whatever Lola Wants', duration: '04:27', url: 'https://vimeo.com/325763780#t=5m33s' },
               { title: '(unknown)', duration: '10:00', url: 'https://vimeo.com/325763780#t=10m0s' }
             ]
           }
@@ -474,8 +506,8 @@ export class ConcertService {
               { title: 'LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)', duration: '04:27', url: 'https://vimeo.com/333985443#t=4m27s' },
               { title: 'Shou Hal Iyyam', duration: '07:25', url: 'https://vimeo.com/333985443#t=7m25s' },
               { title: 'Credits', duration: '13:00', url: 'https://vimeo.com/333985443#t=13m0s' },
-              { title: 'Amrika Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s' },
-              { title: 'Amrika Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
+              { title: 'Amreeka Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s' },
+              { title: 'Amreeka Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
             ]
           }
         ]
@@ -522,10 +554,10 @@ export class ConcertService {
               { title: 'Layk', duration: '00:00', url: 'https://vimeo.com/328235271#t=0m0s' },
               { title: 'Ya Jabal Al Sheikh', duration: '03:50', url: 'https://vimeo.com/328235271#t=3m50s' },
               { title: 'Sahraneen', duration: '07:17', url: 'https://vimeo.com/328235271#t=7m17s' },
-              { title: 'Mais Al Rim intro', duration: '09:29', url: 'https://vimeo.com/328235271#t=9m29s' },
+              { title: 'Mays El Rim Intro', duration: '09:29', url: 'https://vimeo.com/328235271#t=9m29s' },
               { title: 'Talfan Ayyash', duration: '14:30', url: 'https://vimeo.com/328235271#t=14m30s' },
               { title: '3ataba', duration: '19:55', url: 'https://vimeo.com/328235271#t=19m55s' },
-              { title: 'Ya bent Al Mo3awin', duration: '25:18', url: 'https://vimeo.com/328235271#t=25m18s' },
+              { title: 'Ya Bent Al Mo3awin', duration: '25:18', url: 'https://vimeo.com/328235271#t=25m18s' },
               { title: 'Amreeka Meen', duration: '29:18', url: 'https://vimeo.com/328235271#t=29m18s' }
             ]
           }
