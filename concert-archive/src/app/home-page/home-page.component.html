@@ -48,11 +48,12 @@
   </div>
 </div>
 
-<!-- Full movable video popup removed — only dock/player remains -->
 
 <!-- Audio-only dock (bottom-right desktop, bottom on mobile) -->
-<div class="player-dock" *ngIf="currentSong">
+<div #playerDock class="player-dock" *ngIf="currentSong" [style.width.px]="currentWidth" [style.height.px]="currentHeight">
   <div class="dock-content">
+    <!-- Resize handle (top-left). Drag to resize between min (1x) and max (3x). -->
+    <div class="resize-handle top-left" (pointerdown)="onResizeStart($event)" title="Resize"></div>
     <div class="dock-left">
       <div class="dock-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
       <div class="dock-controls">

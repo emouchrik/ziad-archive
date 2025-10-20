@@ -26,6 +26,22 @@ export class HomePageComponent {
   // last raw embed string used for the dock
   private lastDockEmbed: string | null = null;
 
+  // Resize / scale state for the dock player
+  private baseWidth = 320; // base (min) width in px
+  private baseHeight = 180; // base (min) height in px (16:9)
+  currentWidth = this.baseWidth;
+  currentHeight = this.baseHeight;
+  private minScale = 1;
+  private maxScale = 3;
+
+  // pointer resize tracking
+  private resizing = false;
+  private resizePointerId: number | null = null;
+  private resizeStartX = 0;
+  private resizeStartY = 0;
+  private startWidth = this.baseWidth;
+  private startHeight = this.baseHeight;
+
   constructor(private concertService: ConcertService) {
     this.concerts = this.concertService.getConcerts();
   }
@@ -117,6 +133,8 @@ export class HomePageComponent {
   ngOnDestroy(): void {
     // ensure we remove any listeners (dock-related)
     this.stopDock();
+    // remove any active pointer listeners
+    this.removeDocumentPointerListeners();
   }
 
   // open dock (audio-first) when clicking a song
@@ -199,6 +217,89 @@ export class HomePageComponent {
   }
 
   // Drag/resize/movable-popup code removed (dock-only)
+
+  // ---------- Resize handlers (top-left handle) ----------
+  onResizeStart(event: PointerEvent) {
+    // left/top handle: we interpret moving pointer down-right as enlarging the player
+    // use pointer capture so we keep receiving events even if entering iframe
+    const ev = event as PointerEvent;
+    (ev.target as Element)?.setPointerCapture?.(ev.pointerId);
+    this.resizePointerId = ev.pointerId;
+    this.resizing = true;
+    this.resizeStartX = ev.clientX;
+    this.resizeStartY = ev.clientY;
+    this.startWidth = this.currentWidth;
+    this.startHeight = this.currentHeight;
+
+    // mark element state via class: add to body or player-dock later via template
+    const dockEl = document.querySelector('.player-dock');
+    dockEl?.classList.add('resizing');
+
+    // attach move/up handlers on document to ensure we track beyond iframe
+    document.addEventListener('pointermove', this.onPointerMove as EventListener, { passive: false });
+    document.addEventListener('pointerup', this.onPointerUp as EventListener);
+    document.addEventListener('pointercancel', this.onPointerUp as EventListener);
+    // prevent default to avoid text selection gestures
+    ev.preventDefault();
+  }
+
+  private onPointerMove = (ev: Event) => {
+    if (!this.resizing) return;
+    const e = ev as PointerEvent;
+    // compute pointer movement since start
+    // For a top-left handle on a player anchored to bottom-right, moving the pointer
+    // right/down should shrink the player (reduce width/height); moving left/up should expand.
+    const deltaX = e.clientX - this.resizeStartX; // positive when moving right
+    const deltaY = e.clientY - this.resizeStartY; // positive when moving down
+
+    // Proposed new sizes: moving right/down reduces size
+    const proposedWidth = this.startWidth - deltaX;
+    const proposedHeight = this.startHeight - deltaY;
+
+    // Maintain aspect ratio using base ratio (width-driven)
+    const aspect = this.baseWidth / this.baseHeight;
+    let width = proposedWidth;
+    // Clamp width to avoid negative values before computing height
+    width = Math.max(1, width);
+    let height = Math.round(width / aspect);
+
+    // compute scale based on width / baseWidth
+    let scale = width / this.baseWidth;
+    scale = Math.max(this.minScale, Math.min(this.maxScale, scale));
+
+    // set clamped sizes
+    this.currentWidth = Math.round(this.baseWidth * scale);
+    this.currentHeight = Math.round(this.baseHeight * scale);
+
+    // prevent default to avoid accidental scrolling while resizing
+    e.preventDefault();
+  };
+
+  private onPointerUp = (ev?: Event) => {
+    if (!this.resizing) return;
+    this.resizing = false;
+    // release pointer capture if available
+    if (this.resizePointerId !== null) {
+      try {
+        const handle = document.querySelector('.resize-handle');
+        (handle as Element)?.releasePointerCapture?.(this.resizePointerId);
+      } catch (e) {
+        // ignore
+      }
+    }
+    this.resizePointerId = null;
+
+    const dockEl = document.querySelector('.player-dock');
+    dockEl?.classList.remove('resizing');
+
+    this.removeDocumentPointerListeners();
+  };
+
+  private removeDocumentPointerListeners() {
+    document.removeEventListener('pointermove', this.onPointerMove as EventListener);
+    document.removeEventListener('pointerup', this.onPointerUp as EventListener);
+    document.removeEventListener('pointercancel', this.onPointerUp as EventListener);
+  }
 
   // return a flat array of songs for a concert (concatenate chapters)
   getAllSongs(concert: Concert) {

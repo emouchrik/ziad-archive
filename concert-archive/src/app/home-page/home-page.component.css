@@ -6,8 +6,9 @@
   position: fixed;
   right: 16px;
   bottom: 16px;
-  width: 320px; /* target width for 2x preview */
-  height: 180px; /* target height for 2x preview */
+  /* base size (current min size). JS will set inline width/height based on scale */
+  width: 320px; /* base width at scale=1 */
+  height: 180px; /* base height at scale=1 */
   background: transparent; /* show only video */
   border-radius: 0;
   box-shadow: none;
@@ -42,6 +43,30 @@
   display: block;
   border: 0;
 }
+
+/* Resize handle (upper-left) */
+.resize-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(0,0,0,0.25);
+  z-index: 4010;
+  border-radius: 3px;
+  display: block;
+  touch-action: none; /* allow pointer events for dragging */
+}
+.resize-handle.top-left {
+  left: 6px;
+  top: 6px;
+  cursor: nwse-resize; /* visually indicates diagonal resize */
+}
+
+/* When resizing, make the handle slightly larger/visible */
+.player-dock.resizing .resize-handle { background: rgba(0,0,0,0.4); transform: scale(1.05); }
+
+/* Ensure pointer events on the iframe don't swallow pointermove during resize
+   We will use setPointerCapture on the handle to keep events routed. */
+.dock-video app-iframe-wrapper, .dock-video iframe { pointer-events: auto; }
 
 /* fallback preview styling when embed not available */
 .dock-video > div[style] {
