@@ -18,186 +18,19 @@ import { IframeWrapperComponent } from '../shared/iframe-wrapper/iframe-wrapper.
 export class HomePageComponent {
   concerts: Concert[];
 
-  // player sizing (px)
-  playerWidth = 380;
-  playerHeight = 360;
-  private cornerResizing = false;
-  private cornerStartX = 0;
-  private cornerStartY = 0;
-  private startWidth = 0;
-  private startHeight = 0;
-  private cornerMode: 'tl' | 'tr' | 'bl' | 'br' = 'br';
-  private readonly minPlayerWidth = 260;
-  private readonly minPlayerHeight = 160;
-  private readonly maxPlayerWidth = 1200;
-  private readonly maxPlayerHeight = 1000;
-
-  // single player state
+  // single player state (dock only)
   currentSong: Song | null = null;
-  // now store raw embed URL strings; the wrapper will set iframe.src directly
-  currentEmbedUrl: string | null = null;
-  // last raw embed string used for the popup (used to detect identical embeds)
-  private lastPopupEmbed: string | null = null;
-
-  // Audio-only dock state
+  // dock embed URL (iframe src) and playing flag
   dockEmbedUrl: string | null = null;
   dockPlaying = false;
   // last raw embed string used for the dock
   private lastDockEmbed: string | null = null;
-  showVideoPopup = false; // only open video popup when user requests it
-
-  // collapsed dock state (when true the player appears as a small bottom-right dock)
-  isCollapsed = false;
-  // movable player state
-  playerLeft: number | null = null; // if null, use right instead
-  playerTop = 20;
-  playerRight = 16; // default right offset when not moved
-  private dragging = false;
-  private dragStartX = 0;
-  private dragStartY = 0;
-  private dragStartLeft = 0;
-  private dragStartTop = 0;
 
   constructor(private concertService: ConcertService) {
     this.concerts = this.concertService.getConcerts();
   }
 
-  openPlayer(song: { title: string; url?: string }) {
-    // Stop dock audio when opening the full video popup
-    this.stopDock();
-    this.currentSong = song as Song;
-    this.isCollapsed = false; // open expanded by default
-    this.showVideoPopup = true;
-    if (!song.url) {
-      this.setEmbedFor('popup', null);
-      return;
-    }
-    const embed = this.getEmbedUrl(song.url);
-    this.setEmbedFor('popup', embed);
-  }
-
-  closePlayer() {
-    this.currentSong = null;
-    this.currentEmbedUrl = null;
-    this.isCollapsed = false;
-  }
-
-  collapsePlayer() {
-    this.isCollapsed = true;
-  }
-
-  expandPlayer() {
-    // smooth expand: ensure the element remains present and animate via CSS
-    this.isCollapsed = false;
-  }
-
-  toggleCollapse() {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
-  // corner resize handlers
-  startCornerResize(evt: MouseEvent, mode: 'tl' | 'tr' | 'bl' | 'br') {
-    this.startCornerResizeGeneric(evt.clientX, evt.clientY, mode);
-    evt.preventDefault();
-  }
-
-  startCornerResizeTouch(evt: TouchEvent, mode: 'tl' | 'tr' | 'bl' | 'br') {
-    if (!evt.touches || evt.touches.length === 0) return;
-    const t = evt.touches[0];
-    this.startCornerResizeGeneric(t.clientX, t.clientY, mode);
-    evt.preventDefault();
-  }
-
-  private startCornerResizeGeneric(clientX: number, clientY: number, mode: 'tl' | 'tr' | 'bl' | 'br') {
-    this.cornerResizing = true;
-    this.cornerStartX = clientX;
-    this.cornerStartY = clientY;
-    this.startWidth = this.playerWidth;
-    this.startHeight = this.playerHeight;
-    this.cornerMode = mode;
-    // record current left/top for adjustments when resizing from left/top corners
-    this.dragStartLeft = this.playerLeft === null ? window.innerWidth - this.playerWidth - (this.playerRight || 0) : this.playerLeft;
-    this.dragStartTop = this.playerTop || 0;
-    document.addEventListener('mousemove', this.onCornerMove);
-  document.addEventListener('mouseup', this.stopCornerResize);
-  // also listen for pointerup and pointercancel (better cross-platform) and window blur
-  document.addEventListener('pointerup', this.stopCornerResize, true);
-  document.addEventListener('pointercancel', this.stopCornerResize, true);
-  window.addEventListener('blur', this.stopCornerResize);
-    document.addEventListener('touchmove', this.onCornerTouchMove, { passive: false });
-    document.addEventListener('touchend', this.stopCornerResize);
-  }
-
-  private onCornerMove = (e: MouseEvent) => {
-    if (!this.cornerResizing) return;
-    this.handleResize(e.clientX, e.clientY);
-  };
-
-  private onCornerTouchMove = (e: TouchEvent) => {
-    if (!this.cornerResizing || !e.touches || e.touches.length === 0) return;
-    e.preventDefault();
-    const t = e.touches[0];
-    this.handleResize(t.clientX, t.clientY);
-  };
-
-  private handleResize(clientX: number, clientY: number) {
-    const dx = clientX - this.cornerStartX;
-    const dy = clientY - this.cornerStartY;
-    let newWidth = this.startWidth;
-    let newHeight = this.startHeight;
-    let newLeft = this.dragStartLeft;
-    let newTop = this.dragStartTop;
-
-    switch (this.cornerMode) {
-      case 'br':
-        newWidth = this.startWidth + dx;
-        newHeight = this.startHeight + dy;
-        break;
-      case 'bl':
-        newWidth = this.startWidth - dx;
-        newHeight = this.startHeight + dy;
-        newLeft = this.dragStartLeft + dx; // shift left edge
-        break;
-      case 'tr':
-        newWidth = this.startWidth + dx;
-        newHeight = this.startHeight - dy;
-        newTop = this.dragStartTop + dy; // shift top edge
-        break;
-      case 'tl':
-        newWidth = this.startWidth - dx;
-        newHeight = this.startHeight - dy;
-        newLeft = this.dragStartLeft + dx;
-        newTop = this.dragStartTop + dy;
-        break;
-    }
-
-    // clamp sizes
-    newWidth = Math.max(this.minPlayerWidth, Math.min(this.maxPlayerWidth, Math.round(newWidth)));
-    newHeight = Math.max(this.minPlayerHeight, Math.min(this.maxPlayerHeight, Math.round(newHeight)));
-
-    // clamp positions so the player remains visible
-    newLeft = Math.max(8, Math.min(window.innerWidth - newWidth - 8, Math.round(newLeft)));
-    newTop = Math.max(8, Math.min(window.innerHeight - 80 - newHeight, Math.round(newTop)));
-
-    this.playerWidth = newWidth;
-    this.playerHeight = newHeight;
-    this.playerLeft = newLeft;
-    this.playerTop = newTop;
-    // clear playerRight to prioritize left-based positioning
-    this.playerRight = 0;
-  }
-
-  private stopCornerResize = (_e?: MouseEvent) => {
-    if (!this.cornerResizing) return;
-    this.cornerResizing = false;
-    document.removeEventListener('mousemove', this.onCornerMove);
-    document.removeEventListener('mouseup', this.stopCornerResize);
-    document.removeEventListener('pointerup', this.stopCornerResize, true);
-    document.removeEventListener('pointercancel', this.stopCornerResize, true);
-    window.removeEventListener('blur', this.stopCornerResize);
-    document.removeEventListener('touchmove', this.onCornerTouchMove as EventListener);
-    document.removeEventListener('touchend', this.stopCornerResize);
-  };
+  // popup, resize and drag removed — dock-only player
 
   // small helper to show concise titles
   shortTitle(title: string, max = 42): string {
@@ -282,18 +115,14 @@ export class HomePageComponent {
   }
 
   ngOnDestroy(): void {
-    // ensure we remove any listeners
-    this.stopCornerResize();
-    this.stopDrag();
+    // ensure we remove any listeners (dock-related)
     this.stopDock();
   }
 
   // open dock (audio-first) when clicking a song
   openDockPlayer(song: { title: string; url?: string }) {
-    // Minimize any full popup and show dock audio
+    // Show dock audio
     this.currentSong = song as Song;
-    this.showVideoPopup = false;
-    this.currentEmbedUrl = null;
     if (!song.url) {
       this.setEmbedFor('dock', null);
       return;
@@ -302,26 +131,9 @@ export class HomePageComponent {
     this.setEmbedFor('dock', embed);
   }
 
-  // Universal song click handler: update whichever player is currently visible
+  // Universal song click handler: play in dock
   playSong(song: { title: string; url?: string }) {
     this.currentSong = song as Song;
-    // if the video popup is open, update it
-    if (this.showVideoPopup) {
-      // ensure dock is stopped
-      this.stopDock();
-      if (!song.url) {
-        this.setEmbedFor('popup', null);
-        return;
-      }
-      const embed = this.getEmbedUrl(song.url);
-      this.setEmbedFor('popup', embed);
-      this.isCollapsed = false;
-      return;
-    }
-
-    // otherwise update the dock (start or replace playback)
-    this.currentEmbedUrl = null;
-    this.showVideoPopup = false;
     // destroy any existing dock player and then set new embed
     this.stopDock();
     if (!song.url) {
@@ -346,7 +158,7 @@ export class HomePageComponent {
     this.dockEmbedUrl = null;
     this.dockPlaying = false;
     this.currentSong = null;
-    this.showVideoPopup = false;
+    // full-popup removed
   }
 
   stopDock() {
@@ -355,38 +167,7 @@ export class HomePageComponent {
   }
 
   // open the large video popup from the dock
-  openVideoFromDock() {
-    if (!this.currentSong) return;
-    // stop dock to avoid double audio
-    this.stopDock();
-    this.showVideoPopup = true;
-    if (!this.currentSong.url) {
-      this.setEmbedFor('popup', null);
-      return;
-    }
-    const embed = this.getEmbedUrl(this.currentSong.url);
-    this.setEmbedFor('popup', embed);
-    this.isCollapsed = false;
-  }
-
-  // minimize the full popup back to the dock (audio-only)
-  minimizeToDock() {
-    if (!this.currentSong) return;
-    const url = this.currentSong.url;
-    this.showVideoPopup = false;
-    this.currentEmbedUrl = null;
-    if (!url) return;
-    const embed = this.getEmbedUrl(url);
-    this.setEmbedFor('dock', embed);
-    this.dockPlaying = true;
-  }
-
-  // close the video popup and ensure dock is stopped
-  closeVideoPopup() {
-    this.showVideoPopup = false;
-    this.currentEmbedUrl = null;
-    this.stopDock();
-  }
+  // popup video removed; dock-only player
 
   // Helper to set embed URLs for popup or dock. We track the raw embed string
   // so we can detect when two different song entries map to the same iframe URL
@@ -394,7 +175,7 @@ export class HomePageComponent {
   // the iframe src (which can be brittle), we append a short nonce query
   // parameter to the embed URL when the new embed equals the previous one.
   // This makes the URL distinct and forces the browser to reload the iframe.
-  private setEmbedFor(target: 'popup' | 'dock', embed: string | null) {
+  private setEmbedFor(target: 'dock', embed: string | null) {
     const addReloadNonce = (url: string) => {
       // insert the nonce before any hash (#) so fragments (like Vimeo #t=) remain
       const hashIndex = url.indexOf('#');
@@ -404,114 +185,20 @@ export class HomePageComponent {
       return `${base}${sep}r=${Date.now()}${hash}`;
     };
 
-    // ensure the standalone wrapper component is in the imports (added below)
-    if (target === 'popup') {
-      const prev = this.lastPopupEmbed;
-      if (!embed) {
-        this.currentEmbedUrl = null;
-        this.lastPopupEmbed = null;
-        return;
-      }
-      const finalEmbed = embed === prev ? addReloadNonce(embed) : embed;
-      // assign raw string; the wrapper sets iframe.src directly
-      this.currentEmbedUrl = finalEmbed;
-      this.lastPopupEmbed = embed;
-    } else {
-      const prev = this.lastDockEmbed;
-      if (!embed) {
-        this.dockEmbedUrl = null;
-        this.dockPlaying = false;
-        this.lastDockEmbed = null;
-        return;
-      }
-      const finalEmbed = embed === prev ? addReloadNonce(embed) : embed;
-      this.dockEmbedUrl = finalEmbed;
-      this.lastDockEmbed = embed;
-      this.dockPlaying = true;
+    if (!embed) {
+      this.dockEmbedUrl = null;
+      this.dockPlaying = false;
+      this.lastDockEmbed = null;
+      return;
     }
+    const prev = this.lastDockEmbed;
+    const finalEmbed = embed === prev ? addReloadNonce(embed) : embed;
+    this.dockEmbedUrl = finalEmbed;
+    this.lastDockEmbed = embed;
+    this.dockPlaying = true;
   }
 
-  // Drag-to-move handlers (for header dragging)
-  startDrag(evt: MouseEvent) {
-    // only start drag for left click
-    if (evt.button !== 0) return;
-    evt.preventDefault();
-    this.dragging = true;
-    this.dragStartX = evt.clientX;
-    this.dragStartY = evt.clientY;
-    // initialize left/top from current state; if left is null, compute from right
-    if (this.playerLeft === null) {
-      this.dragStartLeft = window.innerWidth - this.playerWidth - (this.playerRight || 0);
-    } else {
-      this.dragStartLeft = this.playerLeft;
-    }
-    this.dragStartTop = this.playerTop || 0;
-    document.addEventListener('mousemove', this.onDragMove);
-    document.addEventListener('mouseup', this.stopDrag);
-    document.addEventListener('pointerup', this.stopDrag, true);
-    document.addEventListener('pointercancel', this.stopDrag, true);
-    window.addEventListener('blur', this.stopDrag);
-  }
-
-  startDragTouch(evt: TouchEvent) {
-    if (!evt.touches || evt.touches.length === 0) return;
-    const t = evt.touches[0];
-    this.dragging = true;
-    this.dragStartX = t.clientX;
-    this.dragStartY = t.clientY;
-    if (this.playerLeft === null) {
-      this.dragStartLeft = window.innerWidth - this.playerWidth - (this.playerRight || 0);
-    } else {
-      this.dragStartLeft = this.playerLeft;
-    }
-    this.dragStartTop = this.playerTop || 0;
-    document.addEventListener('touchmove', this.onDragTouchMove, { passive: false });
-    document.addEventListener('touchend', this.stopDrag);
-    document.addEventListener('pointerup', this.stopDrag, true);
-    document.addEventListener('pointercancel', this.stopDrag, true);
-    window.addEventListener('blur', this.stopDrag);
-  }
-
-  private onDragMove = (e: MouseEvent) => {
-    if (!this.dragging) return;
-    const dx = e.clientX - this.dragStartX;
-    const dy = e.clientY - this.dragStartY;
-    let newLeft = this.dragStartLeft + dx;
-    let newTop = this.dragStartTop + dy;
-    // constrain to viewport
-    newLeft = Math.max(8, Math.min(window.innerWidth - this.playerWidth - 8, newLeft));
-    newTop = Math.max(8, Math.min(window.innerHeight - 80, newTop));
-    this.playerLeft = Math.round(newLeft);
-    this.playerTop = Math.round(newTop);
-  };
-
-  private onDragTouchMove = (e: TouchEvent) => {
-    if (!this.dragging || !e.touches || e.touches.length === 0) return;
-    e.preventDefault();
-    const t = e.touches[0];
-    const dx = t.clientX - this.dragStartX;
-    const dy = t.clientY - this.dragStartY;
-    let newLeft = this.dragStartLeft + dx;
-    let newTop = this.dragStartTop + dy;
-    newLeft = Math.max(8, Math.min(window.innerWidth - this.playerWidth - 8, newLeft));
-    newTop = Math.max(8, Math.min(window.innerHeight - 80, newTop));
-    this.playerLeft = Math.round(newLeft);
-    this.playerTop = Math.round(newTop);
-  };
-
-  private stopDrag = (_e?: Event) => {
-    if (!this.dragging) return;
-    this.dragging = false;
-    // when finished dragging, clear right offset so left/top take precedence
-    this.playerRight = 0;
-    document.removeEventListener('mousemove', this.onDragMove);
-    document.removeEventListener('mouseup', this.stopDrag);
-    document.removeEventListener('pointerup', this.stopDrag, true);
-    document.removeEventListener('pointercancel', this.stopDrag, true);
-    window.removeEventListener('blur', this.stopDrag);
-    document.removeEventListener('touchmove', this.onDragTouchMove as EventListener);
-    document.removeEventListener('touchend', this.stopDrag);
-  };
+  // Drag/resize/movable-popup code removed (dock-only)
 
   // return a flat array of songs for a concert (concatenate chapters)
   getAllSongs(concert: Concert) {

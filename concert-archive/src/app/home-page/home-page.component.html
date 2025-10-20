@@ -48,44 +48,7 @@
   </div>
 </div>
 
-<!-- Movable video popup (shown only when user explicitly opens the video) -->
-<div *ngIf="showVideoPopup && currentSong" class="movable-player" (click)="$event.stopPropagation()"
-     [class.collapsed]="isCollapsed"
-     [style.width.px]="playerWidth"
-  [style.height.px]="isCollapsed ? null : playerHeight"
-  [style.left.px]="playerLeft !== null ? playerLeft : null"
-  [style.top.px]="playerTop"
-     [style.right.px]="playerLeft === null ? playerRight : null">
-
-  <div class="player-header" (mousedown)="startDrag($event)" (touchstart)="startDragTouch($event)">
-    <div class="player-title">{{ shortTitle(currentSong?.title || '', 48) }}</div>
-    <div class="player-actions">
-      <button mat-icon-button title="Minimize to dock" (click)="minimizeToDock(); $event.stopPropagation()" aria-label="Minimize"><mat-icon>minimize</mat-icon></button>
-      <button mat-icon-button title="Close" (click)="closeVideoPopup(); $event.stopPropagation()" aria-label="Close"><img src="/assets/close.png" alt="Close" /></button>
-    </div>
-  </div>
-
-  <div class="player-body" [attr.aria-hidden]="isCollapsed">
-  <app-iframe-wrapper *ngIf="currentEmbedUrl" [src]="currentEmbedUrl"></app-iframe-wrapper>
-    <div *ngIf="!currentEmbedUrl" class="no-embed">Video cannot be embedded.
-      <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
-    </div>
-  </div>
-
-  <div class="player-compact" *ngIf="isCollapsed">
-    <div class="compact-left" [attr.title]="currentSong?.title">{{ shortTitle(currentSong?.title || '', 36) }}</div>
-    <div class="compact-actions">
-      <button mat-icon-button (click)="expandPlayer(); $event.stopPropagation()" aria-label="Expand player"><mat-icon>open_in_full</mat-icon></button>
-      <button mat-icon-button title="Close" (click)="closeVideoPopup(); $event.stopPropagation()" aria-label="Close player"><img src="/assets/close.png" alt="Close" /></button>
-    </div>
-  </div>
-
-  <!-- corner resize handles -->
-  <div class="resize-handle top-left" title="Resize" (mousedown)="startCornerResize($event,'tl')" (touchstart)="startCornerResizeTouch($event,'tl')"></div>
-  <div class="resize-handle top-right" title="Resize" (mousedown)="startCornerResize($event,'tr')" (touchstart)="startCornerResizeTouch($event,'tr')"></div>
-  <div class="resize-handle bottom-left" title="Resize" (mousedown)="startCornerResize($event,'bl')" (touchstart)="startCornerResizeTouch($event,'bl')"></div>
-  <div class="resize-handle bottom-right" title="Resize" (mousedown)="startCornerResize($event,'br')" (touchstart)="startCornerResizeTouch($event,'br')"></div>
-</div>
+<!-- Full movable video popup removed — only dock/player remains -->
 
 <!-- Audio-only dock (bottom-right desktop, bottom on mobile) -->
 <div class="player-dock" *ngIf="currentSong">

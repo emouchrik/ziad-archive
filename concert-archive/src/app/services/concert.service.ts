@@ -28,7 +28,7 @@ export class ConcertService {
               { title: 'Lullaby Birdland', duration: '00:00', url: 'https://vimeo.com/327370274#t=0m0s', description: 'George Shearing (composer)' },
               { title: 'Mish Bass Talfinli', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
               { title: 'Ma Tfill + Manha De Carnaval', duration: '08:20', url: 'https://vimeo.com/327370274#t=8m20s' },
-              { title: 'Gingele Yele ... Gingele Yela', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
+              { title: 'Gingele', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
               { title: 'Mexicano', duration: '15:50', url: 'https://vimeo.com/327370274#t=15m50s', description: 'incredible piano solo' },
               { title: 'Mas Que Nada', duration: '21:45', url: 'https://vimeo.com/327370274#t=21m45s', description: 'Jorge Ben (composer)' }
             ]
@@ -200,7 +200,7 @@ export class ConcertService {
             url: 'https://vimeo.com/320573330',
             songs: [
               { title: 'O grande amor (Antônio Carlos Jobim)', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s' },
-              { title: 'Qu\'elle est lourde à porter l\'absence de l\'ami', duration: '05:00', url: 'https://vimeo.com/320573330#t=5m0s' },
+              { title: 'Qu\'elle est lourde à porter l\'absence de l\'ami', duration: '03:30', url: 'https://vimeo.com/320573330#t=3m30s' },
               { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '07:10', url: 'https://vimeo.com/320573330#t=7m10s' },
               { title: 'My Funny Valentine', duration: '09:40', url: 'https://vimeo.com/320573330#t=9m40s' },
               { title: 'Yardbird Suite', duration: '13:05', url: 'https://vimeo.com/320573330#t=13m5s' },

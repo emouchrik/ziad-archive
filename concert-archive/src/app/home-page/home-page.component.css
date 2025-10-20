@@ -1,61 +1,57 @@
-/* small layout tweaks */
-mat-expansion-panel { margin-bottom: 0.5rem; }
-mat-list-item { align-items: center; padding-top: 2px; padding-bottom: 2px; }
-button[mat-icon-button] { margin-right: 0.5rem; }
-
-:host {
-  display: block;
-  background: #ffffff; /* page white background */
-  color: #111827;
-}
-
-.song-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 8px;
-  min-width: 0; /* allow truncation inside flex container */
-}
-
-/* clickable title button that looks like plain text but accessible */
-.song-link {
-  padding: 0;
-  min-width: 0;
-  text-align: left;
-  font-weight: 600;
-  text-transform: none;
-  color: inherit;
-  line-height: 1.2;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.song-link:hover {
-  text-decoration: underline;
-}
-
-/* ensure duration stays small and subtle */
-.song-duration {
-  font-size: 12px;
-  color: rgba(0,0,0,0.6);
-  margin-top: 2px;
-}
-
-/* mini player styles */
-.mini-player {
+/* Simplified docked mini-player: video-only, minimal chrome
+   - Remove title/controls whitespace
+   - Make preview twice as large (320x180) and let iframe fill
+   - Remove background, border-radius and heavy shadow so the video is the focus */
+.player-dock {
   position: fixed;
   right: 16px;
   bottom: 16px;
-  width: 360px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-  border-radius: 8px;
+  width: 320px; /* target width for 2x preview */
+  height: 180px; /* target height for 2x preview */
+  background: transparent; /* show only video */
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 4000;
   overflow: hidden;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* remove hover lift */
+.player-dock:hover { transform: none; }
+
+/* dock layout: single video region */
+.dock-content { display: block; width: 100%; height: 100%; }
+
+/* hide left area (title/controls) to remove whitespace and focus on video */
+.dock-left, .dock-controls, .dock-title { display: none !important; }
+
+/* video region should occupy whole dock */
+.dock-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+/* ensure the iframe wrapper and iframe fill the region */
+.dock-video app-iframe-wrapper,
+.dock-video iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border: 0;
+}
+
+/* fallback preview styling when embed not available */
+.dock-video > div[style] {
+  width: 100% !important;
+  height: 100% !important;
+  background: #000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #fff !important;
 }
 
 /* HERO */
@@ -217,16 +213,8 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   .concert-date { font-size: 14px; }
 }
 
-/* When screen is narrower, keep the sidebar from forcing horizontal scrolling by
-   dropping it below the concert columns and giving it full width */
+/* Responsive tweaks for narrow viewports */
 @media (max-width: 980px) {
-  .player-sidebar {
-    position: static;
-    width: 100%;
-    margin-left: 0;
-    margin-top: 18px;
-    border-radius: 8px;
-  }
   .concert-table { gap: 16px; }
 }
 
@@ -240,205 +228,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   .hero-title { font-size: 32px; }
 }
 
-.player-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(250,250,250,0.95));
-}
-
-.player-title {
-  font-size: 14px;
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.player-body {
-  background: #000;
-}
-
-.player-body iframe {
-  width: 100%;
-  height: 202px; /* 16:9-ish for 360px width */
-  display: block;
-  border: 0;
-}
-
-/* overlay backdrop to dim the app and center the player */
-.player-backdrop {
-  position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3000;
-  padding: 24px;
-}
-
-/* main player container, takes most of the screen */
-.player-container {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  width: min(1200px, 96vw);   /* large but constrained */
-  height: min(760px, 88vh);   /* leave some room for backdrop */
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-}
-
-/* header with title and controls */
-.player-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: #fafafa;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-
-.player-title {
-  font-weight: 600;
-  font-size: 16px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: calc(100% - 48px);
-}
-
-.player-controls {
-  display: flex;
-  gap: 8px;
-}
-
-/* video area fills remaining space */
-.player-body {
-  background: #000;
-  flex: 1 1 auto;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-}
-
-.player-body iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
-/* fallback UI */
-.no-embed {
-  padding: 16px;
-  color: rgba(247, 243, 243, 0.85);
-  background: #fff;
-}
-
-/* docked player (bottom-right) */
-.player-dock {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  width: 360px;
-  height: 88px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-  z-index: 4000;
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  transition: transform 240ms ease, opacity 240ms ease;
-}
-
-/* optional subtle hover lift */
-.player-dock:hover { transform: translateY(-4px); }
-
-/* dock layout */
-.dock-content {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.dock-left {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 12px;
-  gap: 6px;
-  flex: 0 0 56%;
-  min-width: 0;
-}
-
-.dock-title {
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1.1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dock-controls {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-/* neat circular icon buttons using asset images */
-.dock-controls button[mat-icon-button] {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.04);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
-}
-.dock-controls button[mat-icon-button]:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); background: rgba(0,0,0,0.06); }
-.dock-controls button[mat-icon-button] img { width: 20px; height: 20px; object-fit: contain; display:block; }
-
-/* small embedded video area */
-.dock-video {
-  flex: 1 1 auto;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-}
-
-.dock-video iframe {
-  width: 160px;
-  height: 90px;
-  border: 0;
-  display: block;
-}
-
-/* ensure expanded overlay styles remain (defined earlier) */
-
-/* responsive: smaller dock on very small screens */
-@media (max-width: 420px) {
-  .player-dock { width: 320px; height: 78px; right: 10px; bottom: 10px; }
-  .dock-video iframe { width: 120px; height: 68px; }
-}
-
-/* keep small-screen adjustments */
-@media (max-width: 600px) {
-  .player-container {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
+/* Remove full-popup/sidebar styles — this component uses the dock-only player. */
 
 .chapter-block { margin-bottom: 6px; }
 /* Chapter / song list styles for non-collapsible layout (compact) */
@@ -448,41 +238,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 
 /* Right-side sticky sidebar player styles */
 
-/* Previous sticky sidebar replaced by a movable, fixed player container */
-.movable-player {
-  position: fixed;
-  top: 20px;
-  right: 16px;
-  z-index: 3500;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 200ms cubic-bezier(.2,.8,.2,1), opacity 160ms ease, height 220ms ease, width 160ms ease;
-  will-change: transform, width, height;
-}
-
-.movable-player.collapsed { height: auto; width: 360px; }
-
-.movable-player .player-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
-  cursor: grab; /* indicates draggable area */
-  user-select: none;
-}
-.movable-player .player-header:active { cursor: grabbing; }
-
-.movable-player .player-title { font-weight: 600; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.movable-player .player-actions { display:flex; gap:8px; align-items:center; }
-
-/* Style image buttons in player header/compact to match dock's circular icons */
-.movable-player .player-actions button[mat-icon-button], .movable-player .player-compact .compact-actions button[mat-icon-button] {
+.dock-controls button[mat-icon-button], .dock-left button[mat-icon-button] {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -493,70 +249,13 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   transition: transform 120ms ease, box-shadow 120ms ease;
 }
-.movable-player .player-actions button[mat-icon-button]:hover, .movable-player .player-compact .compact-actions button[mat-icon-button]:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
-.movable-player .player-actions button[mat-icon-button] img, .movable-player .player-compact .compact-actions button[mat-icon-button] img { width: 18px; height: 18px; object-fit: contain; display:block; }
-
-.movable-player .player-body { background: #000; transition: opacity 200ms ease; }
-.movable-player.collapsed .player-body { opacity: 0; height: 0; padding: 0; overflow: hidden; }
-.movable-player .player-body iframe { width: 100%; height: 100%; border: 0; display: block; }
-
-.movable-player .player-compact { display:flex; align-items:center; justify-content:space-between; padding: 10px 12px; gap:8px; }
-
-/* corner resize handles (TL, TR, BL, BR) */
-.resize-handle {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: rgba(0,0,0,0.06);
-  border-radius: 4px;
-  z-index: 4100;
-  display: block;
-  transition: background 120ms ease, transform 120ms ease;
-}
-.resize-handle::after { content: ''; display:block; width:10px; height:10px; margin:4px; border-right:2px solid rgba(0,0,0,0.18); border-bottom:2px solid rgba(0,0,0,0.18); transform: rotate(45deg); }
-.resize-handle.top-left { left: -9px; top: -9px; cursor: nwse-resize; }
-.resize-handle.top-right { right: -9px; top: -9px; cursor: nesw-resize; }
-.resize-handle.bottom-left { left: -9px; bottom: -9px; cursor: nesw-resize; }
-.resize-handle.bottom-right { right: -9px; bottom: -9px; cursor: nwse-resize; }
+.dock-controls button[mat-icon-button]:hover, .dock-left button[mat-icon-button]:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+.dock-controls button[mat-icon-button] img, .dock-left button[mat-icon-button] img { width: 18px; height: 18px; object-fit: contain; display:block; }
 
 /* smaller sidebar compatibility rules */
-.player-sidebar.collapsed { width: 300px; height: auto; }
-.player-sidebar .player-header { padding: 10px 12px; background: #fafafa; }
+/* player-sidebar rules removed; dock (`.player-dock` / `.dock-video`) is used instead */
 
-.player-sidebar .player-body { background: #000; height: 360px; display: flex; align-items: stretch; }
-.player-sidebar .player-body iframe { width: 100%; height: 100%; }
+/* smoother transitions */
+/* leftover movable-player rules removed */
 
-.player-sidebar .player-compact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  gap: 8px;
-}
-
-/* subtle handle hover */
-.resize-handle:hover { background: rgba(0,0,0,0.12); transform: scale(1.06); }
-
-/* smoother transitions when resizing */
-.movable-player { transition: width 180ms cubic-bezier(.2,.8,.2,1), height 180ms cubic-bezier(.2,.8,.2,1), transform 160ms ease; }
-
-.player-sidebar .compact-left {
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.player-sidebar .compact-actions { display:flex; gap:6px; align-items:center; }
-
-/* Make the sidebar fixed on large viewports so it stays visible while scrolling */
-@media (min-width: 960px) {
-  .concert-list { max-width: calc(100% - 420px); }
-  .player-sidebar { position: fixed; top: 84px; right: 20px; }
-}
-
-/* On small screens, fall back to bottom dock (mobile friendly) */
-@media (max-width: 959px) {
-  .player-sidebar { position: fixed; right: 12px; bottom: 12px; width: 320px; height: auto; border-radius: 10px; }
-  .player-sidebar .player-body { height: 180px; }
-}
+/* cleaned up: dock-only styles remain above */
