@@ -31,20 +31,43 @@ Files of interest
 Next Steps
 
 now- 
+- to follow the theme of the host - light or dark mode
+- fix issue of clicking on same video
+- move youtube concerts to end; indicate clearly
+- content: 
+    . remove 'word by ..' entries
+    . add a few entry lines to the albums
+        .  
+    . compare entries to official names 
+    . Develop Publicity
+    . fix the duration vs. start date --- 
+- Add a share option 
+- add a search component
+- Add a concert picture    
+- fix banner and resizing on mobile - first line gets (ex. Provas) gets omitted
+- Make default mini player slightly larger to allow presisng play button
+- Make options available to largen the mini player by 2x,4x
+
+- Add keyboard shortcuts (space toggles play/pause; 'v' opens video).
+- Use YouTube/Vimeo JS SDKs for reliable play/pause controls instead of removing/recreating iframes.
+- Control the concept of a playlist. when you click on a song - the album plays on repeat. 
+    (ability to go through multiple videos / player recognizes where the video is playing).
+
+
+    
 - fix the content on the homepage : 
     standardized names, descriptions, duaration
 - make the data file easier to modify
 - fix the player resizing (loses tracking when pointer exceeds speed of dragging)
 - verify i have high quality audio of all the vimeo resources
-- Add keyboard shortcuts (space toggles play/pause; 'v' opens video).
-- Use YouTube/Vimeo JS SDKs for reliable play/pause controls instead of removing/recreating iframes.
+
 
 
 content curation
 - remove the "word by " songs from the list for brevity
+
 - add the NDU Concert
-- add Da Capo 
-- Hudou' Nisbi - Tunisia Hammat
+- Hudou' Nisbi - Tunisia Hammamat
 - Mays el Reem - 
     Several renditions
 

@@ -6,14 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { ConcertService, Concert, Song } from '../services/concert.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { IframeWrapperComponent } from '../shared/iframe-wrapper/iframe-wrapper.component';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
   standalone: true,
-  imports: [CommonModule, MatExpansionModule, MatIconModule, MatButtonModule, MatListModule, RouterModule]
+  imports: [CommonModule, MatExpansionModule, MatIconModule, MatButtonModule, MatListModule, RouterModule, IframeWrapperComponent]
 })
 export class HomePageComponent {
   concerts: Concert[];
@@ -34,11 +34,16 @@ export class HomePageComponent {
 
   // single player state
   currentSong: Song | null = null;
-  currentEmbedUrl: SafeResourceUrl | null = null;
+  // now store raw embed URL strings; the wrapper will set iframe.src directly
+  currentEmbedUrl: string | null = null;
+  // last raw embed string used for the popup (used to detect identical embeds)
+  private lastPopupEmbed: string | null = null;
 
   // Audio-only dock state
-  dockEmbedUrl: SafeResourceUrl | null = null;
+  dockEmbedUrl: string | null = null;
   dockPlaying = false;
+  // last raw embed string used for the dock
+  private lastDockEmbed: string | null = null;
   showVideoPopup = false; // only open video popup when user requests it
 
   // collapsed dock state (when true the player appears as a small bottom-right dock)
@@ -53,7 +58,7 @@ export class HomePageComponent {
   private dragStartLeft = 0;
   private dragStartTop = 0;
 
-  constructor(private concertService: ConcertService, private sanitizer: DomSanitizer) {
+  constructor(private concertService: ConcertService) {
     this.concerts = this.concertService.getConcerts();
   }
 
@@ -64,11 +69,11 @@ export class HomePageComponent {
     this.isCollapsed = false; // open expanded by default
     this.showVideoPopup = true;
     if (!song.url) {
-      this.currentEmbedUrl = null;
+      this.setEmbedFor('popup', null);
       return;
     }
     const embed = this.getEmbedUrl(song.url);
-    this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.setEmbedFor('popup', embed);
   }
 
   closePlayer() {
@@ -290,13 +295,11 @@ export class HomePageComponent {
     this.showVideoPopup = false;
     this.currentEmbedUrl = null;
     if (!song.url) {
-      this.dockEmbedUrl = null;
-      this.dockPlaying = false;
+      this.setEmbedFor('dock', null);
       return;
     }
     const embed = this.getEmbedUrl(song.url);
-    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
-    this.dockPlaying = true;
+    this.setEmbedFor('dock', embed);
   }
 
   // Universal song click handler: update whichever player is currently visible
@@ -307,11 +310,11 @@ export class HomePageComponent {
       // ensure dock is stopped
       this.stopDock();
       if (!song.url) {
-        this.currentEmbedUrl = null;
+        this.setEmbedFor('popup', null);
         return;
       }
       const embed = this.getEmbedUrl(song.url);
-      this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+      this.setEmbedFor('popup', embed);
       this.isCollapsed = false;
       return;
     }
@@ -322,24 +325,20 @@ export class HomePageComponent {
     // destroy any existing dock player and then set new embed
     this.stopDock();
     if (!song.url) {
-      this.dockEmbedUrl = null;
-      this.dockPlaying = false;
+      this.setEmbedFor('dock', null);
       return;
     }
     const embed = this.getEmbedUrl(song.url);
-    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
-    this.dockPlaying = true;
+    this.setEmbedFor('dock', embed);
   }
 
   toggleDockPlay() {
     // simple toggle by removing/adding iframe src
     if (this.dockPlaying) {
-      this.dockEmbedUrl = null;
-      this.dockPlaying = false;
+      this.setEmbedFor('dock', null);
     } else if (this.currentSong && this.currentSong.url) {
       const embed = this.getEmbedUrl(this.currentSong.url);
-      this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
-      this.dockPlaying = true;
+      this.setEmbedFor('dock', embed);
     }
   }
 
@@ -362,11 +361,11 @@ export class HomePageComponent {
     this.stopDock();
     this.showVideoPopup = true;
     if (!this.currentSong.url) {
-      this.currentEmbedUrl = null;
+      this.setEmbedFor('popup', null);
       return;
     }
     const embed = this.getEmbedUrl(this.currentSong.url);
-    this.currentEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.setEmbedFor('popup', embed);
     this.isCollapsed = false;
   }
 
@@ -378,7 +377,7 @@ export class HomePageComponent {
     this.currentEmbedUrl = null;
     if (!url) return;
     const embed = this.getEmbedUrl(url);
-    this.dockEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embed);
+    this.setEmbedFor('dock', embed);
     this.dockPlaying = true;
   }
 
@@ -387,6 +386,49 @@ export class HomePageComponent {
     this.showVideoPopup = false;
     this.currentEmbedUrl = null;
     this.stopDock();
+  }
+
+  // Helper to set embed URLs for popup or dock. We track the raw embed string
+  // so we can detect when two different song entries map to the same iframe URL
+  // (e.g. two timestamps in the same video). Instead of temporarily clearing
+  // the iframe src (which can be brittle), we append a short nonce query
+  // parameter to the embed URL when the new embed equals the previous one.
+  // This makes the URL distinct and forces the browser to reload the iframe.
+  private setEmbedFor(target: 'popup' | 'dock', embed: string | null) {
+    const addReloadNonce = (url: string) => {
+      // insert the nonce before any hash (#) so fragments (like Vimeo #t=) remain
+      const hashIndex = url.indexOf('#');
+      const base = hashIndex === -1 ? url : url.slice(0, hashIndex);
+      const hash = hashIndex === -1 ? '' : url.slice(hashIndex);
+      const sep = base.includes('?') ? '&' : '?';
+      return `${base}${sep}r=${Date.now()}${hash}`;
+    };
+
+    // ensure the standalone wrapper component is in the imports (added below)
+    if (target === 'popup') {
+      const prev = this.lastPopupEmbed;
+      if (!embed) {
+        this.currentEmbedUrl = null;
+        this.lastPopupEmbed = null;
+        return;
+      }
+      const finalEmbed = embed === prev ? addReloadNonce(embed) : embed;
+      // assign raw string; the wrapper sets iframe.src directly
+      this.currentEmbedUrl = finalEmbed;
+      this.lastPopupEmbed = embed;
+    } else {
+      const prev = this.lastDockEmbed;
+      if (!embed) {
+        this.dockEmbedUrl = null;
+        this.dockPlaying = false;
+        this.lastDockEmbed = null;
+        return;
+      }
+      const finalEmbed = embed === prev ? addReloadNonce(embed) : embed;
+      this.dockEmbedUrl = finalEmbed;
+      this.lastDockEmbed = embed;
+      this.dockPlaying = true;
+    }
   }
 
   // Drag-to-move handlers (for header dragging)

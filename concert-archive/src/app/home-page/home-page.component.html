@@ -65,7 +65,7 @@
   </div>
 
   <div class="player-body" [attr.aria-hidden]="isCollapsed">
-  <iframe *ngIf="currentEmbedUrl" [src]="currentEmbedUrl" frameborder="0" allow="autoplay; picture-in-picture"></iframe>
+  <app-iframe-wrapper *ngIf="currentEmbedUrl" [src]="currentEmbedUrl"></app-iframe-wrapper>
     <div *ngIf="!currentEmbedUrl" class="no-embed">Video cannot be embedded.
       <button mat-button (click)="window.open(currentSong?.url, '_blank')">Open in new tab</button>
     </div>
@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="dock-video">
-      <iframe *ngIf="dockEmbedUrl" [src]="dockEmbedUrl" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+  <app-iframe-wrapper *ngIf="dockEmbedUrl" [src]="dockEmbedUrl"></app-iframe-wrapper>
       <div *ngIf="!dockEmbedUrl" style="width:160px;height:90px;background:#000;display:flex;align-items:center;justify-content:center;color:#fff;">No preview</div>
     </div>
   </div>
