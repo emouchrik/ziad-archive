@@ -31,7 +31,8 @@ export class HomePageComponent {
   private baseHeight = 180; // base (min) height in px (16:9)
   currentWidth = this.baseWidth;
   currentHeight = this.baseHeight;
-  private minScale = 1;
+  // allow shrinking down to 1/3 of the current default size
+  private minScale = 1 / 3;
   private maxScale = 3;
 
   // pointer resize tracking
