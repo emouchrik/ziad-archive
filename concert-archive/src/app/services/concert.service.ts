@@ -286,13 +286,28 @@ export class ConcertService {
       {
         title: 'Blue Note with Laura',
         date: 'April 9, 2015',
+        description: 'Dany Shukri - Drumns, Khaled Omran, Bass - Tenor Sax: Elias M3allem - Horn & Trumpet: Martin Loyato - Piano & Keyboards: Ziad Rahbani',
         chapters: [
           {
             title: 'chapter 1',
             url: 'https://vimeo.com/320573330',
             songs: [
-              { title: 'Grande Amore', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s' },
-              { title: 'La maison sous les arbres', duration: '05:00', url: 'https://vimeo.com/320573330#t=5m0s' }
+              { title: 'O grande amor (Antônio Carlos Jobim)', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s' },
+              { title: 'Qu\'elle est lourde à porter l\'absence de l\'ami', duration: '05:00', url: 'https://vimeo.com/320573330#t=5m0s' },
+              { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '07:10', url: 'https://vimeo.com/320573330#t=7m10s' },
+              { title: 'My Funny Valentine', duration: '09:40', url: 'https://vimeo.com/320573330#t=9m40s' },
+              { title: 'Yardbird Suite', duration: '13:05', url: 'https://vimeo.com/320573330#t=13m5s' },
+              { title: 'Night in Tunisia', duration: '16:30', url: 'https://vimeo.com/320573330#t=16m30s' },
+              { title: 'La Boheme (Charles Aznavour)', duration: '20:51', url: 'https://vimeo.com/320573330#t=20m51s' },
+              { title: 'But not for me (Gershwin) ', duration: '25:40', url: 'https://vimeo.com/320573330#t=25m40s' },
+              { title: 'Min Madinet Hamburg (word by Tareq Tamim) ', duration: '27:53', url: 'https://vimeo.com/320573330#t=27m53s' },
+              { title: 'La Maison sous les arbres (Gilbert Bécaud)', duration: '30:05', url: 'https://vimeo.com/320573330#t=30m5s' },
+              { title: 'Spiral (Crusadors)', duration: '35:25', url: 'https://vimeo.com/320573330#t=35m25s' },
+              { title: '?', duration: '40:20', url: 'https://vimeo.com/320573330#t=40m20s' },
+              { title: '(word by Tareq Tamim)', duration: '45:20', url: 'https://vimeo.com/320573330#t=45m20s' },
+              { title: 'Autumn Leaves', duration: '46:09', url: 'https://vimeo.com/320573330#t=46m9s' },
+              { title: 'Credits', duration: '50:45', url: 'https://vimeo.com/320573330#t=46m9s' },
+              { title: 'Mays El Rim', duration: '51:30', url: 'https://vimeo.com/320573330#t=46m9s' }
             ]
           }
         ]
@@ -308,7 +323,7 @@ export class ConcertService {
             url: 'https://vimeo.com/332201616',
             songs: [
               { title: 'Fixme', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
-              { title: 'Lullaby Birdland', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s', description: 'probable Lullaby Birdland (verify)' },
+              { title: 'O grande amor', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s', description: 'Antônio Carlos Jobim' },
               { title: 'And I Love You So', duration: '08:47', url: 'https://vimeo.com/332201616#t=8m47s' },
               { title: 'Fly Me to the Moon', duration: '11:05', url: 'https://vimeo.com/332201616#t=11m5s' },
               { title: 'Ma Bitfid', duration: '12:35', url: 'https://vimeo.com/332201616#t=12m35s' },
@@ -348,10 +363,21 @@ export class ConcertService {
             title: 'chapter 1',
             url: 'https://vimeo.com/325763780',
             songs: [
-              { title: "Piaf Song — Hymne A L'Amour", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
-              { title: 'Whatever Lola Wants', duration: '04:27', url: 'https://vimeo.com/325763780#t=5m33s' },
-              { title: '(unknown)', duration: '10:00', url: 'https://vimeo.com/325763780#t=10m0s' }
-            ]
+              { title: "Piaf Song — Hymne A L'Amour (very nice)", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
+              { title: 'Whatever Lola Wants', duration: '05:30', url: 'https://vimeo.com/325763780#t=5m30s' },
+              { title: 'How Insensitive (Antônio Carlos Jobim)', duration: '08:24', url: 'https://vimeo.com/325763780#t=8m24s' },
+              { title: 'What A Difference A Day Made (Dinah Washington)', duration: '12:48', url: 'https://vimeo.com/325763780#t=12m48s' },
+              { title: '?1', duration: '15:36', url: 'https://vimeo.com/325763780#t=15m36s' },
+              { title: 'The Shadow of Your Smile (Andy Williams)', duration: '21:16', url: 'https://vimeo.com/325763780#t=21m16s' },
+              { title: 'Just the Two of Us', duration: '25:38', url: 'https://vimeo.com/325763780#t=25m38s' },
+              { title: '?2', duration: '31:30', url: 'https://vimeo.com/325763780#t=31m30s' },
+              { title: '?3', duration: '37:25', url: 'https://vimeo.com/325763780#t=37m25s' },
+              { title: 'Lady', duration: '42:35', url: 'https://vimeo.com/325763780#t=42m35s' },
+              { title: 'Imagine', duration: '45:50', url: 'https://vimeo.com/325763780#t=45m50s' },
+              { title: '?4', duration: '49:50', url: 'https://vimeo.com/325763780#t=49m50s' },
+              { title: 'Hit the Road Jack', duration: '53:40', url: 'https://vimeo.com/325763780#t=53m40s' },
+              { title: 'Killing me Softly with his Songs', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
+              { title: 'credits', duration: '60:35', url: 'https://vimeo.com/325763780#t=57m35s' }            ]
           }
         ]
       }
@@ -463,7 +489,7 @@ export class ConcertService {
               { title: 'Al 7ali Ti3bani ya Layla', duration: '05:32', url: 'https://vimeo.com/333988325#t=5m32s' },
               { title: 'Saf7a Gdida (Hazem Chahine)', duration: '09:50', url: 'https://vimeo.com/333988325#t=9m50s' },
               { title: 'يا سيف على الأعداء طايل', duration: '13:30', url: 'https://vimeo.com/333988325#t=13m30s' },
-              { title: 'Mish bass Talfinli / Sa Dance se Samba', duration: '17:41', url: 'https://vimeo.com/333988325#t=17m41s' }
+              { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '17:41', url: 'https://vimeo.com/333988325#t=17m41s' }
             ]
           },
           {
