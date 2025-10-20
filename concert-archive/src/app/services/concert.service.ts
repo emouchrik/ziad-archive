@@ -19,32 +19,6 @@ export class ConcertService {
   getConcerts(): Concert[] {
     return [
       {
-        title: 'Provas & Singles Videos',
-        date: '1985 - 2015',
-        description: 'Collection of remastered proofs and single video clips',
-        chapters: [
-          {
-            title: 'videos',
-            songs: [
-              { title: 'Drink (Remastered)', url: 'https://vimeo.com/338008441' },
-              { title: 'Shi Fashel (Remastered)', url: 'https://vimeo.com/337989424' },
-              { title: 'Film Ameriki Tawil - One Flew Over The Cuckoo\'s Nest', url: 'https://vimeo.com/333747708' },
-              { title: 'Junkyard Mays El Rim Favorite', url: 'https://vimeo.com/332202467' },
-              { title: 'Snatch Prova', url: 'https://vimeo.com/323532598' },
-              { title: 'Ray Band Snatch', url: 'https://vimeo.com/323532306' },
-              { title: 'Penalty Prova', url: 'https://vimeo.com/323532225' },
-              { title: 'Bed in Studio', url: 'https://vimeo.com/323532004' },
-              { title: 'Grand Prix Prova', url: 'https://vimeo.com/323532151' },
-              { title: 'SoundTrack - The Kite (Le cerf Volant) - 2003', url: 'https://vimeo.com/319973574' },
-              { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882' },
-              { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796' },
-              { title: 'Hudu\' Nisbi - 1985', url: 'https://vimeo.com/316599957' }
-            ]
-          }
-        ]
-      }
-      ,
-      {
         title: 'Teatro Concert',
         date: 'December 15, 2002',
         chapters: [
@@ -63,76 +37,9 @@ export class ConcertService {
             title: 'chapter 2',
             songs: [
               { title: 'Autumn Leaves', duration: '00:00', url: 'https://vimeo.com/327372507#t=0m0s', description: 'Joseph Kosma (composer)' },
-              { title: 'De la Lune', duration: '05:00', url: 'https://vimeo.com/327372507#t=5m0s', description: 'FIXME: verify title' },
+              { title: 'La Maison sous les arbres', duration: '05:00', url: 'https://vimeo.com/327372507#t=5m0s', description: 'Gilbert Bécaud' },
               { title: 'Now Is the Time', duration: '07:26', url: 'https://vimeo.com/327372507#t=7m26s', description: 'Charlie Parker (composer)' },
               { title: 'Yardbird Suite', duration: '15:50', url: 'https://vimeo.com/327372507#t=15m50s', description: 'Charlie Parker (composer)' }
-            ]
-          }
-        ]
-      }
-      ,
-      {
-        title: 'Da Capo',
-        date: 'Jan 2003',
-        description: 'Concert par Ziad rahbani à Abu Dhabi Concert by Ziad Rahbani at Abu Dhabi حفلة لزياد رحباني في أبو ظبي',
-        chapters: [
-          {
-            title: 'set',
-            songs: [
-              { title: 'الأمل 2 - 1994', url: 'https://youtu.be/e5xM3vmrk9o?si=ovDmMtKgzGQwsnw-' },
-              { title: 'ضحكة ال75000 - 1988', url: 'https://youtu.be/acEb-o9gYRQ?si=Klg7nNMU2a75c-aE' },
-              { title: 'Yaomiat 2004 يوميات', url: 'https://youtu.be/7AOnPHNqkbM?si=FNXgthT76Se1CacS' },
-              { title: '1984 هدوء نسبي', url: 'https://youtu.be/Ws8EhHN7nRQ?si=fTEvt1pZDI61S7sW' },
-              { title: 'بصراحة', url: 'https://youtu.be/9-nk9_7jBoM?si=w6O8bw-yqHE0clCt' },
-              { title: 'شو عدا ما بدا', url: 'https://youtu.be/gSr_4IUr36M?si=PQ2Gi1hBAo39vvu3' },
-              { title: 'صبحي الجيز', url: 'https://youtu.be/c3wwq94epEs?si=igHOxc-Kevd9F7Aw' },
-              { title: 'يا ليلي', url: 'https://youtu.be/GKnkIK-xzSQ?si=yO_RYPrbeb1y_0vn' },
-              { title: 'وقمح', url: 'https://youtu.be/BGsD1eZ-PVQ?si=DcVf7q-M9mGAlHMS' },
-              { title: 'بالنسبة لبكرا شو', url: 'https://youtu.be/9LLpgkurLBs?si=3nqTOslaY2zSGmv-' },
-              { title: 'وصلو ع بيتو', url: 'https://youtu.be/zMLKcSkx2Gc?si=dWyEpgFGS7PvpM7G' },
-              { title: 'final + ديار بكر', url: 'https://youtu.be/cinJNLF4o6o?si=I_r6TdGBf7-eE2rN' }
-            ]
-          }
-        ]
-      }
-      ,
-      {
-        title: 'St Elie Concert',
-        date: 'May 2013',
-        chapters: [
-          {
-            title: 'chapter 1',
-            songs: [
-              { title: 'Beiteddine Intro', duration: '06:06', url: 'https://youtu.be/vDiNbjCeVkI#t=6m6s', description: '2001' },
-              { title: 'Kiriyalayson', duration: '10:02', url: 'https://youtu.be/vDiNbjCeVkI#t=10m2s' },
-              { title: 'Al Majd Lak', duration: '14:28', url: 'https://youtu.be/vDiNbjCeVkI#t=14m28s' }
-            ]
-          },
-          {
-            title: 'chapter 2',
-            songs: [
-              { title: 'Al Majd Lak', duration: '00:00', url: 'https://youtu.be/hL-RdhSW4Vg#t=0m0s' },
-              { title: 'Jisr Al Qamar', duration: '04:28', url: 'https://youtu.be/hL-RdhSW4Vg#t=4m28s' },
-              { title: 'Allah Kbeer', duration: '07:46', url: 'https://youtu.be/hL-RdhSW4Vg#t=7m46s' },
-              { title: 'Nahnu El Sahiroun', duration: '12:10', url: 'https://youtu.be/hL-RdhSW4Vg#t=12m10s' }
-            ]
-          },
-          {
-            title: 'chapter 3',
-            songs: [
-              { title: 'Nahnu El Sahiroun', duration: '00:00', url: 'https://youtu.be/0ga5HsLfpVI#t=0m0s' },
-              { title: 'The Kite - Cerf Volant', duration: '02:30', url: 'https://youtu.be/0ga5HsLfpVI#t=2m30s' },
-              { title: 'Al 3alam Ja2i3', duration: '04:30', url: 'https://youtu.be/0ga5HsLfpVI#t=4m30s', description: 'Samy Clark' },
-              { title: 'Sayyidi', duration: '08:10', url: 'https://youtu.be/0ga5HsLfpVI#t=8m10s', description: 'Samy Clark' }
-            ]
-          },
-          {
-            title: 'chapter 4',
-            songs: [
-              { title: 'Dakhilik Ya 2immi', duration: '00:42', url: 'https://youtu.be/COrIgFDPjd8#t=0m42s' },
-              { title: 'Ya Mhayret el 3alali', duration: '03:43', url: 'https://youtu.be/COrIgFDPjd8#t=3m43s' },
-              { title: '1987 Overture', duration: '08:25', url: 'https://youtu.be/COrIgFDPjd8#t=8m25s' },
-              { title: 'Touba Lil Sa3een', duration: '10:24', url: 'https://youtu.be/COrIgFDPjd8#t=10m24s' }
             ]
           }
         ]
@@ -179,8 +86,8 @@ export class ConcertService {
               { title: 'Intro', duration: '00:00', url: 'https://vimeo.com/335712846#t=0m0s' },
               { title: 'Al Amal', duration: '04:32', url: 'https://vimeo.com/335712846#t=4m32s' },
               { title: 'Word by Sabah Ayyoub', duration: '07:10', url: 'https://vimeo.com/335712846#t=7m10s' },
-              { title: 'Sobhi el Jeez', duration: '12:06', url: 'https://vimeo.com/335712846#t=12m6s' },
-              { title: 'Al 3ors (The Wedding)', duration: '15:10', url: 'https://vimeo.com/335712846#t=15m7s', description: 'nice bouzo2 entrance' }
+              { title: 'Sobhil Jeez', duration: '12:06', url: 'https://vimeo.com/335712846#t=12m6s' },
+              { title: 'Elerss (The Wedding)', duration: '15:10', url: 'https://vimeo.com/335712846#t=15m7s', description: 'nice bouzo2 entrance' }
             ]
           },
           {
@@ -188,10 +95,10 @@ export class ConcertService {
             url: 'https://vimeo.com/335713821',
             songs: [
               { title: 'Word by Lina Khoury (Hal Shi)', duration: '00:00', url: 'https://vimeo.com/335713821#t=0m0s' },
-              { title: 'Ba3atillak Ya Habeeb el Rou7', duration: '03:06', url: 'https://vimeo.com/335713821#t=3m6s' },
-              { title: 'Joe Sample Tune (with April Centrone on the Daff)', duration: '07:52', url: 'https://vimeo.com/335713821#t=7m52s' },
+              { title: 'Baatilak', duration: '03:06', url: 'https://vimeo.com/335713821#t=3m6s' },
+              { title: 'Joe Sample Tune', duration: '07:52', url: 'https://vimeo.com/335713821#t=7m52s', description: 'with April Centrone on the Daff' },
               { title: 'Word by Layal Daou and Radwan Hamze', duration: '14:30', url: 'https://vimeo.com/335713821#t=14m30s' },
-              { title: 'Talfan Ayache', duration: '16:38', url: 'https://vimeo.com/335713821#t=16m38s' }
+              { title: 'Talfan Aayash', duration: '16:38', url: 'https://vimeo.com/335713821#t=16m38s' }
             ]
           },
           {
@@ -517,7 +424,7 @@ export class ConcertService {
             title: 'chapter 5',
             songs: [
               { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333993432#t=0m0s' },
-              { title: 'Talfan Ayache', duration: '01:41', url: 'https://vimeo.com/333993432#t=1m41s' },
+              { title: 'Talfan Aayash', duration: '01:41', url: 'https://vimeo.com/333993432#t=1m41s' },
               { title: 'Bema Enno', duration: '05:44', url: 'https://vimeo.com/333993432#t=5m44s' },
               { title: 'Para pada', duration: '09:45', url: 'https://vimeo.com/333993432#t=9m45s' },
               { title: 'Un Verre Chez Nous', duration: '13:26', url: 'https://vimeo.com/333993432#t=13m26s' },
@@ -581,10 +488,102 @@ export class ConcertService {
               { title: 'Ya Jabal Al Sheikh', duration: '03:50', url: 'https://vimeo.com/328235271#t=3m50s' },
               { title: 'Sahraneen', duration: '07:17', url: 'https://vimeo.com/328235271#t=7m17s' },
               { title: 'Mays El Rim Intro', duration: '09:29', url: 'https://vimeo.com/328235271#t=9m29s' },
-              { title: 'Talfan Ayyash', duration: '14:30', url: 'https://vimeo.com/328235271#t=14m30s' },
-              { title: '3ataba', duration: '19:55', url: 'https://vimeo.com/328235271#t=19m55s' },
-              { title: 'Ya Bent Al Mo3awin', duration: '25:18', url: 'https://vimeo.com/328235271#t=25m18s' },
+              { title: 'Talfan Aayash', duration: '14:30', url: 'https://vimeo.com/328235271#t=14m30s' },
+              { title: 'Aataba', duration: '19:55', url: 'https://vimeo.com/328235271#t=19m55s' },
+              { title: 'Ya Benet El Mouawen', duration: '25:18', url: 'https://vimeo.com/328235271#t=25m18s' },
               { title: 'Amreeka Meen', duration: '29:18', url: 'https://vimeo.com/328235271#t=29m18s' }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Da Capo (YOUTUBE)',
+        date: 'Jan 2003',
+        description: 'Concert by Ziad Rahbani in Abu Dhabi',
+        chapters: [
+          {
+            title: 'set',
+            songs: [
+              { title: 'الأمل 2 - 1994', url: 'https://youtu.be/e5xM3vmrk9o?si=ovDmMtKgzGQwsnw-' },
+              { title: 'ضحكة ال75000 - 1988', url: 'https://youtu.be/acEb-o9gYRQ?si=Klg7nNMU2a75c-aE' },
+              { title: 'Yaomiat 2004 يوميات', url: 'https://youtu.be/7AOnPHNqkbM?si=FNXgthT76Se1CacS' },
+              { title: '1984 هدوء نسبي', url: 'https://youtu.be/Ws8EhHN7nRQ?si=fTEvt1pZDI61S7sW' },
+              { title: 'بصراحة', url: 'https://youtu.be/9-nk9_7jBoM?si=w6O8bw-yqHE0clCt' },
+              { title: 'شو عدا ما بدا', url: 'https://youtu.be/gSr_4IUr36M?si=PQ2Gi1hBAo39vvu3' },
+              { title: 'صبحي الجيز', url: 'https://youtu.be/c3wwq94epEs?si=igHOxc-Kevd9F7Aw' },
+              { title: 'يا ليلي', url: 'https://youtu.be/GKnkIK-xzSQ?si=yO_RYPrbeb1y_0vn' },
+              { title: 'وقمح', url: 'https://youtu.be/BGsD1eZ-PVQ?si=DcVf7q-M9mGAlHMS' },
+              { title: 'بالنسبة لبكرا شو', url: 'https://youtu.be/9LLpgkurLBs?si=3nqTOslaY2zSGmv-' },
+              { title: 'وصلو ع بيتو', url: 'https://youtu.be/zMLKcSkx2Gc?si=dWyEpgFGS7PvpM7G' },
+              { title: 'final + ديار بكر', url: 'https://youtu.be/cinJNLF4o6o?si=I_r6TdGBf7-eE2rN' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Christmas Concert 2013 (YouTube)',
+        date: 'December //2013',
+        chapters: [
+          {
+            title: 'chapter 1',
+            songs: [
+              { title: 'Beiteddine Intro', duration: '06:06', url: 'https://youtu.be/vDiNbjCeVkI#t=6m6s', description: '2001' },
+              { title: 'Kiriyalayson', duration: '10:02', url: 'https://youtu.be/vDiNbjCeVkI#t=10m2s' }
+              // { title: 'Al Majd Lak', duration: '14:28', url: 'https://youtu.be/vDiNbjCeVkI#t=14m28s' }
+            ]
+          },
+          {
+            title: 'chapter 2',
+            songs: [
+              { title: 'Al Majd Lak', duration: '00:00', url: 'https://youtu.be/hL-RdhSW4Vg#t=0m0s' },
+              { title: 'Jisr Al Qamar', duration: '04:28', url: 'https://youtu.be/hL-RdhSW4Vg#t=4m28s' },
+              { title: 'Allah Kbeer', duration: '07:46', url: 'https://youtu.be/hL-RdhSW4Vg#t=7m46s' }
+              // { title: 'Nahnu El Sahiroun', duration: '12:10', url: 'https://youtu.be/hL-RdhSW4Vg#t=12m10s' }
+            ]
+          },
+          {
+            title: 'chapter 3',
+            songs: [
+              { title: 'Nahnu El Sahiroun', duration: '00:00', url: 'https://youtu.be/0ga5HsLfpVI#t=0m0s' },
+              { title: 'The Kite - Cerf Volant', duration: '02:30', url: 'https://youtu.be/0ga5HsLfpVI#t=2m30s' },
+              { title: 'Al 3alam Ja2i3', duration: '04:30', url: 'https://youtu.be/0ga5HsLfpVI#t=4m30s', description: 'Samy Clark' },
+              { title: 'Sayyidi', duration: '08:10', url: 'https://youtu.be/0ga5HsLfpVI#t=8m10s', description: 'Samy Clark' }
+            ]
+          },
+          {
+            title: 'chapter 4',
+            songs: [
+              { title: 'Dakhilik Ya 2immi', duration: '00:42', url: 'https://youtu.be/COrIgFDPjd8#t=0m42s' },
+              { title: 'Ya Mhayret el 3alali', duration: '03:43', url: 'https://youtu.be/COrIgFDPjd8#t=3m43s' },
+              { title: '1987 Overture', duration: '08:25', url: 'https://youtu.be/COrIgFDPjd8#t=8m25s' },
+              { title: 'Touba Lil Sa3een', duration: '10:24', url: 'https://youtu.be/COrIgFDPjd8#t=10m24s' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'Provas & Singles Videos',
+        date: '1985 - 2015',
+        description: 'Collection of remastered proofs and single video clips',
+        chapters: [
+          {
+            title: 'videos',
+            songs: [
+              { title: 'Drink (Remastered)', url: 'https://vimeo.com/338008441' },
+              { title: 'Shi Fashel (Remastered)', url: 'https://vimeo.com/337989424' },
+              { title: 'Film Ameriki Tawil - One Flew Over The Cuckoo\'s Nest', url: 'https://vimeo.com/333747708' },
+              { title: 'Junkyard Mays El Rim Favorite', url: 'https://vimeo.com/332202467' },
+              { title: 'Snatch Prova', url: 'https://vimeo.com/323532598' },
+              { title: 'Ray Band Snatch', url: 'https://vimeo.com/323532306' },
+              { title: 'Penalty Prova', url: 'https://vimeo.com/323532225' },
+              { title: 'Bed in Studio', url: 'https://vimeo.com/323532004' },
+              { title: 'Grand Prix Prova', url: 'https://vimeo.com/323532151' },
+              { title: 'SoundTrack - The Kite (Le cerf Volant) - 2003', url: 'https://vimeo.com/319973574' },
+              { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882' },
+              { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796' },
+              { title: 'Hudu\' Nisbi - 1985', url: 'https://vimeo.com/316599957' }
             ]
           }
         ]

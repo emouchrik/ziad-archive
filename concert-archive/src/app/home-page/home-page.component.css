@@ -63,7 +63,10 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   background: transparent; /* image sits behind via absolute positioning */
   color: white;
   position: relative; /* for absolutely positioned cover */
-  padding: 0 0 12px; /* bottom padding to separate from next section */
+  /* Reserve vertical space equal to the image height so the absolutely positioned
+     .hero-cover-full doesn't overlap the following content. Use the same clamp
+     as the image so they remain in sync. */
+  padding: 0 0 calc(clamp(30px, 20vh, 60px) + 12px);
 }
 .hero-inner {
   display: flex;
@@ -74,7 +77,7 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   margin: 0 auto;
   text-align: center;
   position: relative; /* sit above the cover image */
-  z-index: 2;
+  z-index: 3; /* ensure hero text sits above the image overlay */
   padding-top: 48px; /* reduced so hero doesn't push the concerts far down */
 }
 .hero-meta {
@@ -105,7 +108,10 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   left: 0;
   right: 0;
   width: 100vw;
-  height: 150px; /* slightly reduced height */
+  /* Use a responsive, clamped height so the image doesn't grow too large on small screens
+     clamp(min, preferred, max) keeps height between 120px and 240px while allowing
+     the preferred value (20vh) on larger devices. */
+  height: clamp(120px, 20vh, 240px);
   overflow: hidden;
   z-index: 0;
 }
@@ -114,6 +120,10 @@ button[mat-icon-button] { margin-right: 0.5rem; }
   height: 100%;
   object-fit: cover;
   display: block;
+  /* Prevent the image from exceeding its intrinsic size which can cause it to scale up
+     on very small devices; this ensures it stays crisp and bounded. */
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* subtle dark overlay for readability of hero text */
@@ -132,8 +142,8 @@ button[mat-icon-button] { margin-right: 0.5rem; }
 }
 
 @media (max-width: 600px) {
-  .hero-cover-full { height: 200px; }
-  .hero-inner { padding-top: 48px; }
+  /* Keep the clamped height on small screens; reduce hero inner padding slightly */
+  .hero-inner { padding-top: 40px; }
 }
 
 /* CONCERT LIST */
