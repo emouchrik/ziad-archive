@@ -28,7 +28,7 @@ export class ConcertService {
               { title: 'Lullaby Birdland', duration: '00:00', url: 'https://vimeo.com/327370274#t=0m0s', description: 'George Shearing (composer)' },
               { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
               { title: 'Ma Tfill + Manha De Carnaval', duration: '08:20', url: 'https://vimeo.com/327370274#t=8m20s' },
-              { title: 'Gingle', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
+              { title: 'Jingle', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
               { title: 'Mexicano', duration: '15:50', url: 'https://vimeo.com/327370274#t=15m50s', description: 'incredible piano solo' },
               { title: 'Mas Que Nada', duration: '21:45', url: 'https://vimeo.com/327370274#t=21m45s', description: 'Jorge Ben (composer)' }
             ]
@@ -109,7 +109,7 @@ export class ConcertService {
               { title: 'صمدو و غلبو', duration: '05:11', url: 'https://vimeo.com/335714826#t=5m11s', category: 'new'},
               { title: 'Asaada Allah Masaakum', duration: '10:23', url: 'https://vimeo.com/335714826#t=10m23s' },
               { title: 'Word by Lina Khoury', duration: '14:30', url: 'https://vimeo.com/335714826#t=14m30s' },
-              { title: 'Sabah w Masa', duration: '15:38', url: 'https://vimeo.com/335714826#t=15m38s', description: 'peformed by Ghada Ghanem' }
+              { title: 'Sabah w Masa', duration: '15:38', url: 'https://vimeo.com/335714826#t=15m38s', description: 'performed by Ghada Ghanem' }
             ]
           },
           {
@@ -176,7 +176,7 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'Come Into My Life', duration: '00:00', url: 'https://vimeo.com/319978775#t=0m0s', description: 'Ziad Riffs' },
+              { title: 'Come Into My Life', duration: '00:00', url: 'https://vimeo.com/319978775#t=0m0s', description: 'nice solos' },
               { title: 'My Little Suede Shoes', duration: '04:49', url: 'https://vimeo.com/319978775#t=4m49s', description: 'Charlie Parker (composer)' }
             ]
           },
@@ -193,7 +193,7 @@ export class ConcertService {
       {
         title: 'Blue Note with Laura',
         date: 'April 9, 2015',
-        description: 'Dany Shukri - Drumns, Khaled Omran, Bass - Tenor Sax: Elias M3allem - Horn & Trumpet: Martin Loyato - Piano & Keyboards: Ziad Rahbani',
+  description: 'Dany Shukri - Drums, Khaled Omran, Bass - Tenor Sax: Elias M3allem - Horn & Trumpet: Martin Loyato - Piano & Keyboards: Ziad Rahbani',
         chapters: [
           {
             title: 'chapter 1',
@@ -209,7 +209,7 @@ export class ConcertService {
               { title: 'But not for me ', duration: '25:40', url: 'https://vimeo.com/320573330#t=25m40s', description: 'Gershwin' },
               { title: 'Min Madinet Hamburg (word by Tareq Tamim) ', duration: '27:53', url: 'https://vimeo.com/320573330#t=27m53s' },
               { title: 'La Maison sous les arbres (Gilbert Bécaud)', duration: '30:05', url: 'https://vimeo.com/320573330#t=30m5s' },
-              { title: 'Spiral', duration: '35:25', url: 'https://vimeo.com/320573330#t=35m25s', description: 'Crusadors' },
+              { title: 'Spiral', duration: '35:25', url: 'https://vimeo.com/320573330#t=35m25s', description: 'Crusaders' },
               { title: '?', duration: '40:20', url: 'https://vimeo.com/320573330#t=40m20s' },
               { title: '(word by Tareq Tamim)', duration: '45:20', url: 'https://vimeo.com/320573330#t=45m20s' },
               { title: 'Autumn Leaves', duration: '46:09', url: 'https://vimeo.com/320573330#t=46m9s' },
@@ -283,7 +283,7 @@ export class ConcertService {
               { title: 'Imagine', duration: '45:50', url: 'https://vimeo.com/325763780#t=45m50s' },
               { title: '?4', duration: '49:50', url: 'https://vimeo.com/325763780#t=49m50s' },
               { title: 'Hit the Road Jack', duration: '53:40', url: 'https://vimeo.com/325763780#t=53m40s' },
-              { title: 'Killing me Softly with his Song', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
+              { title: 'Killing Me Softly with His Song', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
               { title: 'credits', duration: '60:35', url: 'https://vimeo.com/325763780#t=57m35s' }            ]
           }
         ]
@@ -292,7 +292,7 @@ export class ConcertService {
       {
         title: 'Arnoun Concert',
         date: 'September 7, 2018',
-        description: 'A beautiful concert in Arnoun', 
+        description: '', 
         chapters: [
           {
             title: 'chapter 1',
@@ -316,7 +316,7 @@ export class ConcertService {
           {
             title: 'chapter 3',
             songs: [
-              { title: 'عهدير البوسطة', duration: '00:00', url: 'https://vimeo.com/331235667#t=0m0s', description: 'really nice use of violins to illustrate the sound of the bus'},
+              { title: 'Al Bostah', duration: '00:00', url: 'https://vimeo.com/331235667#t=0m0s', description: 'really nice use of violins to illustrate the sound of the bus'},
               { title: 'بيذكر بالخريف', duration: '06:09', url: 'https://vimeo.com/331235667#t=6m9s' },
               { title: 'عاتابا', duration: '10:59', url: 'https://vimeo.com/331235667#t=10m59s' },
               { title: 'يا بنت المعاون', duration: '20:04', url: 'https://vimeo.com/331235667#t=20m4s' }
@@ -429,7 +429,7 @@ export class ConcertService {
               { title: 'Para pada', duration: '09:45', url: 'https://vimeo.com/333993432#t=9m45s' },
               { title: 'Un Verre Chez Nous', duration: '13:26', url: 'https://vimeo.com/333993432#t=13m26s' },
               { title: 'Rima Kaddisi & Tareq Tamim', duration: '17:08', url: 'https://vimeo.com/333993432#t=17m8s' },
-              { title: 'Mays El Reem', duration: '19:14', url: 'https://vimeo.com/333993432#t=19m14s' }
+              { title: 'Mays El Rim', duration: '19:14', url: 'https://vimeo.com/333993432#t=19m14s' }
             ]
           },
           {
@@ -449,7 +449,7 @@ export class ConcertService {
       {
         title: 'Saida Concert',
         date: 'October 27, 2018',
-        description: 'A beautiful concert in Saida',
+        description: '',
         chapters: [
           {
             title: 'chapter 1',

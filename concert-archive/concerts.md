@@ -122,7 +122,7 @@ chapter 5: https://vimeo.com/333993432
 	09:45 Para pada
 	13:26 Un Verre Chez Nous
 	17:08 Rima Kaddisi & Tareq Tamim
-	19:14 Mays El Reem
+	19:14 Mays El Rim
 chapter 6: https://vimeo.com/333985443
 	00:00 3ayshi wa7da balak 
 	04:27 LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)
@@ -165,7 +165,7 @@ Shi Fashel Remastered; https://vimeo.com/337989424
 
 Film Ameriki Tawil - One Flew Over The Cuckoo's Nest: https://vimeo.com/333747708
 
-Junkyard Mays El Rim Favorie: https://vimeo.com/332202467
+Junkyard Mays El Rim Favorite: https://vimeo.com/332202467
 
 Snatch Prova: https://vimeo.com/323532598
 
