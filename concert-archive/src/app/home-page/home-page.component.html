@@ -3,7 +3,7 @@
   <div class="hero-inner">
     <div class="hero-meta">
       <div class="hero-sub">Concert & Singles Archive</div>
-      <h1 class="hero-title">{{ 'Ziad on Vimeo' }}</h1>
+  <h1 class="hero-title">Ziad on <a href="http://vimeo.com/rahbaniziad" target="_blank" rel="noopener noreferrer">Vimeo</a></h1>
       <!-- <p class="hero-subtitle">In 2019, Ziad Rahbani published 50 high-fidelity concert videos to Vimeo, featuring live performances, rehearsals, and singles. This page lets you browse setlists and easily access each musical piece.</p> -->
     </div>
     <div class="hero-cover" aria-hidden="true">
@@ -36,7 +36,7 @@
             <div class="track-index">{{ si + 1 }}</div>
             <div class="song-info">
                 <div class="song-main">
-                  <button mat-button class="song-link" (click)="playSong(s)" [attr.title]="s.title">{{ shortTitle(s.title) }}</button>
+                  <button mat-button class="song-link" (click)="playSong(s)" [attr.title]="s.title" [class.song-new]="(s.category || '').toLowerCase() === 'new'">{{ shortTitle(s.title) }}</button>
                   <div class="song-duration">{{ s.duration }}</div>
                 </div>
                 <div class="song-desc" *ngIf="s.description">{{ s.description }}</div>
@@ -52,6 +52,12 @@
 <!-- Audio-only dock (bottom-right desktop, bottom on mobile) -->
 <div #playerDock class="player-dock" *ngIf="currentSong" [style.width.px]="currentWidth" [style.height.px]="currentHeight">
   <div class="dock-content">
+    <!-- Subtle close button overlay (top-right) -->
+    <button class="close-overlay" title="Close player" (click)="closeDock()" aria-label="Close player">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.9a1 1 0 0 0 1.41-1.41L13.41 12l4.9-4.89a1 1 0 0 0 0-1.4z"/>
+      </svg>
+    </button>
     <!-- Resize handle (top-left). Drag to resize between min (1x) and max (3x). -->
     <div class="resize-handle top-left" (pointerdown)="onResizeStart($event)" title="Resize"></div>
     <div class="dock-left">

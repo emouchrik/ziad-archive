@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { ConcertService, Concert, Song } from '../services/concert.service';
+import { AnalyticsService } from '../services/analytics.service';
 import { IframeWrapperComponent } from '../shared/iframe-wrapper/iframe-wrapper.component';
 
 @Component({
@@ -43,7 +44,7 @@ export class HomePageComponent {
   private startWidth = this.baseWidth;
   private startHeight = this.baseHeight;
 
-  constructor(private concertService: ConcertService) {
+  constructor(private concertService: ConcertService, private analytics: AnalyticsService) {
     this.concerts = this.concertService.getConcerts();
   }
 
@@ -155,6 +156,12 @@ export class HomePageComponent {
     this.currentSong = song as Song;
     // destroy any existing dock player and then set new embed
     this.stopDock();
+    // Log analytics event for song click
+    try {
+      this.analytics.logEvent('song_click', { title: song.title, url: song.url || null });
+    } catch (e) {
+      // swallow errors from analytics
+    }
     if (!song.url) {
       this.setEmbedFor('dock', null);
       return;
@@ -242,6 +249,14 @@ export class HomePageComponent {
     document.addEventListener('pointercancel', this.onPointerUp as EventListener);
     // prevent default to avoid text selection gestures
     ev.preventDefault();
+
+    // Analytics: resize started
+    try {
+      const scale = this.currentWidth / this.baseWidth;
+      this.analytics.logEvent('player_resize_start', { width: this.currentWidth, height: this.currentHeight, scale });
+    } catch (e) {
+      // ignore analytics errors
+    }
   }
 
   private onPointerMove = (ev: Event) => {
@@ -292,6 +307,14 @@ export class HomePageComponent {
 
     const dockEl = document.querySelector('.player-dock');
     dockEl?.classList.remove('resizing');
+
+    // Analytics: resize ended (report final size/scale)
+    try {
+      const scale = this.currentWidth / this.baseWidth;
+      this.analytics.logEvent('player_resize_end', { width: this.currentWidth, height: this.currentHeight, scale });
+    } catch (e) {
+      // ignore analytics errors
+    }
 
     this.removeDocumentPointerListeners();
   };

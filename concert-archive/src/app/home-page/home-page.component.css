@@ -61,6 +61,33 @@
   cursor: nwse-resize; /* visually indicates diagonal resize */
 }
 
+/* close button overlay in the top-right of the player dock */
+.player-dock .close-overlay {
+  position: absolute;
+  top: 6px;
+  /* move slightly left to avoid overlapping links in the page corner */
+  right: 46px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.18);
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4020;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.player-dock .close-overlay:hover { transform: translateY(-2px); background: rgba(0,0,0,0.26); }
+.player-dock .close-overlay svg { width: 16px; height: 16px; display:block; }
+
+@media (max-width: 480px) {
+  /* On very small screens, bring the button back near the corner */
+  .player-dock .close-overlay { right: 8px; }
+}
+
 /* When resizing, make the handle slightly larger/visible */
 .player-dock.resizing .resize-handle { background: rgba(0,0,0,0.4); transform: scale(1.05); }
 
@@ -237,6 +264,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.song-link.song-new {
+  color: #d93025; /* red accent for new songs */
+}
+.song-link.song-new::after {
+  content: ' NEW';
+  color: #d93025;
+  font-weight: 700;
+  margin-left: 6px;
+  font-size: 11px;
 }
 .song-duration { color: rgba(0,0,0,0.5); font-size:12px; }
 .song-desc { color: rgba(0,0,0,0.65); font-size: 12px; margin-top: 2px; }

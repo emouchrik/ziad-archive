@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface Song { title: string; duration?: string; url?: string; description?: string }
+export interface Song { title: string; duration?: string; url?: string; description?: string; category?: string }
 export interface Chapter { title: string; songs: Song[]; url?: string }
 export interface Concert {
   title: string;
@@ -26,9 +26,9 @@ export class ConcertService {
             title: 'chapter 1',
             songs: [
               { title: 'Lullaby Birdland', duration: '00:00', url: 'https://vimeo.com/327370274#t=0m0s', description: 'George Shearing (composer)' },
-              { title: 'Mish Bass Talfinli', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
+              { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '04:50', url: 'https://vimeo.com/327370274#t=4m50s' },
               { title: 'Ma Tfill + Manha De Carnaval', duration: '08:20', url: 'https://vimeo.com/327370274#t=8m20s' },
-              { title: 'Gingele', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
+              { title: 'Gingle', duration: '13:28', url: 'https://vimeo.com/327370274#t=13m28s' },
               { title: 'Mexicano', duration: '15:50', url: 'https://vimeo.com/327370274#t=15m50s', description: 'incredible piano solo' },
               { title: 'Mas Que Nada', duration: '21:45', url: 'https://vimeo.com/327370274#t=21m45s', description: 'Jorge Ben (composer)' }
             ]
@@ -84,9 +84,9 @@ export class ConcertService {
             url: 'https://vimeo.com/335712846',
             songs: [
               { title: 'Intro', duration: '00:00', url: 'https://vimeo.com/335712846#t=0m0s' },
-              { title: 'Al Amal', duration: '04:32', url: 'https://vimeo.com/335712846#t=4m32s' },
+              { title: 'Lawla Foshat El Amal, Pt. 2', duration: '04:32', url: 'https://vimeo.com/335712846#t=4m32s' },
               { title: 'Word by Sabah Ayyoub', duration: '07:10', url: 'https://vimeo.com/335712846#t=7m10s' },
-              { title: 'Sobhil Jeez', duration: '12:06', url: 'https://vimeo.com/335712846#t=12m6s' },
+              { title: 'Sobhil Jiz', duration: '12:06', url: 'https://vimeo.com/335712846#t=12m6s' },
               { title: 'Elerss (The Wedding)', duration: '15:10', url: 'https://vimeo.com/335712846#t=15m7s', description: 'nice bouzo2 entrance' }
             ]
           },
@@ -106,10 +106,10 @@ export class ConcertService {
             url: 'https://vimeo.com/335714826',
             songs: [
               { title: 'Word by Tareq Tamim', duration: '00:00', url: 'https://vimeo.com/335714826#t=0m0s' },
-              { title: 'Samadou Ghalabo', duration: '05:11', url: 'https://vimeo.com/335714826#t=5m11s' },
+              { title: 'صمدو و غلبو', duration: '05:11', url: 'https://vimeo.com/335714826#t=5m11s', category: 'new'},
               { title: 'Asaada Allah Masaakum', duration: '10:23', url: 'https://vimeo.com/335714826#t=10m23s' },
               { title: 'Word by Lina Khoury', duration: '14:30', url: 'https://vimeo.com/335714826#t=14m30s' },
-              { title: 'Sabah w Masa (Ghada Ghanem)', duration: '15:38', url: 'https://vimeo.com/335714826#t=15m38s' }
+              { title: 'Sabah w Masa', duration: '15:38', url: 'https://vimeo.com/335714826#t=15m38s', description: 'peformed by Ghada Ghanem' }
             ]
           },
           {
@@ -117,10 +117,10 @@ export class ConcertService {
             url: 'https://vimeo.com/335715444',
             songs: [
               { title: 'Word by Radwan Hamze', duration: '00:00', url: 'https://vimeo.com/335715444#t=0m0s' },
-              { title: 'Ya Nour Aaynaya', duration: '02:00', url: 'https://vimeo.com/335715444#t=2m0s' },
-              { title: 'Ziad about El 7ali ti3bani ya layla', duration: '06:52', url: 'https://vimeo.com/335715444#t=6m52s' },
-              { title: 'El 7ali ti3bani ya layla', duration: '09:35', url: 'https://vimeo.com/335715444#t=9m35s' },
-              { title: 'Word by Layal Daou (Wijhit el iste3mel)', duration: '14:00', url: 'https://vimeo.com/335715444#t=14m0s' }
+              { title: 'Ya Nour Einaya', duration: '02:00', url: 'https://vimeo.com/335715444#t=2m0s' },
+              { title: 'Story by Ziad re. El Hali Taabani', duration: '06:52', url: 'https://vimeo.com/335715444#t=6m52s' },
+              { title: 'El Hali Taabani', duration: '09:35', url: 'https://vimeo.com/335715444#t=9m35s' },
+              { title: 'Wijhit el Iste3mel (Layal Daou)', duration: '14:00', url: 'https://vimeo.com/335715444#t=14m0s' }
             ]
           },
           {
@@ -128,8 +128,8 @@ export class ConcertService {
             url: 'https://vimeo.com/335715936',
             songs: [
               { title: 'Bizakker Bil Kharif', duration: '00:00', url: 'https://vimeo.com/335715936#t=0m0s' },
-              { title: 'Word by Radwan Hamze and Tareq Tamim', duration: '05:38', url: 'https://vimeo.com/335715936#t=5m38s' },
-              { title: '3ateba!', duration: '07:38', url: 'https://vimeo.com/335715936#t=7m38s' },
+              { title: '(Radwan Hamze and Tareq Tamim)', duration: '05:38', url: 'https://vimeo.com/335715936#t=5m38s' },
+              { title: '3ateba', duration: '07:38', url: 'https://vimeo.com/335715936#t=7m38s' },
               { title: 'Ya Bint el m3awen', duration: '15:41', url: 'https://vimeo.com/335715936#t=15m41s' },
               { title: 'Credits', duration: '18:15', url: 'https://vimeo.com/335715936#t=18m15s' }
             ]
@@ -199,17 +199,17 @@ export class ConcertService {
             title: 'chapter 1',
             url: 'https://vimeo.com/320573330',
             songs: [
-              { title: 'O grande amor (Antônio Carlos Jobim)', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s' },
+              { title: 'O grande amor', duration: '00:00', url: 'https://vimeo.com/320573330#t=0m0s', description: 'Antônio Carlos Jobim (composer)' },
               { title: 'Qu\'elle est lourde à porter l\'absence de l\'ami', duration: '03:30', url: 'https://vimeo.com/320573330#t=3m30s' },
               { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '07:10', url: 'https://vimeo.com/320573330#t=7m10s' },
               { title: 'My Funny Valentine', duration: '09:40', url: 'https://vimeo.com/320573330#t=9m40s' },
               { title: 'Yardbird Suite', duration: '13:05', url: 'https://vimeo.com/320573330#t=13m5s' },
               { title: 'Night in Tunisia', duration: '16:30', url: 'https://vimeo.com/320573330#t=16m30s' },
-              { title: 'La Boheme (Charles Aznavour)', duration: '20:51', url: 'https://vimeo.com/320573330#t=20m51s' },
-              { title: 'But not for me (Gershwin) ', duration: '25:40', url: 'https://vimeo.com/320573330#t=25m40s' },
+              { title: 'La Boheme', duration: '20:51', url: 'https://vimeo.com/320573330#t=20m51s' },
+              { title: 'But not for me ', duration: '25:40', url: 'https://vimeo.com/320573330#t=25m40s', description: 'Gershwin' },
               { title: 'Min Madinet Hamburg (word by Tareq Tamim) ', duration: '27:53', url: 'https://vimeo.com/320573330#t=27m53s' },
               { title: 'La Maison sous les arbres (Gilbert Bécaud)', duration: '30:05', url: 'https://vimeo.com/320573330#t=30m5s' },
-              { title: 'Spiral (Crusadors)', duration: '35:25', url: 'https://vimeo.com/320573330#t=35m25s' },
+              { title: 'Spiral', duration: '35:25', url: 'https://vimeo.com/320573330#t=35m25s', description: 'Crusadors' },
               { title: '?', duration: '40:20', url: 'https://vimeo.com/320573330#t=40m20s' },
               { title: '(word by Tareq Tamim)', duration: '45:20', url: 'https://vimeo.com/320573330#t=45m20s' },
               { title: 'Autumn Leaves', duration: '46:09', url: 'https://vimeo.com/320573330#t=46m9s' },
@@ -229,7 +229,7 @@ export class ConcertService {
             title: 'chapter 1',
             url: 'https://vimeo.com/332201616',
             songs: [
-              { title: 'Fixme', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
+              { title: '?0', duration: '01:05', url: 'https://vimeo.com/332201616#t=1m5s' },
               { title: 'O grande amor', duration: '04:58', url: 'https://vimeo.com/332201616#t=4m58s', description: 'Antônio Carlos Jobim' },
               { title: 'And I Love You So', duration: '08:47', url: 'https://vimeo.com/332201616#t=8m47s' },
               { title: 'Fly Me to the Moon', duration: '11:05', url: 'https://vimeo.com/332201616#t=11m5s' },
@@ -244,8 +244,8 @@ export class ConcertService {
               { title: 'Favela', description: 'Antonio Carlos Jobim (composer)', duration: '00:00', url: 'https://vimeo.com/332202608#t=0m0s' },
               { title: 'The Look of Love', duration: '03:20', url: 'https://vimeo.com/332202608#t=3m20s', description: 'Burt Bacharach (composer)' },
               { title: 'Come Into My Life', duration: '06:30', url: 'https://vimeo.com/332202608#t=6m30s', description: 'Joyce Sims (original artist)' },
-              { title: 'Spiral', description: 'Crusaders. Three great piano solos by Ziad Riff',
-                duration: '12:13', url: 'https://vimeo.com/332202608#t=7m10s' }
+              { title: 'Spiral', description: 'Crusaders. great piano solos by Ziad',
+                duration: '12:13', url: 'https://vimeo.com/332202608#t=12m13s' }
             ]
           },
           {
@@ -253,7 +253,7 @@ export class ConcertService {
             url: 'https://vimeo.com/332203272',
             songs: [
               { title: '?1', duration: '00:00', url: 'https://vimeo.com/332203272#t=0m0s' },
-              { title: '?2', duration: '01:45', url: 'https://vimeo.com/332203272#t=1m45s' },
+              { title: 'Il jouait du piano debout', duration: '01:45', url: 'https://vimeo.com/332203272#t=1m45s' },
               { title: 'Feeling Good', description: 'Nina Simone (popularized). amazing keyboard solo', duration: '04:35', url: 'https://vimeo.com/332203272#t=4m35s' },
               { title: 'Credits with ?1', duration: '07:00', url: 'https://vimeo.com/332203272#t=7m0s' },
               { title: 'Mays El Rim', duration: '15:00', url: 'https://vimeo.com/332203272#t=13m0s' }
@@ -270,12 +270,12 @@ export class ConcertService {
             title: 'chapter 1',
             url: 'https://vimeo.com/325763780',
             songs: [
-              { title: "Piaf Song — Hymne A L'Amour (very nice)", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
+              { title: "Piaf Song — Hymne A L'Amour?", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
               { title: 'Whatever Lola Wants', duration: '05:30', url: 'https://vimeo.com/325763780#t=5m30s' },
-              { title: 'How Insensitive (Antônio Carlos Jobim)', duration: '08:24', url: 'https://vimeo.com/325763780#t=8m24s' },
-              { title: 'What A Difference A Day Made (Dinah Washington)', duration: '12:48', url: 'https://vimeo.com/325763780#t=12m48s' },
+              { title: 'How Insensitive', duration: '08:24', url: 'https://vimeo.com/325763780#t=8m24s', description: 'Antonio Carlos Jobim (composer)' },
+              { title: 'What A Difference A Day Made', duration: '12:48', url: 'https://vimeo.com/325763780#t=12m48s', description: 'Dinah Washington' },
               { title: '?1', duration: '15:36', url: 'https://vimeo.com/325763780#t=15m36s' },
-              { title: 'The Shadow of Your Smile (Andy Williams)', duration: '21:16', url: 'https://vimeo.com/325763780#t=21m16s' },
+              { title: 'The Shadow of Your Smile', duration: '21:16', url: 'https://vimeo.com/325763780#t=21m16s', description: 'Andy Williams' },
               { title: 'Just the Two of Us', duration: '25:38', url: 'https://vimeo.com/325763780#t=25m38s' },
               { title: '?2', duration: '31:30', url: 'https://vimeo.com/325763780#t=31m30s' },
               { title: '?3', duration: '37:25', url: 'https://vimeo.com/325763780#t=37m25s' },
@@ -283,7 +283,7 @@ export class ConcertService {
               { title: 'Imagine', duration: '45:50', url: 'https://vimeo.com/325763780#t=45m50s' },
               { title: '?4', duration: '49:50', url: 'https://vimeo.com/325763780#t=49m50s' },
               { title: 'Hit the Road Jack', duration: '53:40', url: 'https://vimeo.com/325763780#t=53m40s' },
-              { title: 'Killing me Softly with his Songs', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
+              { title: 'Killing me Softly with his Song', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
               { title: 'credits', duration: '60:35', url: 'https://vimeo.com/325763780#t=57m35s' }            ]
           }
         ]
@@ -300,23 +300,23 @@ export class ConcertService {
               { title: 'مقدمة', duration: '00:00', url: 'https://vimeo.com/331233262#t=0m0s' },
               { title: 'بعتلك', duration: '09:37', url: 'https://vimeo.com/331233262#t=9m37s' },
               { title: 'أمنلي بيت', duration: '14:08', url: 'https://vimeo.com/331233262#t=14m8s' },
-              { title: 'يعزونا', duration: '18:08', url: 'https://vimeo.com/331233262#t=18m8s' }
+              { title: 'يعزونا', duration: '18:08', url: 'https://vimeo.com/331233262#t=18m8s', category: 'new' }
             ]
           },
           {
             title: 'chapter 2',
             songs: [
-              { title: 'الأمل', duration: '01:56', url: 'https://vimeo.com/331234476#t=1m56s' },
+              { title: 'Lawla Foshat El Amal, Pt. 2', duration: '01:56', url: 'https://vimeo.com/331234476#t=1m56s' },
               { title: 'صفحة جديدة', duration: '03:43', url: 'https://vimeo.com/331234476#t=3m43s' },
               { title: 'سهّرنا يا بو الأحباب', duration: '07:19', url: 'https://vimeo.com/331234476#t=7m19s' },
-              { title: 'يا سيف على الأعداء طايل', duration: '09:23', url: 'https://vimeo.com/331234476#t=9m23s' },
-              { title: 'مش بس تلفنلي', duration: '13:34', url: 'https://vimeo.com/331234476#t=13m34s' }
+              { title: 'Ya Sayf El Aal Aada Tayel', duration: '09:23', url: 'https://vimeo.com/331234476#t=9m23s' },
+              { title: 'Mish Bass Talfinli', duration: '13:34', url: 'https://vimeo.com/331234476#t=13m34s', description: 'Só Danço Samba' }
             ]
           },
           {
             title: 'chapter 3',
             songs: [
-              { title: 'عهدير البوسطة', duration: '00:00', url: 'https://vimeo.com/331235667#t=0m0s' },
+              { title: 'عهدير البوسطة', duration: '00:00', url: 'https://vimeo.com/331235667#t=0m0s', description: 'really nice use of violins to illustrate the sound of the bus'},
               { title: 'بيذكر بالخريف', duration: '06:09', url: 'https://vimeo.com/331235667#t=6m9s' },
               { title: 'عاتابا', duration: '10:59', url: 'https://vimeo.com/331235667#t=10m59s' },
               { title: 'يا بنت المعاون', duration: '20:04', url: 'https://vimeo.com/331235667#t=20m4s' }
@@ -326,15 +326,15 @@ export class ConcertService {
             title: 'chapter 4',
             songs: [
               { title: 'Film Ameriki Tawil', duration: '00:00', url: 'https://vimeo.com/331237088#t=0m0s' },
-              { title: 'Layk', duration: '06:24', url: 'https://vimeo.com/331237088#t=6m24s' },
-              { title: 'Asaada Allah Masa2akum', duration: '11:58', url: 'https://vimeo.com/331237088#t=11m58s' },
+              { title: 'Layk ya habibi', duration: '06:24', url: 'https://vimeo.com/331237088#t=6m24s', category: 'new' },
+              { title: 'Assa\'ada\'llahou Massa\'akom', duration: '11:58', url: 'https://vimeo.com/331237088#t=11m58s' },
               { title: 'Salimli 3ale', duration: '16:30', url: 'https://vimeo.com/331237088#t=16m30s' }
             ]
           },
           {
             title: 'chapter 5',
             songs: [
-              { title: 'Talfayn Ayache', duration: '00:45', url: 'https://vimeo.com/331238275#t=0m45s' },
+              { title: 'Talfan Aayash', duration: '00:45', url: 'https://vimeo.com/331238275#t=0m45s' },
               { title: 'Bema Enno', duration: '04:50', url: 'https://vimeo.com/331238275#t=4m50s' },
               { title: 'Agua De Beber', duration: '08:51', url: 'https://vimeo.com/331238275#t=8m51s' },
               { title: 'Un Verre Chez Nous', duration: '11:55', url: 'https://vimeo.com/331238275#t=11m55s' },
@@ -346,8 +346,8 @@ export class ConcertService {
             songs: [
               { title: 'المقاومة الوطنية', duration: '01:10', url: 'https://vimeo.com/331239381#t=1m10s' },
               { title: 'شو هالايام', duration: '04:27', url: 'https://vimeo.com/331239381#t=4m27s' },
-              { title: 'صمدو و غلبو', duration: '08:59', url: 'https://vimeo.com/331239381#t=8m59s' },
-              { title: 'Amreeka Meen', duration: '17:34', url: 'https://vimeo.com/331239381#t=17m34s' }
+              { title: 'صمدو و غلبو', duration: '08:59', url: 'https://vimeo.com/331239381#t=8m59s', category: 'new' },
+              { title: 'Amreeka Meen', duration: '17:34', url: 'https://vimeo.com/331239381#t=17m34s', category: 'new' }
             ]
           }
         ]
@@ -382,19 +382,19 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'Dabke (only played once in 1982)', duration: '00:00', url: 'https://vimeo.com/333986913#t=0m0s' },
+              { title: 'Dabke', duration: '00:00', url: 'https://vimeo.com/333986913#t=0m0s', description: 'only performed once in 1982', category: 'new' },
               { title: 'Baatilak', duration: '07:39', url: 'https://vimeo.com/333986913#t=7m39s' },
-              { title: 'habb l hawa', duration: '11:27', url: 'https://vimeo.com/333986913#t=11m27s' },
-              { title: 'يعزونا (nice piano introduction)', duration: '15:48', url: 'https://vimeo.com/333986913#t=15m48s' }
+              { title: 'هب الهوى', duration: '11:27', url: 'https://vimeo.com/333986913#t=11m27s' },
+              { title: 'يعزونا', duration: '15:48', url: 'https://vimeo.com/333986913#t=15m48s', description: 'nice piano intro', category: 'new'}
             ]
           },
           {
             title: 'chapter 2',
             songs: [
               { title: 'Tareq Tamim', duration: '00:00', url: 'https://vimeo.com/333988325#t=0m0s' },
-              { title: 'Al Amal', duration: '03:01', url: 'https://vimeo.com/333988325#t=3m1s' },
-              { title: 'Al 7ali Ti3bani ya Layla', duration: '05:32', url: 'https://vimeo.com/333988325#t=5m32s' },
-              { title: 'Saf7a Gdida (Hazem Chahine)', duration: '09:50', url: 'https://vimeo.com/333988325#t=9m50s' },
+              { title: 'Lawla Foshat El Amal, Pt 2', duration: '03:01', url: 'https://vimeo.com/333988325#t=3m1s' },
+              { title: 'El Hali Taabani', duration: '05:32', url: 'https://vimeo.com/333988325#t=5m32s' },
+              { title: 'صفحة جديدة', duration: '09:50', url: 'https://vimeo.com/333988325#t=9m50s', description: 'Hazem Chahine'},
               { title: 'يا سيف على الأعداء طايل', duration: '13:30', url: 'https://vimeo.com/333988325#t=13m30s' },
               { title: 'Mish Bass Talfinli - Só Danço Samba', duration: '17:41', url: 'https://vimeo.com/333988325#t=17m41s' }
             ]
@@ -403,8 +403,8 @@ export class ConcertService {
             title: 'chapter 3',
             songs: [
               { title: 'Rima Kaddisi', duration: '00:00', url: 'https://vimeo.com/333989563#t=0m0s' },
-              { title: 'El Bosta', duration: '01:45', url: 'https://vimeo.com/333989563#t=1m45s' },
-              { title: 'Bizakkarak (piano intro)', duration: '08:00', url: 'https://vimeo.com/333989563#t=8m0s' },
+              { title: 'Al Bostah', duration: '01:45', url: 'https://vimeo.com/333989563#t=1m45s' },
+              { title: 'Bizakker Bil Kharif ', duration: '08:00', url: 'https://vimeo.com/333989563#t=8m0s' },
               { title: 'Ateba', duration: '13:00', url: 'https://vimeo.com/333989563#t=13m0s' },
               { title: 'bint el m3awen', duration: '22:39', url: 'https://vimeo.com/333989563#t=22m39s' }
             ]
@@ -413,7 +413,7 @@ export class ConcertService {
             title: 'chapter 4',
             songs: [
               { title: 'Film Ameriki Tawil', duration: '00:00', url: 'https://vimeo.com/333991588#t=0m0s' },
-              { title: 'Layk ya habibi layk', duration: '04:20', url: 'https://vimeo.com/333991588#t=4m20s' },
+              { title: 'Layk ya habibi', duration: '04:20', url: 'https://vimeo.com/333991588#t=4m20s' },
               { title: 'Tareq Tamim', duration: '07:45', url: 'https://vimeo.com/333991588#t=7m45s' },
               { title: 'Assaada Allah Masa2akum', duration: '09:24', url: 'https://vimeo.com/333991588#t=9m24s' },
               { title: 'Sallimli 3ale', duration: '13:25', url: 'https://vimeo.com/333991588#t=13m25s' },
@@ -436,11 +436,11 @@ export class ConcertService {
             title: 'chapter 6',
             songs: [
               { title: '3ayshi wa7da balak', duration: '00:00', url: 'https://vimeo.com/333985443#t=0m0s' },
-              { title: 'LAWLA FOSHAT EL AMAL (piano as bass and longer intro + mistakes)', duration: '04:27', url: 'https://vimeo.com/333985443#t=4m27s' },
-              { title: 'Shou Hal Iyyam', duration: '07:25', url: 'https://vimeo.com/333985443#t=7m25s' },
+              { title: 'Lawla Foshat El Amal, Pt. 1', duration: '04:27', url: 'https://vimeo.com/333985443#t=4m27s', description: '' },
+              { title: 'Shou Hal Ayyam', duration: '07:25', url: 'https://vimeo.com/333985443#t=7m25s' },
               { title: 'Credits', duration: '13:00', url: 'https://vimeo.com/333985443#t=13m0s' },
-              { title: 'Amreeka Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s' },
-              { title: 'Amreeka Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s' }
+              { title: 'Amreeka Meen - Lyrics readout', duration: '17:05', url: 'https://vimeo.com/333985443#t=17m5s', category: 'new'  },
+              { title: 'Amreeka Meen', duration: '18:58', url: 'https://vimeo.com/333985443#t=18m58s', category: 'new'  }
             ]
           }
         ]
@@ -454,39 +454,39 @@ export class ConcertService {
           {
             title: 'chapter 1',
             songs: [
-              { title: 'samadou w ghalabou', duration: '03:46', url: 'https://vimeo.com/328235786#t=3m46s' },
-              { title: 'sobhi l jeez', duration: '07:00', url: 'https://vimeo.com/328235786#t=7m0s' },
-              { title: 'ya saif', duration: '11:28', url: 'https://vimeo.com/328235786#t=11m28s' },
-              { title: 'habb l hawa', duration: '15:12', url: 'https://vimeo.com/328235786#t=15m12s' },
-              { title: 'overture 83', duration: '20:38', url: 'https://vimeo.com/328235786#t=20m38s' },
-              { title: 'ma3loumat mish akidi', duration: '23:57', url: 'https://vimeo.com/328235786#t=23m57s' }
+              { title: 'صمدو و غلبو', duration: '03:46', url: 'https://vimeo.com/328235786#t=3m46s', category: 'new' },
+              { title: 'Sobhil Jiz', duration: '07:00', url: 'https://vimeo.com/328235786#t=7m0s' },
+              { title: 'Ya Sayf El Aal Aada Tayel', duration: '11:28', url: 'https://vimeo.com/328235786#t=11m28s' },
+              { title: 'هب الهوى', duration: '15:12', url: 'https://vimeo.com/328235786#t=15m12s' },
+              { title: 'Mukadimah \'84', duration: '20:38', url: 'https://vimeo.com/328235786#t=20m38s' },
+              { title: 'Maaloumat Mich Akida', duration: '23:57', url: 'https://vimeo.com/328235786#t=23m57s' }
             ]
           },
           {
             title: 'chapter 2',
             songs: [
-              { title: 'Shu Hal Iyyam', duration: '00:00', url: 'https://vimeo.com/328236158#t=0m0s' },
+              { title: 'Shou Hal Ayyam', duration: '00:00', url: 'https://vimeo.com/328236158#t=0m0s' },
               { title: 'Ana 3indi Haneen', duration: '06:22', url: 'https://vimeo.com/328236158#t=6m22s' },
-              { title: 'Bhalyawmen', duration: '17:27', url: 'https://vimeo.com/328236158#t=17m27s' },
-              { title: 'Bima Enno', duration: '21:28', url: 'https://vimeo.com/328236158#t=21m28s' },
-              { title: 'Atl W Darar', duration: '25:40', url: 'https://vimeo.com/328236158#t=25m40s' }
+              { title: 'Bi Halyawmayn', duration: '17:27', url: 'https://vimeo.com/328236158#t=17m27s' },
+              { title: 'Bema Enno', duration: '21:28', url: 'https://vimeo.com/328236158#t=21m28s' },
+              { title: 'عطل وضرر', duration: '25:40', url: 'https://vimeo.com/328236158#t=25m40s' }
             ]
           },
           {
             title: 'chapter 3',
             songs: [
-              { title: 'Al Amal', duration: '08:48', url: 'https://vimeo.com/328236587#t=8m48s' },
-              { title: 'Nazl l Sorour', duration: '14:29', url: 'https://vimeo.com/328236587#t=14m29s' },
-              { title: 'Habbaytak Ta Nsit Al Nom', duration: '16:50', url: 'https://vimeo.com/328236587#t=16m50s' },
+              { title: 'Lawla Foshat El Amal, Pt. 2', duration: '08:48', url: 'https://vimeo.com/328236587#t=8m48s' },
+              { title: 'Nazl El Sourour', duration: '14:29', url: 'https://vimeo.com/328236587#t=14m29s' },
+              { title: 'Habaitak Ta Neseet Al Naoum', duration: '16:50', url: 'https://vimeo.com/328236587#t=16m50s' },
               { title: 'The Song Goes On', duration: '23:07', url: 'https://vimeo.com/328236587#t=23m7s' }
             ]
           },
           {
             title: 'chapter 4',
             songs: [
-              { title: 'Layk', duration: '00:00', url: 'https://vimeo.com/328235271#t=0m0s' },
+              { title: 'Layk ya habibi', duration: '00:00', url: 'https://vimeo.com/328235271#t=0m0s', category: 'new' },
               { title: 'Ya Jabal Al Sheikh', duration: '03:50', url: 'https://vimeo.com/328235271#t=3m50s' },
-              { title: 'Sahraneen', duration: '07:17', url: 'https://vimeo.com/328235271#t=7m17s' },
+              { title: 'El Gamaa Sahranin', duration: '07:17', url: 'https://vimeo.com/328235271#t=7m17s', category: 'new' },
               { title: 'Mays El Rim Intro', duration: '09:29', url: 'https://vimeo.com/328235271#t=9m29s' },
               { title: 'Talfan Aayash', duration: '14:30', url: 'https://vimeo.com/328235271#t=14m30s' },
               { title: 'Aataba', duration: '19:55', url: 'https://vimeo.com/328235271#t=19m55s' },
@@ -505,8 +505,8 @@ export class ConcertService {
             title: 'set',
             songs: [
               { title: 'الأمل 2 - 1994', url: 'https://youtu.be/e5xM3vmrk9o?si=ovDmMtKgzGQwsnw-' },
-              { title: 'ضحكة ال75000 - 1988', url: 'https://youtu.be/acEb-o9gYRQ?si=Klg7nNMU2a75c-aE' },
-              { title: 'Yaomiat 2004 يوميات', url: 'https://youtu.be/7AOnPHNqkbM?si=FNXgthT76Se1CacS' },
+              { title: 'ضحكة ال75000 - 1988', url: 'https://youtu.be/acEb-o9gYRQ?si=Klg7nNMU2a75c-aE', category: 'new' },
+              { title: 'Yaomiat 2004 يوميات', url: 'https://youtu.be/7AOnPHNqkbM?si=FNXgthT76Se1CacS', category: 'new' },
               { title: '1984 هدوء نسبي', url: 'https://youtu.be/Ws8EhHN7nRQ?si=fTEvt1pZDI61S7sW' },
               { title: 'بصراحة', url: 'https://youtu.be/9-nk9_7jBoM?si=w6O8bw-yqHE0clCt' },
               { title: 'شو عدا ما بدا', url: 'https://youtu.be/gSr_4IUr36M?si=PQ2Gi1hBAo39vvu3' },
@@ -514,7 +514,7 @@ export class ConcertService {
               { title: 'يا ليلي', url: 'https://youtu.be/GKnkIK-xzSQ?si=yO_RYPrbeb1y_0vn' },
               { title: 'وقمح', url: 'https://youtu.be/BGsD1eZ-PVQ?si=DcVf7q-M9mGAlHMS' },
               { title: 'بالنسبة لبكرا شو', url: 'https://youtu.be/9LLpgkurLBs?si=3nqTOslaY2zSGmv-' },
-              { title: 'وصلو ع بيتو', url: 'https://youtu.be/zMLKcSkx2Gc?si=dWyEpgFGS7PvpM7G' },
+              { title: 'وصلو ع بيتو', url: 'https://youtu.be/zMLKcSkx2Gc?si=dWyEpgFGS7PvpM7G' , category: 'new' },
               { title: 'final + ديار بكر', url: 'https://youtu.be/cinJNLF4o6o?si=I_r6TdGBf7-eE2rN' }
             ]
           }
@@ -556,7 +556,7 @@ export class ConcertService {
             songs: [
               { title: 'Dakhilik Ya 2immi', duration: '00:42', url: 'https://youtu.be/COrIgFDPjd8#t=0m42s' },
               { title: 'Ya Mhayret el 3alali', duration: '03:43', url: 'https://youtu.be/COrIgFDPjd8#t=3m43s' },
-              { title: '1987 Overture', duration: '08:25', url: 'https://youtu.be/COrIgFDPjd8#t=8m25s' },
+              { title: 'Mukadimah \'87', duration: '08:25', url: 'https://youtu.be/COrIgFDPjd8#t=8m25s' },
               { title: 'Touba Lil Sa3een', duration: '10:24', url: 'https://youtu.be/COrIgFDPjd8#t=10m24s' }
             ]
           }
