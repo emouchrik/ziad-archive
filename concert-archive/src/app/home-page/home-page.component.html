@@ -4,7 +4,7 @@
     <div class="hero-meta">
       <div class="hero-sub">Concert & Singles Archive</div>
   <h1 class="hero-title">Ziad on <a href="http://vimeo.com/rahbaniziad" target="_blank" rel="noopener noreferrer">Vimeo</a></h1>
-      <!-- <p class="hero-subtitle">In 2019, Ziad Rahbani published 50 high-fidelity concert videos to Vimeo, featuring live performances, rehearsals, and singles. This page lets you browse setlists and easily access each musical piece.</p> -->
+  <p class="hero-subtitle">Song lists for the concerts that Ziad Rahbani personally published on vimeo</p>
     </div>
     <div class="hero-cover" aria-hidden="true">
       <!-- decorative area, could be replaced with a real cover image later -->
@@ -31,7 +31,7 @@
     <div class="concert-body">
       <!-- Flatten chapters: show a single numbered list of songs per concert -->
       <mat-list>
-        <mat-list-item *ngFor="let s of getAllSongs(c); let si = index" class="track-row">
+  <mat-list-item *ngFor="let s of getAllSongs(c); let si = index" class="track-row">
           <div class="track-content">
             <div class="track-index">{{ si + 1 }}</div>
             <div class="song-info">
