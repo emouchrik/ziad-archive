@@ -12,6 +12,7 @@ export interface Concert {
     singers?: string[];
     speakers?: string[];
   };
+  image?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -645,10 +646,40 @@ export class ConcertService {
           {
             title: 'videos',
             songs: [
-              { title: 'Iza Baddik, Bfill', url: 'https://youtu.be/9Rt6hYFyeUk?si=ueOLvmjHSptdpvfE', description: 'Beiteddine Festival 2018' },
+              { title: 'Iza Baddik, Bfill', url: 'https://youtu.be/9Rt6hYFyeUk?si=ueOLvmjHSptdpvfE', description: 'Beiteddine Festival 2018', category: 'new' },
               { title: 'Al Bostah', url: 'https://youtu.be/Z4zZUAaHSCg?si=oJbbvbqC5yhj9fpB', description: 'With منى الشاذلي Cairo 2019' },
               { title: 'Bektob Ismak ya Habibi', url: 'https://youtu.be/l-DS85UR7wY?si=uwn-XLQyv0u-JTU4', description: 'With منى الشاذلي Cairo 2019' },
               { title: 'Hudou Nisbi', url: 'https://youtu.be/Vy1D_A7DlwE?si=yMb37BX0VzavNGsT&t=194', description: 'The Key Club 1995' }
+            ]
+          }
+        ]
+      }
+      ,
+      {
+        title: 'NDU Concert 2013',
+        date: '2013',
+        image: 'ndu-concert.jpg',
+        description: 'Lovely concert. Vocals: Manal Semaan, Bouchra Hachem. Drums: Wissam Sawaya',
+        chapters: [
+          {
+            title: 'set',
+            songs: [
+              { title: 'Ana Le Aalayki Mishtaa', url: 'https://youtu.be/2IpuorG1goE?si=QjRfx32MaHKrxIdi' },
+              { title: 'Ma bitfid', url: 'https://youtu.be/QCa7Z4a6otg?si=3exC4XtiFgX9awjo' },
+              { title: 'Shtaatillak', url: 'https://youtu.be/YRfqsPCrQZQ?si=Op4-Xa3qXiph7Lg6' },
+              { title: 'Mays El Reem', url: 'https://youtu.be/mXNlv_ys1bc?si=BgJyIpilw5pw4NmY' },
+              { title: 'Maaloumat Mich Akida', url: 'https://youtu.be/8liyyolxaG0?si=BKcqD_4xc9_A8AG9' },
+              { title: 'Aala Mahlak', url: 'https://youtu.be/dPkwyylpIUg?si=IzEToJ2a37n-Ii-c' },
+              { title: 'Kilme Kilme Ya Habibe', url: 'https://youtu.be/lldHBS2bqnw?si=Vz5m8jBr7wnDev4e' },
+              { title: 'Shou Hal Ayyam', url: 'https://youtu.be/BQgcNa2tB7s?si=M1W3Az37zazy3aDM' },
+              { title: 'Biktob Ismak Ya Habibi', url: 'https://youtu.be/sXrx6ZUs6rY?si=McX1A5S1YjgOpNt-' },
+              { title: 'Assa\'ada\'llahou Massa\'akom', url: 'https://youtu.be/OtKQp8N6f54?si=FStRi3Poau1Ouvob' },
+              { title: 'Oudak Rannan', url: 'https://youtu.be/SbA-8ZWJSAY?si=axb5_t_ycH20AigL' },
+              { title: 'Killing me Softly with his Song', url: 'https://youtu.be/dJA7TQrcawc?si=TPwZW2iOecy6AdNe' },
+              { title: 'Ya Nour Aaynaya', url: 'https://youtu.be/l15ZX6GfN3o?si=c9dcAPqBtgvBLwiH' },
+              { title: 'Rouh Khabber', url: 'https://youtu.be/u9pZhwIpyH0?si=mSJO5W6hWIMgEaxD' },
+              { title: 'Hit the Road Jack', url: 'https://youtu.be/xSVXETWTWnA?si=-Jgx2xaERP4AM6v6' },
+              { title: 'Sabah w Masa', url: 'https://youtu.be/o65-jKodVkQ?si=vTrNTXuVULe_Gmoc' }
             ]
           }
         ]
