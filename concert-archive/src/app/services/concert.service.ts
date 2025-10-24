@@ -138,31 +138,80 @@ export class ConcertService {
       }
       ,
       {
-        title: 'Publicity Concert 1',
+        title: 'Publicity Concert with Lara Rain',
         date: 'February 15, 2015',
         chapters: [
           {
-            title: 'parts',
+            title: 'part1',
+            url: 'https://vimeo.com/318059774',
             songs: [
-              { title: 'Publicity - 15-2-2015 part-1', url: 'https://vimeo.com/318059774' },
-              { title: 'Publicity - 15-2-2015 part-2', url: 'https://vimeo.com/318060272' },
-              { title: 'Publicity - 15-2-2015 part-3', url: 'https://vimeo.com/318314314' },
-              { title: 'Publicity - 15-2-2015 part-4', url: 'https://vimeo.com/318060582' }
+              { title: '(Word by Lina Khoury)', url: 'https://vimeo.com/318059774#t=0m0s' },
+              { title: 'Asaada Allah Masaakum', url: 'https://vimeo.com/318059774#t=0m44s' },
+              { title: 'Viva De Funk', url: 'https://vimeo.com/318059774#t=4m50s', description: 'Joe Sample' },
+              { title: 'If You Feel It', url: 'https://vimeo.com/318059774#t=9m55s', description: 'Thelma Houston, performed by Lara Rain' },
+              { title: 'Ma Bitfid', url: 'https://vimeo.com/318059774#t=13m52s' }
+            ]
+          },
+          {
+            title: 'part2',
+            url: 'https://vimeo.com/318060272',
+            songs: [
+              { title: 'Je ne veux pas travailler', url: 'https://vimeo.com/318060272#t=0m0s' },
+              { title: 'Bala Wala Shi', url: 'https://vimeo.com/318060272#t=2m52s', description: 'performed by Lara Rain' },
+              { title: '?0', url: 'https://vimeo.com/318060272#t=6m19s', description: '' }
+            ]
+          },
+          {
+            title: 'part3',
+            url: 'https://vimeo.com/318314314',
+            songs: [
+              { title: '(Word by Lina Khoury)', url: 'https://vimeo.com/318314314#t=0m0s' },
+              { title: 'Just the Two of Us', url: 'https://vimeo.com/318314314#t=1m45s' },
+              { title: 'Fly Me to the Moon', url: 'https://vimeo.com/318314314#t=6m13s', description: '' },
+              { title: 'Come into My Life', url: 'https://vimeo.com/318314314#t=10m45s', description: '' }            ]
+          },
+          {
+            title: 'part4',
+            url: 'https://vimeo.com/318060582',
+            songs: [
+              { title: '?Charlie Parker?', url: 'https://vimeo.com/318060582#t=0m0s' },
+              // { title: '', url: 'https://vimeo.com/318060582#t=0m44s' },
+              // { title: '', url: 'https://vimeo.com/318060582#t=4m50s', description: '' }
             ]
           }
         ]
       }
       ,
       {
-        title: 'Publicity Concert 2',
+        title: 'Publicity Concert with Tina',
         date: 'February 16, 2015',
         chapters: [
           {
-            title: 'parts',
+            title: 'parts1',
+            url: 'https://vimeo.com/318065137',
             songs: [
-              { title: 'Publicity - 16-2-2015 part-1', url: 'https://vimeo.com/318065137' },
-              { title: 'Publicity - 16-2-2015 part-2', url: 'https://vimeo.com/318064791' },
-              { title: 'Publicity - 16-2-2015 part-3', url: 'https://vimeo.com/318064596' }
+              { title: '?1', url: 'https://vimeo.com/318065137#t=0m0s' },
+              { title: 'What A Difference A Day Makes', url: 'https://vimeo.com/318065137#t=4m30s' },
+              { title: 'But Not For Me', url: 'https://vimeo.com/318065137#t=8m47s', description: 'George Gershwin' },
+              { title: 'Wayfaring Stranger', url: 'https://vimeo.com/318065137#t=11m22s', description: 'Johnny Cash' }
+            ]
+          },
+          {
+            title: 'parts2',
+            url: 'https://vimeo.com/318064791',
+            songs: [
+              // { title: 'Publicity - 16-2-2015 part-2-1', url: 'https://vimeo.com/318064791' },
+              // { title: 'Publicity - 16-2-2015 part-2-2', url: 'https://vimeo.com/318064791' },
+              { title: 'Publicity - 16-2-2015 part-2-3', url: 'https://vimeo.com/318064791' }
+            ]
+          },
+          {
+            title: 'parts3',
+            url: 'https://vimeo.com/318064596',
+            songs: [
+              // { title: 'Publicity - 16-2-2015 part-3-1', url: 'https://vimeo.com/318064596' },
+              // { title: 'Publicity - 16-2-2015 part-3-2', url: 'https://vimeo.com/318064596' },
+              { title: 'Publicity - 16-2-2015 part-3-3', url: 'https://vimeo.com/318064596' }
             ]
           }
         ]
@@ -273,7 +322,7 @@ export class ConcertService {
               { title: "Piaf Song — Hymne A L'Amour?", duration: '00:00', url: 'https://vimeo.com/325763780#t=0m0s', description: 'FIXME: verify exact title' },
               { title: 'Whatever Lola Wants', duration: '05:30', url: 'https://vimeo.com/325763780#t=5m30s' },
               { title: 'How Insensitive', duration: '08:24', url: 'https://vimeo.com/325763780#t=8m24s', description: 'Antonio Carlos Jobim (composer)' },
-              { title: 'What A Difference A Day Made', duration: '12:48', url: 'https://vimeo.com/325763780#t=12m48s', description: 'Dinah Washington' },
+              { title: 'What A Difference A Day Makes', duration: '12:48', url: 'https://vimeo.com/325763780#t=12m48s', description: 'Dinah Washington' },
               { title: '?1', duration: '15:36', url: 'https://vimeo.com/325763780#t=15m36s' },
               { title: 'The Shadow of Your Smile', duration: '21:16', url: 'https://vimeo.com/325763780#t=21m16s', description: 'Andy Williams' },
               { title: 'Just the Two of Us', duration: '25:38', url: 'https://vimeo.com/325763780#t=25m38s' },
@@ -497,7 +546,7 @@ export class ConcertService {
         ]
       },
       {
-        title: 'Da Capo (YOUTUBE)',
+        title: 'Da Capo (YouTube)',
         date: 'Jan 2003',
         description: 'Concert by Ziad Rahbani in Abu Dhabi',
         chapters: [
@@ -584,6 +633,22 @@ export class ConcertService {
               { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882' },
               { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796' },
               { title: 'Hudu\' Nisbi - 1985', url: 'https://vimeo.com/316599957' }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Rare Singles & Unreleased Track (YouTube)',
+        date: '1975-2020',
+        description: 'Variations of popualar tracks, unreleased songs, and rare singles',
+        chapters: [
+          {
+            title: 'videos',
+            songs: [
+              { title: 'Iza Baddik, Bfill', url: 'https://youtu.be/9Rt6hYFyeUk?si=ueOLvmjHSptdpvfE', description: 'Beiteddine Festival 2018' },
+              { title: 'Al Bostah', url: 'https://youtu.be/Z4zZUAaHSCg?si=oJbbvbqC5yhj9fpB', description: 'With منى الشاذلي Cairo 2019' },
+              { title: 'Bektob Ismak ya Habibi', url: 'https://youtu.be/l-DS85UR7wY?si=uwn-XLQyv0u-JTU4', description: 'With منى الشاذلي Cairo 2019' },
+              { title: 'Hudou Nisbi', url: 'https://youtu.be/Vy1D_A7DlwE?si=yMb37BX0VzavNGsT&t=194', description: 'The Key Club 1995' }
             ]
           }
         ]
