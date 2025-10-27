@@ -97,7 +97,7 @@ export class ConcertService {
             songs: [
               { title: 'Word by Lina Khoury (Hal Shi)', duration: '00:00', url: 'https://vimeo.com/335713821#t=0m0s' },
               { title: 'Baatilak', duration: '03:06', url: 'https://vimeo.com/335713821#t=3m6s' },
-              { title: 'Joe Sample Tune', duration: '07:52', url: 'https://vimeo.com/335713821#t=7m52s', description: 'with April Centrone on the Daff' },
+              { title: 'Joe Sample Tune', duration: '07:52', url: 'https://vimeo.com/335713821#t=7m52s', description: 'with April Centrone on the Daff', category: 'new' },
               { title: 'Word by Layal Daou and Radwan Hamze', duration: '14:30', url: 'https://vimeo.com/335713821#t=14m30s' },
               { title: 'Talfan Aayash', duration: '16:38', url: 'https://vimeo.com/335713821#t=16m38s' }
             ]
@@ -630,16 +630,16 @@ export class ConcertService {
               { title: 'Penalty Prova', url: 'https://vimeo.com/323532225' },
               { title: 'Bed in Studio', url: 'https://vimeo.com/323532004' },
               { title: 'Grand Prix Prova', url: 'https://vimeo.com/323532151' },
-              { title: 'SoundTrack - The Kite (Le cerf Volant) - 2003', url: 'https://vimeo.com/319973574' },
-              { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882' },
-              { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796' },
+              { title: 'SoundTrack - The Kite (Le cerf Volant) - 2003', url: 'https://vimeo.com/319973574', category: 'new' },
+              { title: 'Biaf - 2013', url: 'https://vimeo.com/318871882', category: 'new' },
+              { title: 'Joe Sample - Tune Rough Mix (24/07/2018)', url: 'https://vimeo.com/318852796'},
               { title: 'Hudu\' Nisbi - 1985', url: 'https://vimeo.com/316599957' }
             ]
           }
         ]
       },
       {
-        title: 'Rare Singles & Unreleased Track (YouTube)',
+        title: 'Rare Singles & Unreleased Tracks (YouTube)',
         date: '1975-2020',
         description: 'Variations of popualar tracks, unreleased songs, and rare singles',
         chapters: [
@@ -649,7 +649,9 @@ export class ConcertService {
               { title: 'Iza Baddik, Bfill', url: 'https://youtu.be/9Rt6hYFyeUk?si=ueOLvmjHSptdpvfE', description: 'Beiteddine Festival 2018', category: 'new' },
               { title: 'Al Bostah', url: 'https://youtu.be/Z4zZUAaHSCg?si=oJbbvbqC5yhj9fpB', description: 'With منى الشاذلي Cairo 2019' },
               { title: 'Bektob Ismak ya Habibi', url: 'https://youtu.be/l-DS85UR7wY?si=uwn-XLQyv0u-JTU4', description: 'With منى الشاذلي Cairo 2019' },
-              { title: 'Hudou Nisbi', url: 'https://youtu.be/Vy1D_A7DlwE?si=yMb37BX0VzavNGsT&t=194', description: 'The Key Club 1995' }
+              { title: 'Hudou Nisbi', url: 'https://youtu.be/Vy1D_A7DlwE?si=yMb37BX0VzavNGsT&t=194', description: 'The Key Club 1995' },
+              { title: 'Shou Bhebbak', url: 'https://youtu.be/pq_pKd5p83s?si=ctlqlDkvPbAIUQOP', description: 'Ziad Rahbani and Samy Hawwat' },
+              { title: 'Ma Btentarak Wahdak', url: 'https://youtu.be/e22yGnCyGSY?si=JdTH1j66Lv8JHLqq', description: 'Carole Samaha 2025' }
             ]
           }
         ]
