@@ -331,7 +331,7 @@ export class ConcertService {
               { title: '?3', duration: '37:25', url: 'https://vimeo.com/325763780#t=37m25s' },
               { title: 'Lady', duration: '42:35', url: 'https://vimeo.com/325763780#t=42m35s' },
               { title: 'Imagine', duration: '45:50', url: 'https://vimeo.com/325763780#t=45m50s' },
-              { title: '?4', duration: '49:50', url: 'https://vimeo.com/325763780#t=49m50s' },
+              { title: 'Gentle Rain', duration: '49:50', url: 'https://vimeo.com/325763780#t=49m50s', description: 'Luiz Bonfá (composer)' },
               { title: 'Hit the Road Jack', duration: '53:40', url: 'https://vimeo.com/325763780#t=53m40s' },
               { title: 'Killing Me Softly with His Song', duration: '57:35', url: 'https://vimeo.com/325763780#t=57m35s' },
               { title: 'credits', duration: '60:35', url: 'https://vimeo.com/325763780#t=57m35s' }            ]
